@@ -1,12 +1,57 @@
-import React from "react";
+"use client";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+
+const loginFunction = async (formData: { email: string; password: string }) => {
+  const res = await axios.post(
+    "http://localhost:3001/api/organizer/login",
+    formData
+  );
+  return res.data;
+};
 
 const page = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const route = useRouter()
+
+  const { mutate } = useMutation({
+    mutationFn: loginFunction,
+    onSuccess: (data) => {
+      console.log("RESPONSE: ", data);
+      if(data.success) route.push('/organizer/home')
+    },
+    onError: (error) => {
+      console.log("ERROR :", error);
+    },
+  });
+
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const sumbitForm = async (e: any) => {
+    e.preventDefault();
+    mutate(formData);
+  };
+
   return (
-    <div>
-      <body>
+    <div> 
         <section className="min-h-screen flex items-stretch text-white ">
           <div className="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center">
-            <div className="absolute bg-black opacity-60 inset-0 z-0"></div>
+            <Image
+              src="/organization-login.jpg"
+              fill={true}
+              alt="event-image"
+              className="absolute"
+            />
+            <div className="absolute bg-black opacity-50 inset-0 z-0"></div>
             <div className="w-full px-24 z-10">
               <h1 className="text-5xl font-bold text-left tracking-wide">
                 Keep it special
@@ -15,34 +60,30 @@ const page = () => {
                 Capture your personal memory in unique way, anywhere.
               </p>
             </div>
-             
           </div>
-          <div className="lg:w-1/2 w-full flex items-center justify-center text-center md:px-16 px-0 z-0">
-            <div className="absolute lg:hidden z-10 inset-0 bg-gray-500 bg-no-repeat bg-cover items-center">
+          <div className="lg:w-1/2 w-full flex bg-[#6d696a] items-center justify-center text-center md:px-16 px-0 z-0">
+            <div className="absolute lg:hidden z-10 inset-0 bg-no-repeat bg-cover items-center">
               <div className="absolute bg-black opacity-60 inset-0 z-0"></div>
             </div>
             <div className="w-full py-6 z-20">
-              <h1 className="my-6 text-3xl font-extrabold">
-                  NextEvent 
-              </h1>
-              
-              
+              <h1 className="my-6 text-3xl font-extrabold">NextEvent</h1>
+
               <form action="" className="sm:w-2/3 w-full px-4 lg:px-0 mx-auto">
                 <div className="pb-2 pt-4">
                   <input
                     type="email"
                     name="email"
-                    id="email"
+                    onChange={(e) => handleChange(e)}
                     placeholder="Email"
-                    className="block w-full p-4 text-lg rounded-sm bg-black"
+                    className="block w-full p-3 text-lg rounded-sm bg-black"
                   />
                 </div>
                 <div className="pb-2 pt-4">
                   <input
-                    className="block w-full p-4 text-lg rounded-sm bg-black"
+                    className="block w-full p-3 text-lg rounded-sm bg-black"
                     type="password"
                     name="password"
-                    id="password"
+                    onChange={(e) => handleChange(e)}
                     placeholder="Password"
                   />
                 </div>
@@ -50,7 +91,10 @@ const page = () => {
                   <a href="#">Forgot your password?</a>
                 </div>
                 <div className="px-4 pb-2 pt-4">
-                  <button className="uppercase block w-full p-4 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">
+                  <button
+                    onClick={sumbitForm}
+                    className="uppercase block w-full p-3 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none"
+                  >
                     sign in
                   </button>
                 </div>
@@ -93,10 +137,7 @@ const page = () => {
               </form>
             </div>
           </div>
-        </section>
-      </body>
-
-   
+        </section> 
     </div>
   );
 };
