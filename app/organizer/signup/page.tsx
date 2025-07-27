@@ -1,36 +1,20 @@
-"use client"; 
+"use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { useSignup } from "../../../api/organizer/hook/useSignup";
-
-interface IOrganizer {
-  name: string;
-  email: string;
-  mobile: number;
-  password: string;
-  organizationName: string;
-}
+import { signupValidation } from "../../../lib/Formik/organizer/signupValidation";
 
 const page = () => {
-  const [formData, setFormData] = useState<IOrganizer>({
-    name: "",
-    email: "",
-    password: "",
-    mobile: 0,
-    organizationName: "",
-  });
   const { mutate } = useSignup();
   const router = useRouter();
 
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const { name, email, password, mobile, organizationName } = formData;
+  const submitForm = (
+    name: string,
+    email: string,
+    password: string,
+    mobile: number,
+    organizationName: string
+  ) => {
     mutate(
       {
         name,
@@ -41,7 +25,7 @@ const page = () => {
       },
       {
         onSuccess: (data: any) => {
-           console.log("Success", data);
+          console.log("Success", data);
           router.push("/organizer/login");
         },
         onError(error: any) {
@@ -51,6 +35,9 @@ const page = () => {
       }
     );
   };
+
+  const { values, touched, errors, handleChange, handleSubmit } =
+    signupValidation(submitForm);
 
   return (
     <div>
@@ -79,58 +66,85 @@ const page = () => {
           <div className="w-full py-6 z-20">
             <h1 className="my-6 text-3xl font-extrabold">NextEvent</h1>
 
-            <form action="" className="sm:w-2/3 w-full px-4 lg:px-0 mx-auto">
+            <form
+              onSubmit={handleSubmit}
+              className="sm:w-2/3 w-full px-4 lg:px-0 mx-auto"
+            >
               <div className="pb-2 pt-4">
                 <input
                   type="email"
                   name="email"
-                  onChange={(e) => handleChange(e)}
+                  value={values.email}
+                  onChange={handleChange}
                   placeholder="Email"
                   className="block w-full p-3 text-lg rounded-sm bg-white border border-black text-black"
                 />
               </div>
+              {touched.email && errors.email && (
+                <div className="text-red-500 text-center">{errors.email}</div>
+              )}
               <div className="pb-2 pt-4">
                 <input
                   className="block w-full p-3 text-lg rounded-sm bg-white border border-black text-black"
                   type="text"
                   name="name"
-                  onChange={(e) => handleChange(e)}
+                  value={values.name}
+                  onChange={handleChange}
                   placeholder="FullName"
                 />
               </div>
+              {touched.name && errors.name && (
+                <div className="text-red-500 text-center">{errors.name}</div>
+              )}
               <div className="pb-2 pt-4">
                 <input
                   className="block w-full p-3 text-lg rounded-sm bg-white border border-black text-black"
                   type="password"
                   name="password"
-                  onChange={(e) => handleChange(e)}
+                  value={values.password}
+                  onChange={handleChange}
                   placeholder="Password"
                 />
               </div>
+              {touched.password && errors.password && (
+                <div className="text-red-500 text-center">
+                  {errors.password}
+                </div>
+              )}
               <div className="pb-2 pt-4">
                 <input
                   className="block w-full p-3 text-lg rounded-sm bg-white border border-black text-black"
                   type="number"
-                  name="moble"
-                  onChange={(e) => handleChange(e)}
+                  name="mobile"
+                  value={values.mobile}
+                  onChange={handleChange}
                   placeholder="Mobile"
                 />
               </div>
+              {touched.mobile && errors.mobile && (
+                <div className="text-red-500 text-center">{errors.mobile}</div>
+              )}
               <div className="pb-2 pt-4">
                 <input
                   className="block w-full p-3 text-lg rounded-sm bg-white border border-black text-black"
                   type="text"
                   name="organizationName"
-                  onChange={(e) => handleChange(e)}
+                  value={values.organizationName}
+                  onChange={handleChange}
                   placeholder="Organization Name"
                 />
               </div>
+              {touched.organizationName && errors.organizationName && (
+                <div className="text-red-500 text-center">
+                  {errors.organizationName}
+                </div>
+              )}
               <div className="text-right text-gray-400 hover:underline hover:text-gray-100">
                 <a href="#">Forgot your password?</a>
               </div>
               <div className="px-4 pb-2 pt-4">
                 <button
-                  onClick={handleSubmit}
+                  type="submit"
                   className="uppercase block w-full p-3 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none"
                 >
                   sign in
