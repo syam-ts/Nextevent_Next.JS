@@ -1,4 +1,5 @@
 import React from "react";
+import QuickStats from "../../../components/guest/QuickStats";
 
 const page = () => {
     return (
@@ -38,6 +39,7 @@ const page = () => {
             </section>
 
 
+                     <QuickStats />
 
 
 
