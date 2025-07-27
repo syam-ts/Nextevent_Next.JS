@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import Navbar from "../../components/organizer/Navbar";
 
 export default function AuthLayout({
   children,
@@ -15,7 +16,7 @@ export default function AuthLayout({
 
   return (
     <div>
-      {!notProvideThePageFor && <div className="text-white">Navbar</div>}
+      {!notProvideThePageFor && <Navbar />}
       {children}
       {!notProvideThePageFor && <div className="text-white">Footer</div>}
     </div>
