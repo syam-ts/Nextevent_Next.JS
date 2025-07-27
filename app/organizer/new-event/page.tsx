@@ -34,7 +34,7 @@ const page = () => {
       {
         onSuccess: (data) => {
           //  console.log("Success", data);
-          router.push("/organizer/home");
+          router.push("/organizer/my-events");
         },
         onError(error: any) {
           const err = error as { response: { data: { message: string } } };
