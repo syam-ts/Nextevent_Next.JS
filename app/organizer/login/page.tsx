@@ -23,7 +23,8 @@ const page = () => {
       { email: formData.email, password: formData.password },
       {
         onSuccess: (data) => {
-          // console.log("✅ Success", data);
+          //  console.log("Success", data); 
+          localStorage.setItem('accessToken', data.accessToken)
           router.push("/organizer/home");
         },
         onError(error: any) {
