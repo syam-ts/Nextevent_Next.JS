@@ -1,18 +1,19 @@
+"use client"
 import { useGetAllEvents } from "../../../api/guest/hooks/useGetAllEvents";
 import EventCard from "../../../components/event/EventCard";
 
 const page = () => {
     const { data, isError, isLoading } = useGetAllEvents();
-    if(!data) return;
+    if (!data) return;
     return (
-        <div>
+        <div className="bg-white">
             <div className="text-center mb-6">
                 <h1 className="font-extrabold text-4xl text-indigo-700 py-12">
                     All Events
                 </h1>
             </div>
 
-            <div>
+            <div className="bg-white">
                 <EventCard data={data} isError={isError} isLoading={isLoading} />
             </div>
         </div>

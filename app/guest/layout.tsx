@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation"; 
 import Navbar from "../../components/guest/Navbar";
+import Footer from "../../components/guest/Footer";
 
 export default function AuthLayout({
   children,
@@ -10,7 +11,7 @@ export default function AuthLayout({
 }) {
   const pathname = usePathname();
 
-  const noNavFooter = ["/organizer/login", "/organizer/signup"];
+  const noNavFooter = ["/guest/login", "/guest/signup"];
 
   const notProvideThePageFor = noNavFooter.includes(pathname);
 
@@ -18,7 +19,7 @@ export default function AuthLayout({
     <div>
       {!notProvideThePageFor && <Navbar />}
       {children}
-      {!notProvideThePageFor && <div className="text-white">Footer</div>}
+      {!notProvideThePageFor && <Footer />}
     </div>
   );
 }
