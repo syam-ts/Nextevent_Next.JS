@@ -1,20 +1,22 @@
-import React from 'react'
+import { useGetAllEvents } from "../../../api/guest/hooks/useGetAllEvents";
+import EventCard from "../../../components/event/EventCard";
 
 const page = () => {
-  return (
-    <div>
-           <div className="text-center mb-6">
-                    <h1 className="font-extrabold text-4xl text-indigo-700 py-12">
-                        All Events
-                    </h1>
-                </div>
+    const { data, isError, isLoading } = useGetAllEvents();
+    if(!data) return;
+    return (
+        <div>
+            <div className="text-center mb-6">
+                <h1 className="font-extrabold text-4xl text-indigo-700 py-12">
+                    All Events
+                </h1>
+            </div>
 
-                <div>
+            <div>
+                <EventCard data={data} isError={isError} isLoading={isLoading} />
+            </div>
+        </div>
+    );
+};
 
-                    
-                </div>
-    </div>
-  )
-}
-
-export default page
+export default page;
