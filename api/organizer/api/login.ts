@@ -7,7 +7,7 @@ type LoginPayload = {
 };
 
 type LoginResponse = {
-    token: string;
+    accessToken: string;
     user: {
         id: string;
         role: string;
@@ -18,6 +18,8 @@ type LoginResponse = {
 export const LoginOrganizer = async (
     payload: LoginPayload
 ): Promise<LoginResponse> => {
-    const { data } = await axios.post(`${config.backend_url}/organizer/login`, payload);
+    const { data } = await axios.post(`${config.backend_url}/organizer/login`, payload, {
+        withCredentials: true
+    });
     return data;
 };
