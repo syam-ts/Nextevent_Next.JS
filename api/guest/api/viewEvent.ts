@@ -1,7 +1,6 @@
 import { axiosInstanse } from "../../../lib/axios/axiosInstance";
 
 interface IEvent {
-    _id: string
     organizerId: string;
     eventName: string;
     eventImage: string;
@@ -14,11 +13,14 @@ interface IEvent {
     details: string;
 }
 
-type GetAllEventsResponse = {
-    events: IEvent[];
+
+type ViewEventResponse = {
+    event: IEvent;
 };
 
-export const GetAllEvents = async (): Promise<GetAllEventsResponse> => {
-    const { data } = await axiosInstanse.get("/event/all-events");
+export const ViewEvent = async (
+    eventId: string
+): Promise<ViewEventResponse> => {
+    const { data } = await axiosInstanse.get(`/event/view/${eventId}`);
     return data;
 };
