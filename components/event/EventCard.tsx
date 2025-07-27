@@ -1,9 +1,34 @@
 "use client";
 import React from "react";
-import { useGetMyEvents } from "../../api/organizer/hook/useGetMyEvents";
+// import { useGetMyEvents } from "../../api/organizer/hook/useGetMyEvents";
 
-const EventCard = () => {
-    const { data, isLoading, isError } = useGetMyEvents();
+interface IEvent {
+    organizerId: string;
+    eventName: string;
+    eventImage: string;
+    location: string;
+    date: Date;
+    startTime: string;
+    endTime: string;
+    totalSeats: number;
+    isPaid: boolean;
+    details: string;
+}
+
+interface IEventCardProp {
+    events: IEvent[];
+}
+
+const EventCard = ({
+    data,
+    isError,
+    isLoading,
+}: {
+    data: IEventCardProp;
+    isError: any;
+    isLoading: any;
+}) => {
+    // const { data, isLoading, isError } = useGetMyEvents();
 
     if (isLoading)
         return <p className="text-center text-gray-600">Loading events...</p>;
@@ -14,8 +39,11 @@ const EventCard = () => {
 
     return (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-            {data.events.map((event, index) => (
-                <article className="flex w-2/3 justify-center mx-auto flex-col sm:flex-row bg-white  shadow-md ring-1 ring-indigo-100 overflow-hidden">
+            {data.events.map((event: IEvent, index: number) => (
+                <article
+                    key={index}
+                    className="flex w-2/3 justify-center mx-auto flex-col sm:flex-row bg-white  shadow-md ring-1 ring-indigo-100 overflow-hidden"
+                >
                     <img
                         src="/organizer/event-1.jpg"
                         alt="Event"
@@ -25,12 +53,10 @@ const EventCard = () => {
                     <div className="p-6 flex flex-col justify-between flex-1">
                         <div>
                             <h3 className="text-2xl font-bold text-indigo-700 mb-2">
-                               {event.eventName}
+                                {event.eventName}
                             </h3>
 
-                            <p className="text-gray-600 mb-4">
-                               {event.details}
-                            </p>
+                            <p className="text-gray-600 mb-4">{event.details}</p>
 
                             <div className="flex flex-wrap gap-4 text-sm text-gray-700">
                                 <span>
@@ -38,16 +64,20 @@ const EventCard = () => {
                                     {event.location}
                                 </span>
                                 <span>
-                                    <strong className="text-indigo-500">Date:</strong> {event.date.toString()}
+                                    <strong className="text-indigo-500">Date:</strong>{" "}
+                                    {event.date.toString()}
                                 </span>
                                 <span>
-                                    <strong className="text-indigo-500">Time:</strong> {event.startTime} : {event.endTime}
+                                    <strong className="text-indigo-500">Time:</strong>{" "}
+                                    {event.startTime} : {event.endTime}
                                 </span>
                                 <span>
-                                    <strong className="text-indigo-500">Seats:</strong> {event.totalSeats}
+                                    <strong className="text-indigo-500">Seats:</strong>{" "}
+                                    {event.totalSeats}
                                 </span>
                                 <span>
-                                    <strong className="text-indigo-500">Type:</strong> {event.isPaid ? 'paid': 'free'}
+                                    <strong className="text-indigo-500">Type:</strong>{" "}
+                                    {event.isPaid ? "paid" : "free"}
                                 </span>
                             </div>
                         </div>
