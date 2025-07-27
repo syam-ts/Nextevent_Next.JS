@@ -28,6 +28,7 @@ const EventCard = ({
     isError: any;
     isLoading: any;
 }) => {
+    console.log('EVENTS ALL', data.events)
     // const { data, isLoading, isError } = useGetMyEvents();
 
     if (isLoading)
@@ -38,7 +39,7 @@ const EventCard = ({
         return <p className="text-center text-gray-500">No events found.</p>;
 
     return (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+        <div className="flex flex-wrap gap-7 mt-10">
             {data.events.map((event: IEvent, index: number) => (
                 <article
                     key={index}
