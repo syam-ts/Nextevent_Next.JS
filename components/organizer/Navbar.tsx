@@ -54,7 +54,7 @@ const Navbar = () => {
                                 stroke="currentColor"
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
-                                stroke-width="2"
+                                strokeWidth="2"
                                 d="M1 1h15M1 7h15M1 13h15"
                             />
                         </svg>
@@ -83,6 +83,14 @@ const Navbar = () => {
                             </Link>
                         </li>
                         <li>
+                            <Link
+                                href="/organizer/my-events"
+                                className="block py-2 px-3 text-gray-900 rounded-sm font-bold hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  md:-blue-500 -gray-700 -white md:-transparent -700"
+                            >
+                                My Events
+                            </Link>
+                        </li>
+                        <li>
                             <a
                                 href="#"
                                 className="block py-2 px-3 text-gray-900 rounded-sm font-bold hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  md:-blue-500 -gray-700 -white md:-transparent -700"
@@ -90,14 +98,7 @@ const Navbar = () => {
                                 About
                             </a>
                         </li>
-                        <li>
-                            <a
-                                href="#"
-                                className="block py-2 px-3 text-gray-900 rounded-sm font-bold hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  md:-blue-500 -gray-700 -white md:-transparent -700"
-                            >
-                                Pricing
-                            </a>
-                        </li>
+                         
                         <li>
                             <a
                                 href="#"
