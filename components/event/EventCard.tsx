@@ -1,8 +1,10 @@
 "use client";
+import Link from "next/link";
 import React from "react";
 // import { useGetMyEvents } from "../../api/organizer/hook/useGetMyEvents";
 
 interface IEvent {
+    _id: string
     organizerId: string;
     eventName: string;
     eventImage: string;
@@ -84,12 +86,12 @@ const EventCard = ({
                         </div>
 
                         <div className="mt-6">
-                            <a
-                                href="#"
+                            <Link
+                                href={`/guest/event/${event._id}`}
                                 className="inline-block bg-indigo-600 text-white font-semibold px-5 py-2 rounded hover:bg-indigo-700 transition"
                             >
                                 View Details
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </article>
