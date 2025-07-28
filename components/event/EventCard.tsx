@@ -81,6 +81,10 @@ const EventCard = ({
                                     <strong className="text-indigo-500">Type:</strong>{" "}
                                     {event.isPaid ? "paid" : "free"}
                                 </span>
+                                <span>
+                                    <strong className="text-indigo-500">Type:</strong>{" "}
+                                    {event.isPaid ? "paid" : "free"}
+                                </span>
                             </div>
                         </div>
 
