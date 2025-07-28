@@ -14,10 +14,12 @@
     "@tanstack/react-query-devtools": "^5.83.0",
     "axios": "^1.11.0",
     "formik": "^2.4.6",
+    "lucide-react": "^0.532.0",
     "next": "15.4.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-redux": "^9.2.0",
+    "react-spinners": "^0.17.0",
     "redux-persist": "^6.0.0"
   },
   "devDependencies": {
