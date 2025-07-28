@@ -1,10 +1,9 @@
 "use client";
 import Link from "next/link";
-import React from "react";
-// import { useGetMyEvents } from "../../api/organizer/hook/useGetMyEvents";
+import React from "react"; 
 
 interface IEvent {
-    _id: string
+    _id: string;
     organizerId: string;
     eventName: string;
     eventImage: string;
@@ -30,8 +29,8 @@ const EventCard = ({
     isError: any;
     isLoading: any;
 }) => {
-    console.log('EVENTS ALL', data.events)
-    // const { data, isLoading, isError } = useGetMyEvents();
+    console.log("EVENTS ALL", data.events);
+    
 
     if (isLoading)
         return <p className="text-center text-gray-600">Loading events...</p>;
