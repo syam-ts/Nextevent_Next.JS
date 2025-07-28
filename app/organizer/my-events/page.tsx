@@ -1,5 +1,4 @@
-"use client";
-
+"use client"; 
 import React from "react";
 import EventCard from "../../../components/event/EventCard";
 import { useGetMyEvents } from "../../../api/organizer/hook/useGetMyEvents";
@@ -19,11 +18,29 @@ interface IEvent {
 }
 
 interface IE {
-  events: IEvent[]
+  events: IEvent[];
 }
 
 const page = () => {
-  const { data, isError, isLoading }: { data: any, isError: any, isLoading: any } = useGetMyEvents();
+
+  const {
+    data,
+    isError,
+    isLoading,
+  }: { data: any; isError: any; isLoading: any } = useGetMyEvents();
+   if (isLoading) {
+    return <p className="text-center py-10 text-gray-500">Loading events...</p>;
+  }
+
+  if (isError) {
+    return <p className="text-center py-10 text-red-500">Failed to load events.</p>;
+  }
+
+  if (!data || !data.events) {
+    return <p className="text-center py-10 text-red-500">No events found.</p>;
+  }
+
+
   return (
     <div className="w-screen bg-white justify-center">
       <div className="justify-center text-center py-10">
