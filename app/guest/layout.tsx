@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation"; 
 import Navbar from "../../components/guest/Navbar";
-import Footer from "../../components/guest/Footer";
+import Footer from "../../components/common/Footer";
 
 export default function AuthLayout({
   children,
