@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Mail, Lock, User } from "lucide-react";
-import { Spinner } from "../../../components/lib/Spinner";
+import { Spinner } from "../../../components/lib/organizer/Spinner";
 import { signupValidation } from "../../../lib/Formik/organizer/signupValidation";
 import { useSignup } from "../../../api/organizer/hook/useSignup";
 
