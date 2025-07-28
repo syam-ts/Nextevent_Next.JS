@@ -1,7 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+interface IOrganizer {
+    _id: string;
+    name: string;
+    email: string;
+    mobile: number;
+    password: string;
+    role: string;
+    organizationName: string;
+    createdEvents: [];
+    createdAt: Date;
+}
 
 interface OrganizerState {
-    currentOrganizer: any | null;
+    currentOrganizer: IOrganizer | null;
     isOrganizer: boolean;
 }
 
@@ -14,7 +26,7 @@ const currentOrganizerSlice = createSlice({
     name: "organizer",
     initialState,
     reducers: {
-        signInOrganizer: (state, action: any) => {
+        signInOrganizer: (state, action: PayloadAction<IOrganizer>) => {
             (state.currentOrganizer = action.payload), (state.isOrganizer = true);
         },
         signOutOrganizer: (state) => {

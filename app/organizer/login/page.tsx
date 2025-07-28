@@ -3,10 +3,13 @@ import Image from "next/image";
 import { useRouter } from "next/navigation"; 
 import { useLogin } from "../../../api/organizer/hook/useLogin";
 import { loginValidation } from "../../../lib/Formik/organizer/loginValidation";
+import { useDispatch } from "react-redux";
+import { signInOrganizer } from "../../../redux/slices/oranizerSlice";
 
 const page = () => { 
   const { mutate } = useLogin();
   const router = useRouter();
+  const dispatch = useDispatch();
  
 
   const submitForm = (email: string, password: string) => {
@@ -16,7 +19,10 @@ const page = () => {
       {
         onSuccess: (data) => {
           //  console.log("Success", data); 
-          localStorage.setItem('accessToken', data.accessToken)
+          localStorage.setItem('accessToken', data.accessToken);
+          const {organizer} = data;
+          dispatch(signInOrganizer(organizer))
+          
           router.push("/organizer/home");
         },
         onError(error: any) {

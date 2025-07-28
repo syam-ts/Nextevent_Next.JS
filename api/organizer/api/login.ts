@@ -1,4 +1,4 @@
-import axios from "axios"; 
+import axios from "axios";
 import { config } from "../../../utils/config";
 
 type LoginPayload = {
@@ -8,18 +8,28 @@ type LoginPayload = {
 
 type LoginResponse = {
     accessToken: string;
-    user: {
-        id: string;
-        role: string;
+    organizer: {
+        _id: string;
+        name: string;
         email: string;
+        mobile: number;
+        password: string;
+        role: "organizer";
+        organizationName: string;
+        createdEvents: [];
+        createdAt: Date;
     };
 };
 
 export const LoginOrganizer = async (
     payload: LoginPayload
 ): Promise<LoginResponse> => {
-    const { data } = await axios.post(`${config.backend_url}/organizer/login`, payload, {
-        withCredentials: true
-    });
+    const { data } = await axios.post(
+        `${config.backend_url}/organizer/login`,
+        payload,
+        {
+            withCredentials: true,
+        }
+    );
     return data;
 };
