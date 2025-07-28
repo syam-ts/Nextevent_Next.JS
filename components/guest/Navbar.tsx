@@ -6,13 +6,13 @@ const Navbar = () => {
         <nav className="bg-white border-gray-200 -900">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a
-                    href="https://flowbite.com/"
+                    href="/guest/home"
                     className="flex items-center space-x-3 rtl:space-x-reverse"
                 >
                     <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxTGuuZtXJO2sIBqUsMOoDnyMtbeOCG24jYw&s"
+                        src="/logo.png"
                         className="h-8"
-                        alt="Flowbite Logo"
+                        alt="NextEvnt Logo"
                     />
                     <span className="self-center text-black text-2xl font-semibold whitespace-nowrap ">
                         NextEvent

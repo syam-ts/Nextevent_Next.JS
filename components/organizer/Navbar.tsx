@@ -5,19 +5,15 @@ const Navbar = () => {
     return (
         <nav className="bg-white border-gray-200 -900">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a
-                    href="https://flowbite.com/"
+                <Link
+                    href="/organizer/home"
                     className="flex items-center space-x-3 rtl:space-x-reverse"
                 >
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxTGuuZtXJO2sIBqUsMOoDnyMtbeOCG24jYw&s"
-                        className="h-8"
-                        alt="Flowbite Logo"
-                    />
+                    <img src="/logo.png" className="h-8" alt="NextEvent Logo" />
                     <span className="self-center text-black text-2xl font-semibold whitespace-nowrap ">
                         NextEvent
                     </span>
-                </a>
+                </Link>
                 <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                     <button
                         type="button"
@@ -34,7 +30,7 @@ const Navbar = () => {
                             alt="user photo"
                         />
                     </button>
-  
+
                     <button
                         data-collapse-toggle="navbar-user"
                         type="button"
@@ -79,7 +75,7 @@ const Navbar = () => {
                                 href="/organizer/new-event"
                                 className="block py-2 px-3 text-gray-900 rounded-sm font-bold hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  md:-blue-500 -gray-700 -white md:-transparent -700"
                             >
-                                New Event 
+                                New Event
                             </Link>
                         </li>
                         <li>
@@ -98,7 +94,7 @@ const Navbar = () => {
                                 About
                             </a>
                         </li>
-                         
+
                         <li>
                             <a
                                 href="#"
