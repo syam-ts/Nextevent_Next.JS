@@ -1,6 +1,7 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
-import userReducer from "./slices/userSlice";
+import organizerReducer from "./slices/oranizerSlice";
+import guestReducer from "./slices/guestSlice";
 import {
     persistStore,
     persistReducer,
@@ -12,15 +13,29 @@ import {
     REGISTER,
 } from "redux-persist";
 
-const userPersistConfig = {
-    key: "user",
+const organizerPersistConfig = {
+    key: "organizer",
     storage,
 };
 
-const userPersistedReducer = persistReducer(userPersistConfig, userReducer);
+const guestPersistConfig = {
+    key: "guest",
+    storage,
+};
+
+const organizerPersistedReducer = persistReducer(
+    organizerPersistConfig,
+    organizerReducer
+);
+const guestPersistedReducer = persistReducer(guestPersistConfig, guestReducer);
+
+const rootReducer = combineReducers({
+    organizer: organizerPersistedReducer,
+    guest: guestPersistedReducer,
+});
 
 export const store = configureStore({
-    reducer: userPersistedReducer,
+    reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {
