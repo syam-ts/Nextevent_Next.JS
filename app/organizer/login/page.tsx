@@ -1,22 +1,26 @@
 "use client";
+import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
+import { Spinner } from "../../../components/lib/Spinner";
 import { Eye, EyeOff, Mail, Lock, User } from "lucide-react";
 import { useLogin } from "../../../api/organizer/hook/useLogin";
 import { signInOrganizer } from "../../../redux/slices/oranizerSlice";
 import { loginValidation } from "../../../lib/Formik/organizer/loginValidation";
-import { Spinner } from "../../../components/lib/Spinner";
 
 const LoginPage = () => {
 
-  const { mutate } = useLogin();
   const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const { mutate } = useLogin();
   const router = useRouter();
   const dispatch = useDispatch();
 
+
   const submitForm = (email: string, password: string): void => {
-    setLoadingSpinner(true)
+    setLoadingSpinner(true);
     mutate(
       { email, password },
       {
@@ -25,29 +29,27 @@ const LoginPage = () => {
           localStorage.setItem("accessToken", data.accessToken);
           const { organizer } = data;
           dispatch(signInOrganizer(organizer));
-          setLoadingSpinner(false)
+          setLoadingSpinner(false);
 
           router.push("/organizer/home");
         },
         onError(error: any) {
           const err = error as { response: { data: { message: string } } };
-          setLoadingSpinner(false)
+          setLoadingSpinner(false);
           alert(err.response.data.message);
         },
       }
     );
   };
 
+
   const { values, touched, errors, handleChange, handleSubmit } =
     loginValidation(submitForm);
-
-  const [showPassword, setShowPassword] = useState(false);
+    
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center p-4 lg:p-8 bg-white">
-       {
-                loadingSpinner && <Spinner />
-            }
+      {loadingSpinner && <Spinner />}
       <div className="w-full max-w-md mx-auto shadow-lg border-t">
         <div
           className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-white/20 transform transition-all duration-300 hover:scale-[1.02]"
@@ -55,7 +57,6 @@ const LoginPage = () => {
             animation: "slideUp 0.6s ease-out",
           }}
         >
-          {/* Header - Perfectly Centered */}
           <div className="text-center mb-8">
             <div className="mx-auto w-16 h-16 bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-full flex items-center justify-center mb-6 shadow-lg">
               <User className="w-8 h-8 text-white" />
@@ -68,9 +69,7 @@ const LoginPage = () => {
             </p>
           </div>
 
-          {/* Login Form - Perfect Spacing */}
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Email Field */}
             <div className="space-y-2">
               <label
                 htmlFor="email"
@@ -97,7 +96,6 @@ const LoginPage = () => {
               )}
             </div>
 
-            {/* Password Field */}
             <div className="space-y-2">
               <label
                 htmlFor="password"
@@ -138,44 +136,16 @@ const LoginPage = () => {
               )}
             </div>
 
-            {/* Remember Me & Forgot Password - Perfect Alignment */}
-            {/* <div className="flex items-center justify-between pt-2">
-              <div className="flex items-center">
-                <input
-                  id="rememberMe"
-                  name="rememberMe"
-                  type="checkbox"
-                  checked={formData.rememberMe}
-                  onChange={handleInputChange}
-                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded transition-colors"
-                />
-                <label htmlFor="rememberMe" className="ml-3 block text-sm font-medium text-gray-700">
-                  Remember me
-                </label>
-              </div>
-              <div>
-                <a 
-                  href="#" 
-                  className="text-sm font-semibold text-indigo-600 hover:text-indigo-700 transition-colors"
-                  onClick={(e) => e.preventDefault()}
-                >
-                  Forgot password?
-                </a>
-              </div>
-            </div> */}
-
-            {/* Submit Button - Perfect Centering */}
             <div className="pt-4">
               <button
                 type="submit"
                 className="w-full flex items-center justify-center py-3.5 px-4 border border-transparent rounded-xl shadow-lg text-base font-semibold text-white bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200 transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
               >
-                Sign In
+                Login
               </button>
             </div>
           </form>
 
-          {/* Divider - Perfect Spacing */}
           <div className="mt-8 mb-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
@@ -189,17 +159,15 @@ const LoginPage = () => {
             </div>
           </div>
 
-          {/* Sign Up Link - Perfect Center */}
           <div className="text-center">
             <p className="text-sm text-gray-600">
               Don't have an account?{" "}
-              <a
-                href="#"
+              <Link
+                href="/organizer/signup"
                 className="font-semibold text-indigo-600 hover:text-indigo-700 transition-colors"
-                onClick={(e) => e.preventDefault()}
               >
                 Sign up here
-              </a>
+              </Link>
             </p>
           </div>
         </div>
