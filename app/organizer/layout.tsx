@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Navbar from "../../components/organizer/Navbar";
+import Footer from "../../components/common/Footer";
 
 export default function AuthLayout({
   children,
@@ -18,7 +19,7 @@ export default function AuthLayout({
     <div>
       {!notProvideThePageFor && <Navbar />}
       {children}
-      {!notProvideThePageFor && <div className="text-white">Footer</div>}
+      {!notProvideThePageFor && <Footer />}
     </div>
   );
 }
