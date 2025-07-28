@@ -1,7 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+interface IGuest {
+     _id: string
+    name: string
+    email: string
+    password: string
+    mobile: number
+    age: number
+    numberOfEventsAttended: number,
+    wallet: any
+    // events: IEvent,
+    createdAt: Date 
+}
 
 interface GuestState {
-    currentGuest: any | null;
+    currentGuest: IGuest | null;
     isGuest: boolean;
 }
 
@@ -14,7 +27,7 @@ const currentGuestSlice = createSlice({
     name: "guest",
     initialState,
     reducers: {
-        signInGuest: (state, action: any) => {
+        signInGuest: (state, action: PayloadAction<IGuest>) => {
             (state.currentGuest = action.payload), (state.isGuest = true);
         },
         signOutGuest: (state) => {
