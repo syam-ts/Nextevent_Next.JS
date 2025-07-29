@@ -13,13 +13,14 @@ import {
     FileText,
     Camera,
 } from "lucide-react";
+import toast, { Toaster } from "react-hot-toast";
+import { ImageUpload } from "../../../helper/methods/imageUpload";
 
 const CreateEventForm = () => {
-
-    const { mutate } = useNewEvent();
     const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
+    const [imageloading, setImageloading] = useState<boolean>(false);
+    const { mutate } = useNewEvent();
     const router = useRouter();
-
 
     const submitForm = (
         eventName: string,
@@ -54,19 +55,34 @@ const CreateEventForm = () => {
                 onError(error: unknown) {
                     const err = error as { response: { data: { message: string } } };
                     setLoadingSpinner(false);
-                    alert(err.response.data.message);
+                    console.log('ERROR: ',err.response.data.message)
+                    toast.error(err.response.data.message);
                 },
             }
         );
     };
 
-
-    const { values, touched, errors, handleChange, handleSubmit } =
+    const { values, touched, errors, handleChange, handleSubmit, setFieldValue } =
         newEventValidation(submitForm);
-        
+
+    const uploadedImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+       setImageloading(true);
+        const file: any = e.target.files?.[0];
+        if (!file) return;
+
+        try {
+            const url = await ImageUpload(file);
+               setImageloading(false);
+            setFieldValue("eventImage", url);
+        } catch (err) {
+             setImageloading(false);
+            console.error("Upload failed:", err);
+            toast.error(`Upload failed: ${err}`);
+        }
+    };
 
     return (
-        <div className=" w-full flex items-center justify-center  bg-white">
+        <div className=" w-full flex items-center justify-center  bg-white">  
             {loadingSpinner && <Spinner />}
             <div className="w-full max-w-8xl mx-auto ">
                 <div
@@ -130,14 +146,21 @@ const CreateEventForm = () => {
                                             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                                 <Camera className="h-5 w-5 text-gray-400" />
                                             </div>
+                                       
                                             <input
                                                 type="file"
                                                 id="eventImage"
                                                 name="eventImage"
-                                                onChange={handleChange}
+                                                onChange={uploadedImage}
+                                                accept="image/*"
                                                 className="block w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-gray-900 bg-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
                                             />
                                         </div>
+                                        {
+                                            imageloading &&   <div className="text-blue-500 text-sm">
+                                                loading...
+                                            </div>
+                                        }
                                         {touched.eventImage && errors.eventImage && (
                                             <div className="text-red-500 text-sm">
                                                 {errors.eventImage}
