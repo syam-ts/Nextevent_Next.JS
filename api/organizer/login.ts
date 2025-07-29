@@ -1,5 +1,6 @@
-import axios from "axios";
-import { config } from "../../../utils/config";
+import axios from "axios"; 
+import { config } from "../../utils/config";
+import { IOrganizer } from "../../types/organizer";
 
 type LoginPayload = {
     email: string;
@@ -8,17 +9,7 @@ type LoginPayload = {
 
 type LoginResponse = {
     accessToken: string;
-    organizer: {
-        _id: string;
-        name: string;
-        email: string;
-        mobile: number;
-        password: string;
-        role: string;
-        organizationName: string;
-        createdEvents: [];
-        createdAt: Date;
-    };
+    organizer: IOrganizer;
 };
 
 export const LoginOrganizer = async (

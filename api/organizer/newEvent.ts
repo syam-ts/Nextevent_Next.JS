@@ -1,4 +1,6 @@
-import { axiosInstanse } from "../../../lib/axios/axiosInstance";
+import { axiosInstanse } from "../../lib/axios/axiosInstance";
+
+ 
 
 type NewEventPayload = {
     eventName: string;
@@ -8,7 +10,7 @@ type NewEventPayload = {
     startTime: string;
     endTime: string;
     totalSeats: number;
-    isPaid: false;
+    isPaid: boolean;
     details: string;
 };
 

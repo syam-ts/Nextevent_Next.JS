@@ -1,5 +1,5 @@
-import { useMutation } from "@tanstack/react-query";
-import { SignupGuest } from "../api/signup";
+import { useMutation } from "@tanstack/react-query"; 
+import { SignupGuest } from "../../api/guest/signup";
 
 type SignupPayload = {
     name: string;

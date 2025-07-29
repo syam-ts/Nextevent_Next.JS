@@ -1,5 +1,5 @@
-import { useMutation } from "@tanstack/react-query";
-import { LoginOrganizer } from "../../api/organizer/api/login";
+import { useMutation } from "@tanstack/react-query"; 
+import { LoginOrganizer } from "../../api/organizer/login";
 
 type LoginPayload = {
     email: string;

@@ -1,5 +1,5 @@
-import { useMutation } from "@tanstack/react-query";
-import { newEvent } from "../../api/organizer/api/newEvent";
+import { useMutation } from "@tanstack/react-query"; 
+import { newEvent } from "../../api/organizer/newEvent";
 
 type NewEventPayload = {
     eventName: string;
