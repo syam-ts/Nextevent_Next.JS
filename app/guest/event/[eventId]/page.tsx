@@ -112,8 +112,8 @@ const page = ({ params }: { params: any }) => {
 
             <img
               className="rounded-3xl w-full h-[400px] lg:h-[600px] object-cover transition-transform duration-700 hover:scale-105"
-              src="https://images.unsplash.com/photo-1590650516494-0c8e4a4dd67e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxMnx8c2VydmljZXxlbnwwfDB8fHwxNzEyMjIyNjQ3fDA&ixlib=rb-4.0.3&q=80&w=1080"
-              alt="Event"
+              src={data?.event.eventImage}
+              alt="Event-image"
             />
 
             <div className="absolute top-6 right-6 bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border border-orange-100 z-20">

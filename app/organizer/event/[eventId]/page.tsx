@@ -96,14 +96,25 @@ const page = ({ params }: { params: any }) => {
                                 </div>
                             </div>
                         </div>
+
+                        <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-indigo-100 shadow-sm hover:shadow-md transition-all duration-300">
+                            <div className="flex items-center">
+                                <div className="w-12 h-12 bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-xl flex items-center justify-center mr-4 shadow-lg">
+                                    <Users className="w-6 h-6 text-white" />
+                                </div>
+                                <div>
+                                    <p className="text-sm font-semibold text-indigo-700 uppercase tracking-wide mb-1">
+                                        Total Seats Sold
+                                    </p>
+                                    <p className="text-xl font-bold text-indigo-900">
+                                        100 seats
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="pt-4">
-                        <button className="w-full md:w-auto px-8 py-4 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-bold text-lg rounded-2xl shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-indigo-300 flex items-center justify-center gap-3">
-                            <Ticket className="w-6 h-6" />
-                            Register Now
-                        </button>
-                    </div>
+                 
                 </div>
 
                 <div className="hero-image md:px-5 lg:px-0 w-full lg:w-1/2 relative isolate z-10">
@@ -112,8 +123,8 @@ const page = ({ params }: { params: any }) => {
 
                         <img
                             className="rounded-3xl w-full h-[400px] lg:h-[600px] object-cover transition-transform duration-700 hover:scale-105"
-                            src="https://images.unsplash.com/photo-1590650516494-0c8e4a4dd67e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxMnx8c2VydmljZXxlbnwwfDB8fHwxNzEyMjIyNjQ3fDA&ixlib=rb-4.0.3&q=80&w=1080"
-                            alt="Event"
+                            src={data?.event.eventImage}
+                            alt="Event-image"
                         />
 
                         <div className="absolute top-6 right-6 bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border border-indigo-100 z-20">

@@ -52,7 +52,7 @@ const LoginPage = () => {
 
         
     return (
-        <div className="min-h-screen w-full flex items-center justify-center p-4 lg:p-8 bg-white"> 
+        <div className="min-h-screen w-full flex items-center justify-center p-4 lg:p-8 bg-orange-100"> 
             {loadingSpinner && <Spinner />}
             <div className="w-full max-w-2xl mx-auto shadow-lg border-t">
                 <div
