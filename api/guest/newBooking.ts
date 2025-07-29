@@ -15,13 +15,15 @@ type NewBookingPayload = {
 };
 
 type NewBookingResponse = {
-    success: string;
+    result: {
+        id: string
+    }
 };
 
 export const NewBooking = async (
     payload: NewBookingPayload
 ): Promise<NewBookingResponse> => {
-    const { data } = await axiosInstanse.post("/booking/new", payload, {
+    const { data } = await axiosInstanse.post("/booking/payment", payload, {
         withCredentials: true,
     });
     return data;
