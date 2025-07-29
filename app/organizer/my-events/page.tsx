@@ -1,6 +1,6 @@
 "use client"; 
 import React from "react";
-import EventCard from "../../../components/event/EventCard";
+import EventCard from "../../../components/guest/event/EventCard";
 import { useGetMyEvents } from "../../../hooks/organizer/useGetMyEvents";
 
 interface IEvent {

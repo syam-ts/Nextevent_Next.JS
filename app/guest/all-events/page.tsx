@@ -1,6 +1,6 @@
 "use client"
 import { useGetAllEvents } from "../../../hooks/guest/useGetAllEvents";
-import EventCard from "../../../components/event/EventCard";
+import EventCard from "../../../components/guest/event/EventCard";
 
 const page = () => {
     const { data, isError, isLoading } = useGetAllEvents();
