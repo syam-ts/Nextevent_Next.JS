@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { Spinner } from "../../../components/lib/organizer/Spinner";
 import { Eye, EyeOff, Mail, Lock, User } from "lucide-react";
-import { useLogin } from "../../../api/organizer/hook/useLogin";
+import { useLogin } from "../../../hooks/organizer/useLogin";
 import { signInOrganizer } from "../../../redux/slices/oranizerSlice";
 import { loginValidation } from "../../../lib/Formik/organizer/loginValidation";
 

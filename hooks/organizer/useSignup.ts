@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { SignupOrganizer } from "../api/signup";
+import { SignupOrganizer } from "../../api/organizer/api/signup";
 
 type SignupPayload = {
     name: string;

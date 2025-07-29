@@ -4,7 +4,7 @@ import { User, Phone, Hash, Camera, Loader2, Save } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { Spinner } from "../../../../components/lib/guest/Spinner";
 import { useRouter } from "next/navigation";
-import { useProfileEdit } from "../../../../api/organizer/hook/useProfileEdit";
+import { useProfileEdit } from "../../../../hooks/organizer/useProfileEdit";
 import { profileEditValidation } from "../../../../lib/Formik/organizer/profileEditValidation";
 import { signInOrganizer } from "../../../../redux/slices/oranizerSlice";
 
@@ -60,7 +60,7 @@ const page = () => {
                     <div className="flex flex-col lg:flex-row">
                         <div className="flex-1 p-8 lg:p-12">
                             <div className="text-center mb-8">
-                                <div className="mx-auto w-16 h-16 bg-gradient-to-r from-orange-600 to-orange-700 rounded-full flex items-center justify-center mb-6 shadow-lg">
+                                <div className="mx-auto w-16 h-16 bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-full flex items-center justify-center mb-6 shadow-lg">
                                     <User className="w-8 h-8 text-white" />
                                 </div>
                                 <h1 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight">
@@ -89,7 +89,7 @@ const page = () => {
                                             name="name"
                                             value={values.name}
                                             onChange={handleChange}
-                                            className="block w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500 bg-white"
+                                            className="block w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500 bg-white"
                                             placeholder="Enter your full name"
                                         />
                                     </div>
@@ -115,7 +115,7 @@ const page = () => {
                                             name="mobile"
                                             value={values.mobile}
                                             onChange={handleChange}
-                                            className="block w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500 bg-white"
+                                            className="block w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500 bg-white"
                                             placeholder="Enter your mobile number"
                                         />
                                     </div>
@@ -141,7 +141,7 @@ const page = () => {
                                             name="organizationName"
                                             value={values.organizationName}
                                             onChange={handleChange}
-                                            className="block w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500 bg-white"
+                                            className="block w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500 bg-white"
                                             placeholder="Enter your Organization Name"
                                         />
                                     </div>
@@ -156,14 +156,14 @@ const page = () => {
                                 <div className="flex flex-col sm:flex-row gap-4 pt-6">
                                     <button
                                         type="button"
-                                        className="flex-1 flex items-center justify-center py-3.5 px-6 border border-gray-300 rounded-xl shadow-sm text-base font-semibold text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all duration-200"
+                                        className="flex-1 flex items-center justify-center py-3.5 px-6 border border-gray-300 rounded-xl shadow-sm text-base font-semibold text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200"
                                     >
                                         Cancel
                                     </button>
 
                                     <button
                                         type="submit"
-                                        className="flex-1 flex items-center justify-center py-3.5 px-6 border border-transparent rounded-xl shadow-lg text-base font-semibold text-white bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all duration-200 transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+                                        className="flex-1 flex items-center justify-center py-3.5 px-6 border border-transparent rounded-xl shadow-lg text-base font-semibold text-white bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200 transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
                                     >
                                         <Save className="w-5 h-5 mr-3" />
                                         Save Changes
@@ -172,28 +172,28 @@ const page = () => {
                             </form>
                         </div>
 
-                        <div className="lg:w-2/5 bg-gradient-to-br from-orange-600 to-orange-800 flex items-center justify-center p-8">
+                        <div className="lg:w-2/5 bg-gradient-to-br from-indigo-600 to-indigo-800 flex items-center justify-center p-8">
                             <div className="text-center text-white">
                                 <div className="w-32 h-32 mx-auto mb-6 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
                                     <User className="w-16 h-16 text-white" />
                                 </div>
                                 <h3 className="text-2xl font-bold mb-4">Your Profile</h3>
-                                <p className="text-orange-100 leading-relaxed mb-6">
+                                <p className="text-indigo-100 leading-relaxed mb-6">
                                     Keep your information up to date to ensure the best experience
                                     with our services.
                                 </p>
 
                                 <div className="space-y-3 text-left">
-                                    <div className="flex items-center text-orange-100">
-                                        <div className="w-2 h-2 bg-orange-300 rounded-full mr-3"></div>
+                                    <div className="flex items-center text-indigo-100">
+                                        <div className="w-2 h-2 bg-indigo-300 rounded-full mr-3"></div>
                                         <span className="text-sm">Secure data encryption</span>
                                     </div>
-                                    <div className="flex items-center text-orange-100">
-                                        <div className="w-2 h-2 bg-orange-300 rounded-full mr-3"></div>
+                                    <div className="flex items-center text-indigo-100">
+                                        <div className="w-2 h-2 bg-indigo-300 rounded-full mr-3"></div>
                                         <span className="text-sm">Privacy protection</span>
                                     </div>
-                                    <div className="flex items-center text-orange-100">
-                                        <div className="w-2 h-2 bg-orange-300 rounded-full mr-3"></div>
+                                    <div className="flex items-center text-indigo-100">
+                                        <div className="w-2 h-2 bg-indigo-300 rounded-full mr-3"></div>
                                         <span className="text-sm">Easy profile management</span>
                                     </div>
                                 </div>

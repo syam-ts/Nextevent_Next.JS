@@ -1,5 +1,5 @@
 "use client"
-import { useGetAllEvents } from "../../../api/guest/hooks/useGetAllEvents";
+import { useGetAllEvents } from "../../../hooks/guest/useGetAllEvents";
 import EventCard from "../../../components/event/EventCard";
 
 const page = () => {

@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { ProfileEditOrganizer } from "../api/profileEdit";
+import { ProfileEditOrganizer } from "../../api/organizer/api/profileEdit";
 
 type ProifleEditPayload = {
     name: string;

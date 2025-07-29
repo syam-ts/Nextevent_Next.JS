@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useHomeStats } from "../../api/organizer/hook/useHomeStats";
+import { useHomeStats } from "../../hooks/organizer/useHomeStats";
 
 const QuickStats = () => {
     const { data, isLoading, error }: any = useHomeStats();

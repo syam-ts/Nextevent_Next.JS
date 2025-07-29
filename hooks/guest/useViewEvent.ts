@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { ViewEvent } from "../api/viewEvent";
+import { ViewEvent } from "../../api/guest/api/viewEvent";
 
 export const useViewEvent = (eventId: string) => {
     return useQuery({

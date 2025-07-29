@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Calendar, Clock, MapPin, Users, Ticket } from "lucide-react";
-import { useViewEvent } from "../../../../api/guest/hooks/useViewEvent";
+import { useViewEvent } from "../../../../hooks/guest/useViewEvent";
 
 const page = ({ params }: { params: any }) => {
   

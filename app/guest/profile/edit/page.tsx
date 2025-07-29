@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { User, Phone, Hash, Camera, Loader2, Save } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { Spinner } from "../../../../components/lib/guest/Spinner";
-import { useProfileEdit } from "../../../../api/guest/hooks/useProfileEdit";
+import { useProfileEdit } from "../../../../hooks/guest/useProfileEdit";
 import { signInGuest } from "../../../../redux/slices/guestSlice";
 import { useRouter } from "next/navigation";
 import { profileEditValidation } from "../../../../lib/Formik/guest/profileEditValidation";
