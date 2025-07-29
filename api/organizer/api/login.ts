@@ -14,7 +14,7 @@ type LoginResponse = {
         email: string;
         mobile: number;
         password: string;
-        role: "organizer";
+        role: string;
         organizationName: string;
         createdEvents: [];
         createdAt: Date;
