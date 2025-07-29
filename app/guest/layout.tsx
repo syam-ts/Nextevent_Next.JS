@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation"; 
 import Navbar from "../../components/guest/Navbar";
 import Footer from "../../components/common/Footer";
+import { Toaster } from "react-hot-toast";
 
 export default function AuthLayout({
   children,
@@ -19,6 +20,7 @@ export default function AuthLayout({
     <div>
       {!notProvideThePageFor && <Navbar />}
       {children}
+      <Toaster />
       {!notProvideThePageFor && <Footer />}
     </div>
   );
