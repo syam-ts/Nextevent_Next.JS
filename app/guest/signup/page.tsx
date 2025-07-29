@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Mail, Lock, User } from "lucide-react";
 import { Spinner } from "../../../components/lib/guest/Spinner";
-import { useSignup } from "../../../api/guest/hooks/useSignup";
+import { useSignup } from "../../../hooks/guest/useSignup";
 import { signupValidation } from "../../../lib/Formik/guest/signupValidation";
 
 const LoginPage = () => {

@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { LoginGuest } from "../api/login";
+import { LoginGuest } from "../../api/guest/api/login";
 
 type LoginPayload = {
     email: string;

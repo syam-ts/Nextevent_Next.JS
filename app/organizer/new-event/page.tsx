@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Spinner } from "../../../components/lib/organizer/Spinner";
-import { useNewEvent } from "../../../api/organizer/hook/useNewEvent";
+import { useNewEvent } from "../../../hooks/organizer/useNewEvent";
 import { newEventValidation } from "../../../lib/Formik/organizer/newEventValidation";
 import {
     Calendar,
