@@ -2,6 +2,7 @@
 import React, { use, useEffect, useState } from "react";
 import { Calendar, Clock, MapPin, Users, Ticket } from "lucide-react";
 import { useViewEvent } from "../../../../hooks/event/useViewEvent";
+import Link from "next/link";
 
 const page = ({ params }: { params: Promise<{ eventId: string }> }) => {
   const { eventId } = use(params);
@@ -11,15 +12,7 @@ const page = ({ params }: { params: Promise<{ eventId: string }> }) => {
   useEffect(() => {
     isLoading ? setLoadingSpinner(true) : setLoadingSpinner(false);
   }, [isLoading]);
-
-  // const formatDate = (date: Date) => {
-  //   return date.toLocaleDateString('en-US', {
-  //     weekday: 'long',
-  //     year: 'numeric',
-  //     month: 'long',
-  //     day: 'numeric'
-  //   });
-  // };
+ 
 
   return (
     <div className="min-h-screen bg-gradient-to-br bg-white">
@@ -104,10 +97,10 @@ const page = ({ params }: { params: Promise<{ eventId: string }> }) => {
           </div>
 
           <div className="pt-4">
-            <button className="w-full md:w-auto px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white font-bold text-lg rounded-2xl shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-orange-300 flex items-center justify-center gap-3">
+            <Link href={`/guest/booking/${data?.event._id}?isPaid=${data?.event.isPaid}`} className="w-full md:w-auto px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white font-bold text-lg rounded-2xl shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-orange-300 flex items-center justify-center gap-3">
               <Ticket className="w-6 h-6" />
               Register Now
-            </button>
+            </Link>
           </div>
         </div>
         <div className="hero-image md:px-5 lg:px-0 w-full lg:w-1/2 relative isolate z-10">

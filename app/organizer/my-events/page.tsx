@@ -2,20 +2,8 @@
 import React from "react"; 
 import { useGetMyEvents } from "../../../hooks/organizer/useGetMyEvents";
 import EventCard from "../../../components/organizer/event/EventCard";
-
-interface IEvent {
-  _id: string;
-  organizerId: string;
-  eventName: string;
-  eventImage: string;
-  location: string;
-  date: Date;
-  startTime: string;
-  endTime: string;
-  totalSeats: number;
-  isPaid: boolean;
-  details: string;
-}
+import { IEvent } from "../../../types/event";
+ 
 
 interface IE {
   events: IEvent[];

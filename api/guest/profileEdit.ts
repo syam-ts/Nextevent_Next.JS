@@ -18,7 +18,7 @@ type ProfileEditResponse = {
         numberOfEventsAttended: number;
         wallet: any;
         // events: IEvent,
-        createdAt: Date;
+        createdAt: string;
     };
 };
 

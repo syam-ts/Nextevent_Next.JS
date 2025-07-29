@@ -8,21 +8,8 @@ import {
     Eye, 
 } from "lucide-react";
 import Link from "next/link";
-
-interface IEvent {
-    _id: string;
-    organizerId: string;
-    eventName: string;
-    eventImage: string;
-    location: string;
-    date: Date;
-    startTime: string;
-    endTime: string;
-    totalSeats: number;
-    isPaid: boolean;
-    details: string;
-}
-
+import { IEvent } from "../../../types/event";
+ 
 interface IEventCardProp {
     events: IEvent[];
 }
@@ -41,7 +28,7 @@ const EventCard = ({
     };
  
 
-    const formatDate = (date: Date) => {
+    const formatDate = (date: string) => {
         return new Date(date).toLocaleDateString("en-US", {
             weekday: "short",
             year: "numeric",
@@ -58,7 +45,7 @@ const EventCard = ({
         return (
             <div className="flex justify-center items-center py-20">
                 <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto mb-4"></div>
                     <p className="text-gray-600 text-lg">Loading events...</p>
                 </div>
             </div>
@@ -140,8 +127,8 @@ const EventCard = ({
 
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                                     <div className="flex items-center text-gray-700">
-                                        <div className="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center mr-3">
-                                            <MapPin className="w-5 h-5 text-indigo-600" />
+                                        <div className="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center mr-3">
+                                            <MapPin className="w-5 h-5 text-orange-600" />
                                         </div>
                                         <div>
                                             <p className="text-sm text-gray-500 font-medium">
@@ -154,8 +141,8 @@ const EventCard = ({
                                     </div>
 
                                     <div className="flex items-center text-gray-700">
-                                        <div className="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center mr-3">
-                                            <Calendar className="w-5 h-5 text-indigo-600" />
+                                        <div className="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center mr-3">
+                                            <Calendar className="w-5 h-5 text-orange-600" />
                                         </div>
                                         <div>
                                             <p className="text-sm text-gray-500 font-medium">Date</p>
@@ -166,8 +153,8 @@ const EventCard = ({
                                     </div>
 
                                     <div className="flex items-center text-gray-700">
-                                        <div className="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center mr-3">
-                                            <Clock className="w-5 h-5 text-indigo-600" />
+                                        <div className="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center mr-3">
+                                            <Clock className="w-5 h-5 text-orange-600" />
                                         </div>
                                         <div>
                                             <p className="text-sm text-gray-500 font-medium">Time</p>
@@ -179,8 +166,8 @@ const EventCard = ({
                                     </div>
 
                                     <div className="flex items-center text-gray-700">
-                                        <div className="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center mr-3">
-                                            <Users className="w-5 h-5 text-indigo-600" />
+                                        <div className="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center mr-3">
+                                            <Users className="w-5 h-5 text-orange-600" />
                                         </div>
                                         <div>
                                             <p className="text-sm text-gray-500 font-medium">Seats</p>
@@ -199,7 +186,7 @@ const EventCard = ({
 
                                 <Link
                                      href={`/guest/event/${event._id}`}
-                                    className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200 transform hover:scale-105 shadow-lg"
+                                    className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-orange-600 to-orange-700 text-white font-semibold rounded-xl hover:from-orange-700 hover:to-orange-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all duration-200 transform hover:scale-105 shadow-lg"
                                 >
                                     <Eye className="w-4 h-4 mr-2" />
                                     View Details

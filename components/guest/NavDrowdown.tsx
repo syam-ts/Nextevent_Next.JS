@@ -63,10 +63,10 @@ const NavDropdown = () => {
                 >
                     <span className="sr-only">Open user menu</span>
 
-                    <span className="w-8 h-8 p-1  font-extrabold text-xl rounded-full">
-                        {guest.name[0]}
-                    </span>
-                </button>
+                    <img
+                    src={guest.profilePicture}
+                    className="w-8 h-8 p-1  font-extrabold text-xl rounded-full" />
+ </button>
             </div>
         </div>
     );

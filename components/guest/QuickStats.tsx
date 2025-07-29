@@ -38,7 +38,7 @@ const QuickStats = () => {
                                         Total Events 
                                     </dt>
                                     <dd
-                                        className="order-1 text-5xl font-extrabold leading-none text-indigo-600"
+                                        className="order-1 text-5xl font-extrabold leading-none text-orange-600"
                                         aria-describedby="item-1"
                                         id="starsCount"
                                     >
@@ -50,7 +50,7 @@ const QuickStats = () => {
                                         Total Booking
                                     </dt>
                                     <dd
-                                        className="order-1 text-5xl font-extrabold leading-none text-indigo-600"
+                                        className="order-1 text-5xl font-extrabold leading-none text-orange-600"
                                         id="downloadsCount"
                                     >
                                         {isLoading ? <p>...</p> : totalBookings}
@@ -61,7 +61,7 @@ const QuickStats = () => {
                                         Total Guest
                                     </dt>
                                     <dd
-                                        className="order-1 text-5xl font-extrabold leading-none text-indigo-600"
+                                        className="order-1 text-5xl font-extrabold leading-none text-orange-600"
                                         id="sponsorsCount"
                                     >
                                         {isLoading ? <p>...</p> : totalGuests}

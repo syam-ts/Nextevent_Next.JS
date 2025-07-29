@@ -29,6 +29,7 @@ const CreateEventForm = () => {
         date: string,
         startTime: string,
         endTime: string,
+        ticketPrice: number,
         totalSeats: number,
         isPaid: boolean,
         details: string
@@ -42,6 +43,7 @@ const CreateEventForm = () => {
                 date,
                 startTime,
                 endTime,
+                ticketPrice,
                 totalSeats,
                 isPaid,
                 details,
@@ -286,6 +288,45 @@ const CreateEventForm = () => {
                                             htmlFor="totalSeats"
                                             className="block text-sm font-semibold text-gray-700"
                                         >
+                                            Ticket Price
+                                        </label>
+                                        <div className="relative">
+                                            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                                <Users className="h-5 w-5 text-gray-400" />
+                                            </div>
+                                            <input
+                                                type="number"
+                                                id="ticketPrice"
+                                                name="ticketPrice"
+                                                value={values.ticketPrice}
+                                                onChange={handleChange}
+                                                className="block w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500 bg-white"
+                                                placeholder="200"
+                                            />
+                                        </div>
+                                        {touched.ticketPrice && errors.ticketPrice && (
+                                            <div className="text-red-500 text-sm">
+                                                {errors.ticketPrice}
+                                            </div>
+                                        )}
+                                    </div>
+
+
+
+                                    
+
+                                
+                                </div>
+
+                                <div className="grid md:grid-cols-2 gap-6">
+
+
+<div className="grid gap-4">
+    <div className="space-y-2">
+                                        <label
+                                            htmlFor="totalSeats"
+                                            className="block text-sm font-semibold text-gray-700"
+                                        >
                                             Total Seats
                                         </label>
                                         <div className="relative">
@@ -308,10 +349,9 @@ const CreateEventForm = () => {
                                             </div>
                                         )}
                                     </div>
-                                </div>
 
-                                <div className="grid md:grid-cols-2 gap-6">
-                                    <div className="space-y-2">
+
+                                      <div className="space-y-2">
                                         <label
                                             htmlFor="isPaid"
                                             className="block text-sm font-semibold text-gray-700"
@@ -338,6 +378,10 @@ const CreateEventForm = () => {
                                             </div>
                                         )}
                                     </div>
+</div>
+
+
+                                  
 
                                     <div className="space-y-2">
                                         <label

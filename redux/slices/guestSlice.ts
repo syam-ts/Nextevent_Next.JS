@@ -10,7 +10,7 @@ interface IGuest {
     numberOfEventsAttended: number,
     wallet: any
     // events: IEvent,
-    createdAt: Date 
+    createdAt: string 
 }
 
 interface GuestState {

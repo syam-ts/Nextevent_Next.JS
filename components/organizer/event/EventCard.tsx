@@ -8,20 +8,9 @@ import {
     Eye, 
 } from "lucide-react";
 import Link from "next/link";
+import { IEvent } from "../../../types/event";
 
-interface IEvent {
-    _id: string;
-    organizerId: string;
-    eventName: string;
-    eventImage: string;
-    location: string;
-    date: Date;
-    startTime: string;
-    endTime: string;
-    totalSeats: number;
-    isPaid: boolean;
-    details: string;
-}
+ 
 
 interface IEventCardProp {
     events: IEvent[];
@@ -41,7 +30,7 @@ const EventCard = ({
     };
  
 
-    const formatDate = (date: Date) => {
+    const formatDate = (date: string) => {
         return new Date(date).toLocaleDateString("en-US", {
             weekday: "short",
             year: "numeric",

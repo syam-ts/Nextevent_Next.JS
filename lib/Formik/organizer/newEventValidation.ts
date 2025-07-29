@@ -9,6 +9,7 @@ export const newEventValidation = (submitForm: any) => {
             date: "",
             startTime: "",
             endTime: "",
+            ticketPrice: 0,
             totalSeats: 0,
             isPaid: false,
             details: "",
@@ -47,6 +48,12 @@ export const newEventValidation = (submitForm: any) => {
                 errors.endTime = "End time required";
             }
 
+            if (!values.ticketPrice) {
+                errors.ticketPrice = "Ticket Price required";
+            } else if (values.ticketPrice > 2000 || values.ticketPrice < 100) {
+                errors.ticketPrice = "Ticket Price should be 100₹ to 2000₹";
+            }
+
             if (!values.totalSeats) {
                 errors.totalSeats = "Total seats required";
             } else if (values.totalSeats > 3000 || values.totalSeats < 100) {
@@ -75,6 +82,7 @@ export const newEventValidation = (submitForm: any) => {
                 values.date,
                 values.startTime,
                 values.endTime,
+                values.ticketPrice,
                 values.totalSeats,
                 values.isPaid,
                 values.details

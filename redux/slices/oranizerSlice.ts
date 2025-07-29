@@ -9,7 +9,7 @@ interface IOrganizer {
     role: string;
     organizationName: string;
     createdEvents: [];
-    createdAt: Date;
+    createdAt: string;
 }
 
 interface OrganizerState {
