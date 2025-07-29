@@ -51,11 +51,11 @@ const HomeEventTypes = () => {
                                                 y2="172"
                                                 gradientUnits="userSpaceOnUse"
                                             >
-                                                <stop stopColor="#3056D3" stop-opacity="0.09" />
+                                                <stop stopColor="#3056D3" stopOpacity="0.09" />
                                                 <stop
                                                     offset="1"
-                                                    stop-color="#C4C4C4"
-                                                    stop-opacity="0"
+                                                    stopColor="#C4C4C4"
+                                                    stopOpacity="0"
                                                 />
                                             </linearGradient>
                                         </defs>
@@ -330,11 +330,11 @@ const HomeEventTypes = () => {
                                                 y2="172"
                                                 gradientUnits="userSpaceOnUse"
                                             >
-                                                <stop stop-color="#3056D3" stop-opacity="0.09" />
+                                                <stop stopColor="#3056D3" stopOpacity="0.09" />
                                                 <stop
                                                     offset="1"
-                                                    stop-color="#C4C4C4"
-                                                    stop-opacity="0"
+                                                    stopColor="#C4C4C4"
+                                                    stopOpacity="0"
                                                 />
                                             </linearGradient>
                                         </defs>
@@ -609,11 +609,11 @@ const HomeEventTypes = () => {
                                                 y2="172"
                                                 gradientUnits="userSpaceOnUse"
                                             >
-                                                <stop stop-color="#3056D3" stop-opacity="0.09" />
+                                                <stop stopColor="#3056D3" stopOpacity="0.09" />
                                                 <stop
                                                     offset="1"
-                                                    stop-color="#C4C4C4"
-                                                    stop-opacity="0"
+                                                    stopColor="#C4C4C4"
+                                                    stopOpacity="0"
                                                 />
                                             </linearGradient>
                                         </defs>

@@ -1,11 +1,16 @@
 "use client";
-import React from "react";
+import React, { use, useEffect, useState } from "react";
 import { Calendar, Clock, MapPin, Users, Ticket } from "lucide-react";
-import { useViewEvent } from "../../../../hooks/guest/useViewEvent";
+import { useViewEvent } from "../../../../hooks/event/useViewEvent";
 
-const page = ({ params }: { params: any }) => {
-  
-  const { data, isError, isLoading } = useViewEvent(params.eventId);
+const page = ({ params }: { params: Promise<{ eventId: string }> }) => {
+  const { eventId } = use(params);
+  const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
+  const { data, isLoading } = useViewEvent(eventId);
+
+  useEffect(() => {
+    isLoading ? setLoadingSpinner(true) : setLoadingSpinner(false);
+  }, [isLoading]);
 
   // const formatDate = (date: Date) => {
   //   return date.toLocaleDateString('en-US', {
@@ -105,7 +110,6 @@ const page = ({ params }: { params: any }) => {
             </button>
           </div>
         </div>
-
         <div className="hero-image md:px-5 lg:px-0 w-full lg:w-1/2 relative isolate z-10">
           <div className="relative rounded-3xl overflow-hidden shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-tr from-orange-900/20 via-transparent to-orange-600/10 z-10"></div>
@@ -126,7 +130,8 @@ const page = ({ params }: { params: any }) => {
           <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full opacity-20 -z-10"></div>
           <div className="absolute -top-4 -left-4 w-16 h-16 bg-gradient-to-r from-orange-300 to-orange-500 rounded-full opacity-30 -z-10"></div>
         </div>
-c      </div>
+        c{" "}
+      </div>
     </div>
   );
 };

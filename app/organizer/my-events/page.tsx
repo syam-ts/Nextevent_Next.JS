@@ -1,7 +1,7 @@
 "use client"; 
-import React from "react";
-import EventCard from "../../../components/guest/event/EventCard";
+import React from "react"; 
 import { useGetMyEvents } from "../../../hooks/organizer/useGetMyEvents";
+import EventCard from "../../../components/organizer/event/EventCard";
 
 interface IEvent {
   _id: string;
@@ -35,10 +35,7 @@ const page = () => {
   if (isError) {
     return <p className="text-center py-10 text-red-500">Failed to load events.</p>;
   }
-
-  if (!data || !data.events) {
-    return <p className="text-center py-10 text-red-500">No events found.</p>;
-  }
+  if (!data) return;
 
 
   return (
