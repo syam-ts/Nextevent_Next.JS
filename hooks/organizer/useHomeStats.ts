@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { HomeStats } from "../../api/organizer/api/homeStats";
+import { useQuery } from "@tanstack/react-query"; 
+import { HomeStats } from "../../api/organizer/homeStats";
 
 export const useHomeStats = () => {
     return useQuery({

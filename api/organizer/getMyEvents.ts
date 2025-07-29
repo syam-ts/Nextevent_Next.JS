@@ -1,4 +1,6 @@
-import { axiosInstanse } from "../../../lib/axios/axiosInstance";
+import { axiosInstanse } from "../../lib/axios/axiosInstance";
+
+ 
 
 interface IEvent {
     organizerId: string;

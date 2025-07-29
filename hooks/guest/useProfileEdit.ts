@@ -1,5 +1,5 @@
-import { useMutation } from "@tanstack/react-query";
-import { ProfileEditGuest } from "../api/profileEdit";
+import { useMutation } from "@tanstack/react-query"; 
+import { ProfileEditGuest } from "../../api/guest/profileEdit";
 
 type ProifleEditPayload = {
     name: string;

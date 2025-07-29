@@ -1,6 +1,6 @@
-import { config } from "../../../utils/config";
-import { axiosInstanse } from "../../../lib/axios/axiosInstance";
+import { axiosInstanse } from "../../lib/axios/axiosInstance";
 
+  
 type ProifleEditPayload = {
     name: string;
     mobile: number;

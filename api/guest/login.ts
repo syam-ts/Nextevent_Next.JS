@@ -1,5 +1,6 @@
-import axios from "axios";
-import { config } from "../../../utils/config";
+import axios from "axios"; 
+import { IGuest } from "../../types/guest";
+import { config } from "../../utils/config";
 
 type LoginPayload = {
     email: string;
@@ -8,18 +9,7 @@ type LoginPayload = {
 
 type LoginResponse = {
     accessToken: string;
-    guest: {
-        _id: string;
-        name: string;
-        email: string;
-        password: string;
-        mobile: number;
-        age: number;
-        numberOfEventsAttended: number;
-        wallet: any;
-        // events: IEvent,
-        createdAt: Date;
-    };
+    guest: IGuest
 };
 
 export const LoginGuest = async (

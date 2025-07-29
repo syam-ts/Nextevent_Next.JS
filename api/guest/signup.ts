@@ -1,5 +1,5 @@
-import axios from "axios";
-import { config } from "../../../utils/config";
+import axios from "axios"; 
+import { config } from "../../utils/config";
 
 type SignupPayload = {
     name: string;
