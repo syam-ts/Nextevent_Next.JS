@@ -9,7 +9,7 @@ const page = () => {
                     <div className="max-w-prose text-left">
                         <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
                             Understand user flow and
-                            <strong className="text-indigo-600"> increase </strong>
+                            <strong className="text-orange-600"> increase </strong>
                             conversions
                         </h1>
 
@@ -21,7 +21,7 @@ const page = () => {
 
                         <div className="mt-4 flex gap-4 sm:mt-6">
                             <a
-                                className="inline-block rounded border border-indigo-600 bg-indigo-600 px-5 py-3 font-medium text-white shadow-sm transition-colors hover:bg-indigo-700"
+                                className="inline-block rounded border border-orange-600 bg-orange-600 px-5 py-3 font-medium text-white shadow-sm transition-colors hover:bg-orange-700"
                                 href="#"
                             >
                                 Get Started
@@ -45,12 +45,12 @@ const page = () => {
 
             <section className="py-10 bg-white justify-center mx-auto ">
                 <div className="text-center mb-6">
-                    <h1 className="font-extrabold text-4xl text-indigo-700 py-12">
+                    <h1 className="font-extrabold text-4xl text-orange-700 py-12">
                         Latest Events
                     </h1>
                 </div>
 
-                <article className="flex w-2/3 justify-center mx-auto flex-col sm:flex-row bg-white  shadow-md ring-1 ring-indigo-100 overflow-hidden">
+                <article className="flex w-2/3 justify-center mx-auto flex-col sm:flex-row bg-white  shadow-md ring-1 ring-orange-100 overflow-hidden">
                     <img
                         src="/organizer/event-1.jpg"
                         alt="Event"
@@ -59,7 +59,7 @@ const page = () => {
 
                     <div className="p-6 flex flex-col justify-between flex-1">
                         <div>
-                            <h3 className="text-2xl font-bold text-indigo-700 mb-2">
+                            <h3 className="text-2xl font-bold text-orange-700 mb-2">
                                 Startup Summit 2025
                             </h3>
 
@@ -70,22 +70,22 @@ const page = () => {
 
                             <div className="flex flex-wrap gap-4 text-sm text-gray-700">
                                 <span>
-                                    <strong className="text-indigo-500">Location:</strong>{" "}
+                                    <strong className="text-orange-500">Location:</strong>{" "}
                                     Bangalore
                                 </span>
                                 <span>
-                                    <strong className="text-indigo-500">Date:</strong> July 30,
+                                    <strong className="text-orange-500">Date:</strong> July 30,
                                     2025
                                 </span>
                                 <span>
-                                    <strong className="text-indigo-500">Time:</strong> 10:00 AM -
+                                    <strong className="text-orange-500">Time:</strong> 10:00 AM -
                                     2:00 PM
                                 </span>
                                 <span>
-                                    <strong className="text-indigo-500">Seats:</strong> 200
+                                    <strong className="text-orange-500">Seats:</strong> 200
                                 </span>
                                 <span>
-                                    <strong className="text-indigo-500">Type:</strong> Paid
+                                    <strong className="text-orange-500">Type:</strong> Paid
                                 </span>
                             </div>
                         </div>
@@ -93,7 +93,7 @@ const page = () => {
                         <div className="mt-6">
                             <a
                                 href="#"
-                                className="inline-block bg-indigo-600 text-white font-semibold px-5 py-2 rounded hover:bg-indigo-700 transition"
+                                className="inline-block bg-orange-600 text-white font-semibold px-5 py-2 rounded hover:bg-orange-700 transition"
                             >
                                 View Details
                             </a>

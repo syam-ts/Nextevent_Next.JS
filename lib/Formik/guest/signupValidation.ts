@@ -42,14 +42,11 @@ export const signupValidation = (submitForm: any) => {
                 errors.mobile = "Number should be valid";
             }
 
-            
-
             if (!values.age) {
-            errors.age = "Age required";
+                errors.age = "Age required";
             } else if (values.age < 20 || values.age > 50) {
-            errors.age = "Age should be between 20 and 50";
+                errors.age = "Age should be between 20 and 50";
             }
-
 
             return errors;
         },

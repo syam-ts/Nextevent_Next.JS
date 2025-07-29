@@ -1,17 +1,8 @@
 import { useMutation } from "@tanstack/react-query"; 
 import { newEvent } from "../../api/organizer/newEvent";
+import { IEvent } from "../../types/event";
 
-type NewEventPayload = {
-    eventName: string;
-    eventImage: string;
-    location: string;
-    date: string;
-    startTime: string;
-    endTime: string;
-    totalSeats: number;
-    isPaid: boolean;
-    details: string;
-};
+type NewEventPayload =  IEvent;
 
 export const useNewEvent = () => {
     return useMutation({

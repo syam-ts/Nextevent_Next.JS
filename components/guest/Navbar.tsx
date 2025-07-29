@@ -4,22 +4,18 @@ import NavDropdown from "./NavDrowdown";
 
 const Navbar = () => {
     return (
-        <nav className="bg-white border-gray-200 -900"> 
+        <nav className="bg-white border-gray-200 -900">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a
                     href="/guest/home"
                     className="flex items-center space-x-3 rtl:space-x-reverse"
                 >
-                    <img
-                        src="/logo.png"
-                        className="h-8"
-                        alt="NextEvnt Logo"
-                    />
+                    <img src="/logo.png" className="h-8" alt="NextEvnt Logo" />
                     <span className="self-center text-black text-2xl font-semibold whitespace-nowrap ">
                         NextEvent
                     </span>
                 </a>
-              
+
                 <div
                     className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
                     id="navbar-user"
@@ -28,7 +24,7 @@ const Navbar = () => {
                         <li>
                             <Link
                                 href="/guest/home"
-                                className="block py-2 px-3 text-white bg-blue-700 font-bold rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:-500"
+                                className="block py-2 px-3 text-white bg-orange-700 font-bold rounded-sm md:bg-transparent md:text-orange-700 md:p-0 md:-500"
                                 aria-current="page"
                             >
                                 Home
@@ -37,7 +33,7 @@ const Navbar = () => {
                         <li>
                             <Link
                                 href="/guest/all-events"
-                                className="block py-2 px-3 text-white bg-blue-700 font-bold rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:-500"
+                                className="block py-2 px-3 text-white bg-orange-700 font-bold rounded-sm md:bg-transparent md:text-orange-700 md:p-0 md:-500"
                                 aria-current="page"
                             >
                                 All Events
@@ -46,15 +42,15 @@ const Navbar = () => {
                         <li>
                             <Link
                                 href="/guest/bookings"
-                                className="block py-2 px-3 text-gray-900 rounded-sm font-bold hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  md:-blue-500 -gray-700 -white md:-transparent -700"
+                                className="block py-2 px-3 text-gray-900 rounded-sm font-bold hover:bg-gray-100 md:hover:bg-transparent md:hover:text-orange-700 md:p-0  md:-orange-500 -gray-700 -white md:-transparent -700"
                             >
-                                My Bookings 
+                                My Bookings
                             </Link>
                         </li>
                         <li>
                             <Link
                                 href="/guest/my-events"
-                                className="block py-2 px-3 text-gray-900 rounded-sm font-bold hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  md:-blue-500 -gray-700 -white md:-transparent -700"
+                                className="block py-2 px-3 text-gray-900 rounded-sm font-bold hover:bg-gray-100 md:hover:bg-transparent md:hover:text-orange-700 md:p-0  md:-orange-500 -gray-700 -white md:-transparent -700"
                             >
                                 Wallet
                             </Link>
@@ -62,23 +58,23 @@ const Navbar = () => {
                         <li>
                             <a
                                 href="#"
-                                className="block py-2 px-3 text-gray-900 rounded-sm font-bold hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  md:-blue-500 -gray-700 -white md:-transparent -700"
+                                className="block py-2 px-3 text-gray-900 rounded-sm font-bold hover:bg-gray-100 md:hover:bg-transparent md:hover:text-orange-700 md:p-0  md:-orange-500 -gray-700 -white md:-transparent -700"
                             >
                                 About
                             </a>
                         </li>
-                         
+
                         <li>
                             <a
                                 href="#"
-                                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  md:-blue-500 -gray-700 -white md:-transparent -700"
+                                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-orange-700 md:p-0  md:-orange-500 -gray-700 -white md:-transparent -700"
                             >
                                 Contact
                             </a>
                         </li>
                     </ul>
                     <div className="pl-20">
-<NavDropdown />
+                        <NavDropdown />
                     </div>
                 </div>
             </div>

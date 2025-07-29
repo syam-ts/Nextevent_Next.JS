@@ -1,33 +1,21 @@
 "use client";
 import React, { use, useEffect, useState } from "react";
-import { Calendar, Clock, MapPin, Users, Ticket } from "lucide-react"; 
+import { Calendar, Clock, MapPin, Users, Ticket } from "lucide-react";
 import { Spinner } from "../../../../components/lib/organizer/Spinner";
 import { useViewEvent } from "../../../../hooks/event/useViewEvent";
 
-const page = ({ params }: { params: Promise<{ eventId: string }> }) => { 
-    
-     const { eventId } = use(params);
+const page = ({ params }: { params: Promise<{ eventId: string }> }) => {
+    const { eventId } = use(params);
     const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
     const { data, isLoading } = useViewEvent(eventId);
+
+    useEffect(() => {
+        isLoading ? setLoadingSpinner(true) : setLoadingSpinner(false);
+    }, [isLoading]);
  
-  useEffect(() => {
-    isLoading ? setLoadingSpinner(true) : setLoadingSpinner(false)
-  }, [isLoading])
-
-    // const formatDate = (date: Date) => {
-    //   return date.toLocaleDateString('en-US', {
-    //     weekday: 'long',
-    //     year: 'numeric',
-    //     month: 'long',
-    //     day: 'numeric'
-    //   });
-    // };
-
     return (
         <div className="min-h-screen bg-gradient-to-br bg-white">
-            {
-                loadingSpinner && <Spinner />
-            }
+            {loadingSpinner && <Spinner />}
             <div className="px-6 lg:px-10 mx-auto flex flex-col gap-y-12 lg:flex-row items-center gap-x-12 justify-center py-12 lg:py-20 max-w-7xl">
                 <div className="lg:w-[650px] lg:px-5 flex flex-col gap-y-8">
                     <div className="space-y-4">
@@ -114,17 +102,29 @@ const page = ({ params }: { params: Promise<{ eventId: string }> }) => {
                                 </div>
                                 <div>
                                     <p className="text-sm font-semibold text-indigo-700 uppercase tracking-wide mb-1">
-                                        Total Seats Sold
+                                        Ticket Price
                                     </p>
                                     <p className="text-xl font-bold text-indigo-900">
-                                        100 seats
+                                        {data?.event.ticketPrice}
                                     </p>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                 
+                        <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-indigo-100 shadow-sm hover:shadow-md transition-all duration-300">
+                            <div className="flex items-center">
+                                <div className="w-12 h-12 bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-xl flex items-center justify-center mr-4 shadow-lg">
+                                    <Users className="w-6 h-6 text-white" />
+                                </div>
+                                <div>
+                                    <p className="text-sm font-semibold text-indigo-700 uppercase tracking-wide mb-1">
+                                        Total Seats Sold
+                                    </p>
+                                    <p className="text-xl font-bold text-indigo-900">100 seats</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="hero-image md:px-5 lg:px-0 w-full lg:w-1/2 relative isolate z-10">

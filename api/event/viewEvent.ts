@@ -1,19 +1,6 @@
 import { axiosInstanse } from "../../lib/axios/axiosInstance";
+import { IEvent } from "../../types/event";
  
-
-interface IEvent {
-    organizerId: string;
-    eventName: string;
-    eventImage: string;
-    location: string;
-    date: Date;
-    startTime: string;
-    endTime: string;
-    totalSeats: number;
-    isPaid: boolean;
-    details: string;
-}
-
 
 type ViewEventResponse = {
     event: IEvent;
