@@ -109,7 +109,7 @@ const page = () => {
                       placeholder="Enter your full name"
                     />
                   </div>
-                  {touched.name && errors.name && (
+                  {touched.name && typeof errors.name === 'string' && (
                     <div className="text-red-500 text-sm">{errors.name}</div>
                   )}
                 </div>
@@ -135,7 +135,7 @@ const page = () => {
                       placeholder="Enter your mobile number"
                     />
                   </div>
-                  {touched.mobile && errors.mobile && (
+                  {touched.mobile && typeof errors.mobile === 'number' && (
                     <div className="text-red-500 text-sm">{errors.mobile}</div>
                   )}
                 </div>
@@ -161,7 +161,7 @@ const page = () => {
                       placeholder="Enter your Age"
                     />
                   </div>
-                  {touched.age && errors.age && (
+                  {touched.age && typeof errors.age === 'number' && (
                     <div className="text-red-500 text-sm">{errors.age}</div>
                   )}
                 </div>
