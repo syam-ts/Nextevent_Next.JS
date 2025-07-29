@@ -126,7 +126,7 @@ const page = ({ params }: { params: any }) => {
           <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full opacity-20 -z-10"></div>
           <div className="absolute -top-4 -left-4 w-16 h-16 bg-gradient-to-r from-orange-300 to-orange-500 rounded-full opacity-30 -z-10"></div>
         </div>
-      </div>
+c      </div>
     </div>
   );
 };

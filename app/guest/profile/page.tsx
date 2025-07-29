@@ -2,6 +2,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Mail, Phone, Building2, User } from "lucide-react";
+import Link from "next/link";
 
 const ProfilePage = () => {
 
@@ -102,10 +103,10 @@ const ProfilePage = () => {
                         </div>
                     </div>
 
-                    <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                        <button className="flex-1 py-3.5 px-6 bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white font-semibold rounded-xl shadow-lg transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
+                    <div className="mt-8 flex flex-col text-center sm:flex-row gap-4">
+                        <Link href='/guest/profile/edit' className="flex-1 py-3.5 px-6 bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white font-semibold rounded-xl shadow-lg transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
                             Edit Profile
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
