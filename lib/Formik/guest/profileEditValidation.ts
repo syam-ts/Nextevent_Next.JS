@@ -9,6 +9,7 @@ export const profileEditValidation = (submitForm: any) => {
     return useFormik({
         initialValues: {
             name: guest.name,
+            profilePicture: guest.profilePicture,
             mobile: guest.mobile,
             age: guest.age,
         },
@@ -42,7 +43,7 @@ export const profileEditValidation = (submitForm: any) => {
 
         onSubmit: (values) => {
             console.log(values);
-            submitForm(values.name, values.mobile, values.age);
+            submitForm(values.name,values.profilePicture, values.mobile, values.age);
         },
     });
 };

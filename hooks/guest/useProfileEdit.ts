@@ -3,6 +3,7 @@ import { ProfileEditGuest } from "../../api/guest/profileEdit";
 
 type ProifleEditPayload = {
     name: string;
+    profilePicture: string;
     age: number;
     mobile: number;
 };

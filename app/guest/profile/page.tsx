@@ -22,7 +22,7 @@ const ProfilePage = () => {
                     <div className="text-center mb-8">
                         <div className="relative mx-auto mb-6">
                             <div className="w-32 h-32 mx-auto bg-gradient-to-r from-orange-600 to-orange-700 rounded-full flex items-center justify-center shadow-2xl border-4 border-white">
-                                <User className="w-16 h-16 text-white" />
+                                <img src={guest.profilePicture} className="w-full h-full rounded-full text-white" />
                             </div>
                             <div className="absolute bottom-2 right-2 w-6 h-6 bg-green-500 border-4 border-white rounded-full shadow-lg"></div>
                         </div>

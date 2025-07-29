@@ -7,18 +7,27 @@ import { useProfileEdit } from "../../../../hooks/guest/useProfileEdit";
 import { signInGuest } from "../../../../redux/slices/guestSlice";
 import { useRouter } from "next/navigation";
 import { profileEditValidation } from "../../../../lib/Formik/guest/profileEditValidation";
+import { ImageUpload } from "../../../../helper/methods/imageUpload";
+import toast, { Toaster } from "react-hot-toast";
 
 const page = () => {
   const { mutate } = useProfileEdit();
 
   const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
+  const [imageloading, setImageloading] = useState<boolean>(false);
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const submitForm = (name: string, mobile: number, age: number): void => {
+
+  const submitForm = (
+    name: string,
+    profilePicture: string,
+    mobile: number,
+    age: number
+  ): void => {
     setLoadingSpinner(true);
     mutate(
-      { name, mobile, age },
+      { name, profilePicture, mobile, age },
       {
         onSuccess: (data) => {
           //  console.log("Success", data);
@@ -37,11 +46,30 @@ const page = () => {
     );
   };
 
-  const { values, touched, errors, handleChange, handleSubmit } =
+  
+  const { values, touched, errors, handleChange, setFieldValue, handleSubmit } =
     profileEditValidation(submitForm);
+
+  const uploadedImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    setImageloading(true);
+    const file: any = e.target.files?.[0];
+    if (!file) return;
+
+    try {
+      const url = await ImageUpload(file);
+      setImageloading(false);
+      setFieldValue("profilePicture", url);
+    } catch (err) {
+      setImageloading(false);
+      console.error("Upload failed:", err);
+      toast.error(`Upload failed: ${err}`);
+    }
+  };
+  
 
   return (
     <div className="h-screen w-full flex bg-white items-center justify-center p-4 lg:p-8">
+      <Toaster />
       {loadingSpinner && <Spinner />}
       <div className="w-full max-w-5xl mx-auto">
         <div
@@ -64,30 +92,43 @@ const page = () => {
                 </p>
               </div>
 
-              <div className="flex justify-center mb-8">
-                <div className="relative">
-                  <div className="w-24 h-24 bg-gradient-to-r from-orange-100 to-orange-200 rounded-full flex items-center justify-center border-4 border-white shadow-lg">
-                    <User className="w-10 h-10 text-orange-600" />
-                  </div>
-                  <label
-                    htmlFor="profileImage"
-                    className="absolute -bottom-2 -right-2 w-10 h-10 bg-gradient-to-r from-orange-600 to-orange-700 rounded-full flex items-center justify-center cursor-pointer shadow-lg hover:from-orange-700 hover:to-orange-800 transition-all duration-200"
-                  >
-                    <Camera className="w-5 h-5 text-white" />
-                  </label>
-                  <input
-                    type="file"
-                    id="profileImage"
-                    name="profileImage"
-                    // value={values.profileImage}
-                    //onChange={handleChange}
-                    className="hidden"
-                    accept="image/*"
-                  />
-                </div>
-              </div>
-
               <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="flex justify-center mb-8">
+                  <div className="relative">
+                    {imageloading ? (
+                      <img
+                        src={
+                          "https://media.istockphoto.com/id/1467339432/video/retro-buffering-circular-loading-bar-rotating-on-black-background.jpg?s=640x640&k=20&c=jOF3pEBv3EaXlgPHoa8CsOwOIg9gBNEPrXztQ_PXidQ="
+                        }
+                        alt="profile"
+                        className="w-24 h-24 object-cover rounded-full border-4 border-white shadow-lg"
+                      />
+                    ) : (
+                      <img
+                        src={values.profilePicture || "/default-avatar.png"}
+                        alt="profile"
+                        className="w-24 h-24 object-cover rounded-full border-4 border-white shadow-lg"
+                      />
+                    )}
+
+                    <label
+                      htmlFor="profilePicture"
+                      className="absolute -bottom-2 -right-2 w-10 h-10 bg-gradient-to-r from-orange-600 to-orange-700 rounded-full flex items-center justify-center cursor-pointer shadow-lg hover:from-orange-700 hover:to-orange-800 transition-all duration-200"
+                    >
+                      <Camera className="w-5 h-5 text-white" />
+                    </label>
+
+                    <input
+                      type="file"
+                      id="profilePicture"
+                      name="profilePicture"
+                      onChange={uploadedImage}
+                      className="hidden"
+                      accept="image/*"
+                    />
+                  </div>
+                </div>
+
                 <div className="space-y-2">
                   <label
                     htmlFor="name"
@@ -109,7 +150,7 @@ const page = () => {
                       placeholder="Enter your full name"
                     />
                   </div>
-                  {touched.name && typeof errors.name === 'string' && (
+                  {touched.name && typeof errors.name === "string" && (
                     <div className="text-red-500 text-sm">{errors.name}</div>
                   )}
                 </div>
@@ -135,7 +176,7 @@ const page = () => {
                       placeholder="Enter your mobile number"
                     />
                   </div>
-                  {touched.mobile && typeof errors.mobile === 'number' && (
+                  {touched.mobile && typeof errors.mobile === "number" && (
                     <div className="text-red-500 text-sm">{errors.mobile}</div>
                   )}
                 </div>
@@ -161,7 +202,7 @@ const page = () => {
                       placeholder="Enter your Age"
                     />
                   </div>
-                  {touched.age && typeof errors.age === 'number' && (
+                  {touched.age && typeof errors.age === "number" && (
                     <div className="text-red-500 text-sm">{errors.age}</div>
                   )}
                 </div>

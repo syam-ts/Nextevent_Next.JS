@@ -2,6 +2,7 @@ import { axiosInstanse } from "../../lib/axios/axiosInstance";
 
 type ProifleEditPayload = {
     name: string;
+    profilePicture: string;
     mobile: number;
     age: number;
 };
