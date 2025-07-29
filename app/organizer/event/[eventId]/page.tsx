@@ -1,11 +1,18 @@
 "use client";
-import React from "react";
-import { Calendar, Clock, MapPin, Users, Ticket } from "lucide-react";
-import { useViewEvent } from "../../../../hooks/guest/useViewEvent";
+import React, { use, useEffect, useState } from "react";
+import { Calendar, Clock, MapPin, Users, Ticket } from "lucide-react"; 
+import { Spinner } from "../../../../components/lib/organizer/Spinner";
+import { useViewEvent } from "../../../../hooks/event/useViewEvent";
 
-const page = ({ params }: { params: any }) => {
+const page = ({ params }: { params: Promise<{ eventId: string }> }) => { 
     
-    const { data, isError, isLoading } = useViewEvent(params.eventId);
+     const { eventId } = use(params);
+    const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
+    const { data, isLoading } = useViewEvent(eventId);
+ 
+  useEffect(() => {
+    isLoading ? setLoadingSpinner(true) : setLoadingSpinner(false)
+  }, [isLoading])
 
     // const formatDate = (date: Date) => {
     //   return date.toLocaleDateString('en-US', {
@@ -18,6 +25,9 @@ const page = ({ params }: { params: any }) => {
 
     return (
         <div className="min-h-screen bg-gradient-to-br bg-white">
+            {
+                loadingSpinner && <Spinner />
+            }
             <div className="px-6 lg:px-10 mx-auto flex flex-col gap-y-12 lg:flex-row items-center gap-x-12 justify-center py-12 lg:py-20 max-w-7xl">
                 <div className="lg:w-[650px] lg:px-5 flex flex-col gap-y-8">
                     <div className="space-y-4">

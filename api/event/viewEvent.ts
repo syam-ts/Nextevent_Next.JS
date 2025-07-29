@@ -1,5 +1,4 @@
 import { axiosInstanse } from "../../lib/axios/axiosInstance";
-
  
 
 interface IEvent {
