@@ -7,6 +7,8 @@ import { MapPin, Home, Navigation, Users, Calendar } from "lucide-react";
 import toast from "react-hot-toast";
 import { Spinner } from "../../../../components/lib/guest/Spinner";
 import { newBookingValidation } from "../../../../lib/Formik/guest/newBookingValidation";
+import { loadStripe } from "@stripe/stripe-js";
+import { config } from "../../../../utils/config";
 
 const RegisterEventPage = ({
   params,
@@ -43,10 +45,30 @@ const RegisterEventPage = ({
         total,
       },
       {
-        onSuccess: (data) => {
-          //  console.log("Success", data);
-          setLoadingSpinner(false);
-          router.push("/guest/my-bookings");
+        onSuccess: async (data) => {
+          console.log("Success", data);
+          console.log("STRIPE KEY: ", config.strpe_public_key);
+
+          const stripePromise = loadStripe(config.strpe_public_key as string);
+
+          const stripe = await stripePromise;
+          if (!stripe) {
+            throw new Error("Stripe failed to load.");
+          }
+
+          const sessionId = data?.result?.id;
+          if (!sessionId) {
+            console.error("Session ID not found");
+            return;
+          }
+
+          const result = await stripe.redirectToCheckout({ sessionId });
+
+          if (result.error) {
+            console.error("Stripe Error:", result.error.message);
+            alert(result.error.message);
+            setLoadingSpinner(false); // only set false if there's an error
+          }
         },
         onError(error: unknown) {
           const err = error as { response: { data: { message: string } } };
@@ -58,14 +80,14 @@ const RegisterEventPage = ({
     );
   };
 
-  const { values, touched, errors, handleChange, handleSubmit,setFieldValue } =
+  const { values, touched, errors, handleChange, handleSubmit, setFieldValue } =
     newBookingValidation(submitForm, data?.event.eventName as string);
 
   useEffect(() => {
     if (data?.event.isPaid) {
       const updatedTotal = data?.event.ticketPrice * values.numberOfSeats;
       setTotal(updatedTotal);
-      setFieldValue("total",updatedTotal)
+      setFieldValue("total", updatedTotal);
     }
   }, [data?.event.isPaid, data?.event.ticketPrice, values.numberOfSeats]);
 
