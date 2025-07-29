@@ -8,6 +8,7 @@ import { Eye, EyeOff, Mail, Lock, User } from "lucide-react";
 import { useLogin } from "../../../hooks/organizer/useLogin";
 import { signInOrganizer } from "../../../redux/slices/oranizerSlice";
 import { loginValidation } from "../../../lib/Formik/organizer/loginValidation";
+import toast from "react-hot-toast"; 
 
 const LoginPage = () => {
 
@@ -36,7 +37,7 @@ const LoginPage = () => {
         onError(error: any) {
           const err = error as { response: { data: { message: string } } };
           setLoadingSpinner(false);
-          alert(err.response.data.message);
+          toast.error(err.response.data.message) 
         },
       }
     );
@@ -48,7 +49,7 @@ const LoginPage = () => {
     
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center p-4 lg:p-8 bg-white">
+    <div className="min-h-screen w-full flex items-center justify-center p-4 lg:p-8 bg-white"> 
       {loadingSpinner && <Spinner />}
       <div className="w-full max-w-md mx-auto shadow-lg border-t">
         <div
