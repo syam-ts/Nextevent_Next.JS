@@ -1,5 +1,5 @@
-import { useMutation } from "@tanstack/react-query";
-import { NewBooking } from "../../api/guest/newBooking";
+import { useMutation } from "@tanstack/react-query"; 
+import { NewBooking } from "../../../api/guest/booking/newBooking";
 
 interface NewBookingPayload {
     eventId: string;

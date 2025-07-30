@@ -2,12 +2,12 @@ import axios from "axios";
 import { IGuest } from "../../types/guest";
 import { config } from "../../utils/config";
 
-type LoginPayload = {
+interface LoginPayload {
     email: string;
     password: string;
 };
 
-type LoginResponse = {
+interface LoginResponse {
     accessToken: string;
     guest: IGuest
 };

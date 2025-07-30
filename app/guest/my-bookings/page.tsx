@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import BookingCard from "./BookingCard";
-import { useGetMyBookings } from "../../../hooks/guest/useGetMyBookings";
+import { useGetMyBookings } from "../../../hooks/guest/booking/useGetMyBookings";
 
 const page: React.FC = () => {
     const { data } = useGetMyBookings();

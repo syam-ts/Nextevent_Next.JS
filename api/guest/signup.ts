@@ -1,7 +1,7 @@
 import axios from "axios"; 
 import { config } from "../../utils/config";
 
-type SignupPayload = {
+interface SignupPayload {
     name: string;
     email: string;
     password: string;
@@ -9,7 +9,7 @@ type SignupPayload = {
     age: number;
 };
 
-type SignupResponse = {
+interface SignupResponse {
   success: boolean;
 };
 
