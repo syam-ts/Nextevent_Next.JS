@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     Calendar,
     MapPin,
@@ -23,6 +23,9 @@ const EventCard = ({
     isError: any;
     isLoading: any;
 }) => {
+
+    
+      const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
     const handleViewDetails = (eventId: string) => {
         alert(`Navigating to event details: ${eventId}`);
     };

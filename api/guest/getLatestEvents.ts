@@ -6,6 +6,6 @@ interface GetLtestEventResponse {
 }
 
 export const GetLtestEvents = async (): Promise<GetLtestEventResponse> => {
-    const { data } = await axiosInstanseGuest("/event/latest-events");
+    const { data } = await axiosInstanseGuest("/event/latest");
     return data;
 };
