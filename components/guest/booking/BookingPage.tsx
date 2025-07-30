@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { IBooking } from "../../../types/booking";
 import {
     MapPin,
@@ -8,19 +8,47 @@ import {
     Download,
     Edit3,
 } from "lucide-react";
+import { useCancelBooking } from "../../../hooks/guest/booking/useCancelBooking";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import { Spinner } from "../../lib/guest/Spinner";
 
 interface BookingPageProps {
     booking: IBooking | undefined;
 }
 
 const BookingPage: React.FC<BookingPageProps> = ({ booking }) => {
-    
+    const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
+    const { mutate } = useCancelBooking();
+    const router = useRouter();
+
     const handleDownloadTicket = (): void => {
         alert("Downloading ticket...");
     };
 
+    const cancelBooking = () => {
+        setLoadingSpinner(true);
+        mutate(
+            {
+                bookingId: booking?._id as string,
+            },
+            {
+                onSuccess: async (data) => {
+                    setLoadingSpinner(false);
+                    router.push("/guest/my-bookings");
+                },
+                onError(error: unknown) {
+                    const err = error as { response: { data: { message: string } } };
+                    setLoadingSpinner(false);
+                    toast.error(err.response.data.message);
+                },
+            }
+        );
+    };
+
     return (
         <div className="p-8">
+            {loadingSpinner && <Spinner />}
             <div className="bg-orange-50 rounded-xl p-6 mb-8">
                 <div className="flex items-center justify-between mb-4">
                     <h2 className="text-xl font-bold text-gray-900">
@@ -164,7 +192,8 @@ const BookingPage: React.FC<BookingPageProps> = ({ booking }) => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-8 pt-6 border-t border-gray-200">
-                <button className="flex-1 py-3 px-6 border border-gray-300 rounded-xl text-base font-semibold text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all duration-200">
+                <button
+                onClick={cancelBooking} className="flex-1 py-3 px-6 border border-gray-300 rounded-xl text-base font-semibold text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all duration-200">
                     Cancel Booking
                 </button>
 
