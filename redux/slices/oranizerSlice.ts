@@ -1,9 +1,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IOrganizerState } from "../../types/slice-states/organizerState";
-import { IOrganizer } from "../../types/organizer";
 
- 
-const initialState: IOrganizerState = {
+interface IOrganizer {
+    _id: string;
+    name: string;
+    email: string;
+    mobile: number;
+    password: string;
+    role: string;
+    organizationName: string;
+    createdEvents: [];
+    createdAt: string;
+}
+
+interface OrganizerState {
+    currentOrganizer: IOrganizer | null;
+    isOrganizer: boolean;
+}
+
+const initialState: OrganizerState = {
     currentOrganizer: null,
     isOrganizer: false,
 };

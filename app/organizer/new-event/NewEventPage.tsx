@@ -1,9 +1,11 @@
 "use client";
+import toast from "react-hot-toast";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Spinner } from "../../../components/lib/organizer/Spinner";
 import { useNewEvent } from "../../../hooks/organizer/useNewEvent";
 import { newEventValidation } from "../../../lib/Formik/organizer/newEventValidation";
+import { ImageUpload } from "../../../helper/methods/imageUpload";
 import {
     Calendar,
     MapPin,
@@ -13,10 +15,9 @@ import {
     FileText,
     Camera,
 } from "lucide-react";
-import toast, { Toaster } from "react-hot-toast";
-import { ImageUpload } from "../../../helper/methods/imageUpload";
 
 const NewEventPage = () => {
+
     const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
     const [imageloading, setImageloading] = useState<boolean>(false);
     const { mutate } = useNewEvent();
@@ -57,7 +58,7 @@ const NewEventPage = () => {
                 onError(error: unknown) {
                     const err = error as { response: { data: { message: string } } };
                     setLoadingSpinner(false);
-                    console.log('ERROR: ',err.response.data.message)
+                    console.log("ERROR: ", err.response.data.message);
                     toast.error(err.response.data.message);
                 },
             }
@@ -68,23 +69,23 @@ const NewEventPage = () => {
         newEventValidation(submitForm);
 
     const uploadedImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
-       setImageloading(true);
+        setImageloading(true);
         const file: any = e.target.files?.[0];
         if (!file) return;
 
         try {
             const url = await ImageUpload(file);
-               setImageloading(false);
+            setImageloading(false);
             setFieldValue("eventImage", url);
         } catch (err) {
-             setImageloading(false);
+            setImageloading(false);
             console.error("Upload failed:", err);
             toast.error(`Upload failed: ${err}`);
         }
     };
 
     return (
-        <div className=" w-full flex items-center justify-center  bg-white">  
+        <div className=" w-full flex items-center justify-center  bg-white">
             {loadingSpinner && <Spinner />}
             <div className="w-full max-w-8xl mx-auto ">
                 <div
@@ -148,7 +149,7 @@ const NewEventPage = () => {
                                             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                                 <Camera className="h-5 w-5 text-gray-400" />
                                             </div>
-                                       
+
                                             <input
                                                 type="file"
                                                 id="eventImage"
@@ -158,11 +159,9 @@ const NewEventPage = () => {
                                                 className="block w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-gray-900 bg-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
                                             />
                                         </div>
-                                        {
-                                            imageloading &&   <div className="text-blue-500 text-sm">
-                                                loading...
-                                            </div>
-                                        }
+                                        {imageloading && (
+                                            <div className="text-blue-500 text-sm">loading...</div>
+                                        )}
                                         {touched.eventImage && errors.eventImage && (
                                             <div className="text-red-500 text-sm">
                                                 {errors.eventImage}
@@ -310,78 +309,66 @@ const NewEventPage = () => {
                                             </div>
                                         )}
                                     </div>
-
-
-
-                                    
-
-                                
                                 </div>
 
                                 <div className="grid md:grid-cols-2 gap-6">
-
-
-<div className="grid gap-4">
-    <div className="space-y-2">
-                                        <label
-                                            htmlFor="totalSeats"
-                                            className="block text-sm font-semibold text-gray-700"
-                                        >
-                                            Total Seats
-                                        </label>
-                                        <div className="relative">
-                                            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                                <Users className="h-5 w-5 text-gray-400" />
-                                            </div>
-                                            <input
-                                                type="number"
-                                                id="totalSeats"
-                                                name="totalSeats"
-                                                value={values.totalSeats}
-                                                onChange={handleChange}
-                                                className="block w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500 bg-white"
-                                                placeholder="200"
-                                            />
-                                        </div>
-                                        {touched.totalSeats && errors.totalSeats && (
-                                            <div className="text-red-500 text-sm">
-                                                {errors.totalSeats}
-                                            </div>
-                                        )}
-                                    </div>
-
-
-                                      <div className="space-y-2">
-                                        <label
-                                            htmlFor="isPaid"
-                                            className="block text-sm font-semibold text-gray-700"
-                                        >
-                                            Event Type
-                                        </label>
-                                        <div className="relative">
-                                            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                                <DollarSign className="h-5 w-5 text-gray-400" />
-                                            </div>
-                                            <select
-                                                id="isPaid"
-                                                name="isPaid"
-                                                onChange={handleChange}
-                                                className="block w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-gray-900 bg-white"
+                                    <div className="grid gap-4">
+                                        <div className="space-y-2">
+                                            <label
+                                                htmlFor="totalSeats"
+                                                className="block text-sm font-semibold text-gray-700"
                                             >
-                                                <option value="false">Free</option>
-                                                <option value="true">Paid</option>
-                                            </select>
-                                        </div>
-                                        {touched.isPaid && errors.isPaid && (
-                                            <div className="text-red-500 text-sm">
-                                                {errors.isPaid}
+                                                Total Seats
+                                            </label>
+                                            <div className="relative">
+                                                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                                    <Users className="h-5 w-5 text-gray-400" />
+                                                </div>
+                                                <input
+                                                    type="number"
+                                                    id="totalSeats"
+                                                    name="totalSeats"
+                                                    value={values.totalSeats}
+                                                    onChange={handleChange}
+                                                    className="block w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500 bg-white"
+                                                    placeholder="200"
+                                                />
                                             </div>
-                                        )}
+                                            {touched.totalSeats && errors.totalSeats && (
+                                                <div className="text-red-500 text-sm">
+                                                    {errors.totalSeats}
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        <div className="space-y-2">
+                                            <label
+                                                htmlFor="isPaid"
+                                                className="block text-sm font-semibold text-gray-700"
+                                            >
+                                                Event Type
+                                            </label>
+                                            <div className="relative">
+                                                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                                    <DollarSign className="h-5 w-5 text-gray-400" />
+                                                </div>
+                                                <select
+                                                    id="isPaid"
+                                                    name="isPaid"
+                                                    onChange={handleChange}
+                                                    className="block w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-gray-900 bg-white"
+                                                >
+                                                    <option value="false">Free</option>
+                                                    <option value="true">Paid</option>
+                                                </select>
+                                            </div>
+                                            {touched.isPaid && errors.isPaid && (
+                                                <div className="text-red-500 text-sm">
+                                                    {errors.isPaid}
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
-</div>
-
-
-                                  
 
                                     <div className="space-y-2">
                                         <label

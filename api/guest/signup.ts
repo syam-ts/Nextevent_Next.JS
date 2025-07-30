@@ -6,7 +6,7 @@ interface SignupPayload {
     email: string;
     password: string;
     mobile: number;
-    age: number;
+    location: string;
 };
 
 interface SignupResponse {
