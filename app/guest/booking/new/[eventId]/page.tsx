@@ -1,14 +1,14 @@
 "use client";
 import React, { use, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useViewEvent } from "../../../../hooks/event/useViewEvent";
-import { useNewBooking } from "../../../../hooks/guest/useNewBooking";
+import { useViewEvent } from "../../../../../hooks/event/useViewEvent";
+import { useNewBooking } from "../../../../../hooks/guest/useNewBooking";
 import { MapPin, Home, Navigation, Users, Calendar } from "lucide-react";
 import toast from "react-hot-toast";
-import { Spinner } from "../../../../components/lib/guest/Spinner";
-import { newBookingValidation } from "../../../../lib/Formik/guest/newBookingValidation";
+import { Spinner } from "../../../../../components/lib/guest/Spinner";
+import { newBookingValidation } from "../../../../../lib/Formik/guest/newBookingValidation";
 import { loadStripe } from "@stripe/stripe-js";
-import { config } from "../../../../utils/config";
+import { config } from "../../../../../utils/config";
 
 const RegisterEventPage = ({
   params,

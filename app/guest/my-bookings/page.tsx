@@ -1,19 +1,20 @@
 "use client";
 import React from "react";
 import BookingCard from "./BookingCard";
+import { useGetMyBookings } from "../../../hooks/guest/useGetMyBookings";
 
 const page: React.FC = () => {
+    const { data } = useGetMyBookings();
+
     return (
-        <div className="min-h-screen bg-white w-full p-8">
-            <div className="max-w-6xl mx-auto">
-                <h1 className="text-2xl font-bold text-black text-center mb-12">
+        <div className="min-h-screen bg-white w-full p-8 pt-20">
+            <div className="w-2/3 mx-auto">
+                <h1 className="text-3xl font-bold text-orange-500 text-center mb-12">
                     Bookings
                 </h1>
 
-                <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
-                     
-                       {/* <BookingCard />   */}
-              
+                <div>
+                    <BookingCard bookings={data?.bookings} />
                 </div>
             </div>
         </div>
