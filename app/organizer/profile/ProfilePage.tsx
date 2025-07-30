@@ -1,13 +1,14 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { useSelector } from "react-redux";
 import { Mail, Phone, Building2, User } from "lucide-react";
-import Link from "next/link";
+import { IOrganizerState } from "../../../types/slice-states/organizerState";
 
 const ProfilePage = () => {
-    
+
     const organizer = useSelector(
-        (state: any) => state.organizer.currentOrganizer
+        (state: IOrganizerState) => state.organizer.currentOrganizer
     );
 
     return (
@@ -46,7 +47,7 @@ const ProfilePage = () => {
                                         Full Name
                                     </p>
                                     <p className="text-xl font-bold text-gray-900">
-                                        {organizer.name}
+                                        {organizer?.name}
                                     </p>
                                 </div>
                             </div>
@@ -63,7 +64,7 @@ const ProfilePage = () => {
                                             Email Address
                                         </p>
                                         <p className="text-base font-medium text-gray-900 truncate">
-                                            {organizer.email}
+                                            {organizer?.email}
                                         </p>
                                     </div>
                                 </div>
@@ -79,7 +80,7 @@ const ProfilePage = () => {
                                             Phone Number
                                         </p>
                                         <p className="text-base font-medium text-gray-900">
-                                            {organizer.mobile}
+                                            {organizer?.mobile}
                                         </p>
                                     </div>
                                 </div>
@@ -96,7 +97,7 @@ const ProfilePage = () => {
                                         Organization
                                     </p>
                                     <p className="text-xl font-bold text-gray-900">
-                                        {organizer.organizationName}
+                                        {organizer?.organizationName}
                                     </p>
                                 </div>
                             </div>
