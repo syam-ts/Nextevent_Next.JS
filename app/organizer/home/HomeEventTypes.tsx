@@ -52,11 +52,7 @@ const HomeEventTypes = () => {
                                                 gradientUnits="userSpaceOnUse"
                                             >
                                                 <stop stopColor="#3056D3" stopOpacity="0.09" />
-                                                <stop
-                                                    offset="1"
-                                                    stopColor="#C4C4C4"
-                                                    stopOpacity="0"
-                                                />
+                                                <stop offset="1" stopColor="#C4C4C4" stopOpacity="0" />
                                             </linearGradient>
                                         </defs>
                                     </svg>
@@ -331,11 +327,7 @@ const HomeEventTypes = () => {
                                                 gradientUnits="userSpaceOnUse"
                                             >
                                                 <stop stopColor="#3056D3" stopOpacity="0.09" />
-                                                <stop
-                                                    offset="1"
-                                                    stopColor="#C4C4C4"
-                                                    stopOpacity="0"
-                                                />
+                                                <stop offset="1" stopColor="#C4C4C4" stopOpacity="0" />
                                             </linearGradient>
                                         </defs>
                                     </svg>
@@ -610,11 +602,7 @@ const HomeEventTypes = () => {
                                                 gradientUnits="userSpaceOnUse"
                                             >
                                                 <stop stopColor="#3056D3" stopOpacity="0.09" />
-                                                <stop
-                                                    offset="1"
-                                                    stopColor="#C4C4C4"
-                                                    stopOpacity="0"
-                                                />
+                                                <stop offset="1" stopColor="#C4C4C4" stopOpacity="0" />
                                             </linearGradient>
                                         </defs>
                                     </svg>

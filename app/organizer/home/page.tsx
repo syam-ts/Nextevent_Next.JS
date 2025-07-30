@@ -1,10 +1,8 @@
 import React from "react";
-import QuickStats from "../../../components/organizer/QuickStats"; 
-import HomeEventTypes from "./HomeEventTypes"; 
+import QuickStats from "../../../components/organizer/QuickStats";
+import HomeEventTypes from "./HomeEventTypes";
 
 const Home = () => {
- 
-
   return (
     <div>
       <section className="bg-white lg:grid lg:h-screen lg:place-content-center">
@@ -41,7 +39,7 @@ const Home = () => {
         </div>
       </section>
 
-      <QuickStats />  
+      <QuickStats />
 
       <section>
         {/*  Upcoming Events
@@ -53,7 +51,7 @@ const Home = () => {
            */}
       </section>
 
-       <HomeEventTypes />
+      <HomeEventTypes />
     </div>
   );
 };

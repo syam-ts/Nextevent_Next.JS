@@ -1,34 +1,13 @@
 import React from "react";
-import {
-    Calendar,
-    MapPin,
-    Clock,
-    Users,
-    DollarSign,
-    Eye, 
-} from "lucide-react";
 import Link from "next/link";
 import { IEvent } from "../../../types/event";
-
- 
+import { Calendar, MapPin, Clock, Users, DollarSign, Eye } from "lucide-react";
 
 interface IEventCardProp {
     events: IEvent[];
 }
 
-const EventCard = ({
-    data,
-    isError,
-    isLoading,
-}: {
-    data: IEventCardProp;
-    isError: any;
-    isLoading: any;
-}) => {
-    const handleViewDetails = (eventId: string) => {
-        alert(`Navigating to event details: ${eventId}`);
-    };
- 
+const EventCard = ({ data }: { data: IEventCardProp }) => {
 
     const formatDate = (date: string) => {
         return new Date(date).toLocaleDateString("en-US", {
@@ -42,33 +21,6 @@ const EventCard = ({
     const formatTime = (time: string) => {
         return time || "TBD";
     };
-
-    if (isLoading) {
-        return (
-            <div className="flex justify-center items-center py-20">
-                <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
-                    <p className="text-gray-600 text-lg">Loading events...</p>
-                </div>
-            </div>
-        );
-    }
-
-    if (isError || !data) {
-        return (
-            <div className="flex justify-center items-center py-20">
-                <div className="text-center">
-                    <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-red-600 text-2xl">⚠</span>
-                    </div>
-                    <p className="text-red-600 text-lg font-medium">
-                        Failed to load events
-                    </p>
-                    <p className="text-gray-500 mt-2">Please try again later</p>
-                </div>
-            </div>
-        );
-    }
 
     if (data.events.length === 0) {
         return (
@@ -187,7 +139,7 @@ const EventCard = ({
                                 </div>
 
                                 <Link
-                                     href={`/organizer/event/${event._id}`}
+                                    href={`/organizer/event/${event._id}`}
                                     className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200 transform hover:scale-105 shadow-lg"
                                 >
                                     <Eye className="w-4 h-4 mr-2" />
