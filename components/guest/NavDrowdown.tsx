@@ -1,13 +1,19 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { signOutGuest } from "../../redux/slices/guestSlice";
 
 const NavDropdown = () => {
     const [dropdown, setDropdown] = useState<boolean>(false);
-    const guest = useSelector(
-        (state: any) => state.guest.currentGuest
-    );
+    const dispatch = useDispatch();
+    const guest = useSelector((state: any) => state.guest.currentGuest);
+
+    const logout = () => {
+        localStorage.removeItem("accessToken");
+        dispatch(signOutGuest());
+        window.location.href = "/guest/login";
+    };
 
     return (
         <div>
@@ -43,15 +49,17 @@ const NavDropdown = () => {
                                 </Link>
                             </li>
                             <li>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 -600 ">
+                                <button
+                                    onClick={logout}
+                                    className="block px-4 py-2 hover:bg-gray-100 -600 "
+                                >
                                     Logout
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </div>
                 )}
 
-                {/* Button section */}
                 <button
                     type="button"
                     onClick={() => setDropdown((prev) => !prev)}
@@ -64,9 +72,10 @@ const NavDropdown = () => {
                     <span className="sr-only">Open user menu</span>
 
                     <img
-                    src={guest.profilePicture}
-                    className="w-8 h-8 p-1  font-extrabold text-xl rounded-full" />
- </button>
+                        src={guest.profilePicture}
+                        className="w-8 h-8 p-1  font-extrabold text-xl rounded-full"
+                    />
+                </button>
             </div>
         </div>
     );

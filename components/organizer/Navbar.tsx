@@ -3,6 +3,7 @@ import React from "react";
 import NavDropdown from "./NavDropdown";
 
 const Navbar = () => {
+    
     return (
         <nav className="bg-white border-gray-200 -900">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -62,9 +63,6 @@ const Navbar = () => {
                                 Contact
                             </a>
                         </li>
-
-                        
-                        
                     </ul>
                     <div className="pl-20">
                         <NavDropdown />

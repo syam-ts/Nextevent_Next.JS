@@ -1,6 +1,7 @@
-import axios from "axios";  
+import axios from "axios";
 import { config } from "../../../utils/config";
- 
+import { logoutHelperFunction } from "../../../helper/methods/logoutHelper";
+import store from "../../../redux/store";
 
 const backend_url: string = config.backend_url;
 
@@ -10,14 +11,14 @@ export const axiosInstanseGuest = axios.create({
 });
 
 const refreshInstance = axios.create({
-  baseURL: backend_url,
-  withCredentials: true,
+    baseURL: backend_url,
+    withCredentials: true,
 });
 
 axiosInstanseGuest.interceptors.request.use(
-    (config) => { 
+    (config) => {
         const token = localStorage.getItem("accessToken");
-  
+
         if (token && config.headers) {
             config.headers.Authorization = `Bearer ${token}`;
         }
@@ -37,16 +38,16 @@ axiosInstanseGuest.interceptors.response.use(
 
             try {
                 const res = await refreshInstance.get("/guest/refresh-token", {
-                    withCredentials: true
+                    withCredentials: true,
                 });
 
                 const newAccessToken = res.data.accessToken;
-
                 localStorage.setItem("accessToken", newAccessToken);
 
                 original_request.headers.Authorization = `Bearer ${newAccessToken}`;
                 return axiosInstanseGuest(original_request);
-            } catch (err) { 
+            } catch (err) {
+                logoutHelperFunction("guest", store.dispatch);
                 return Promise.reject(error);
             }
         }

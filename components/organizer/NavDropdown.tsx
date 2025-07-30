@@ -3,30 +3,22 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signOutOrganizer } from "../../redux/slices/oranizerSlice";
-import { Spinner } from "../lib/organizer/Spinner";
-import { useRouter } from "next/navigation";
 
 const NavDropdown = () => {
-    const [dropdown, setDropdown] = useState<boolean>(false);
-    const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
-    const router = useRouter();
 
-    const organizer = useSelector(
-        (state: any) => state.organizer.currentOrganizer
-    );
+    const [dropdown, setDropdown] = useState<boolean>(false);
+
+    const organizer = useSelector((state: any) => state.organizer.currentOrganizer);
     const dispatch = useDispatch();
 
     const logout = () => {
-        setLoadingSpinner(true);
-        dispatch(signOutOrganizer());
         localStorage.removeItem("accessToken");
-        setLoadingSpinner(false);
-        router.push("/organizer/login");
+        dispatch(signOutOrganizer());
+        window.location.href = "/organizer/login";
     };
 
     return (
         <div>
-            {loadingSpinner && <Spinner />}
             <div className="flex justify-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                 {dropdown && (
                     <div className="bg-white absolute mt-12 divide-y divide-gray-100 border text-center rounded-lg shadow-sm w-36 ">
