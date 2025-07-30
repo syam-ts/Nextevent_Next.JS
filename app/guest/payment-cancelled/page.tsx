@@ -1,10 +1,9 @@
 import React from 'react'
-import ProfileEdit from './ProfileEdit'
 
 const page = () => {
   return (
-    <div>
-      <ProfileEdit />
+    <div className='text-black'>
+        payment cancelled page
     </div>
   )
 }
