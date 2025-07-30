@@ -3,12 +3,13 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signOutOrganizer } from "../../redux/slices/oranizerSlice";
+import { IOrganizerState } from "../../types/slice-states/organizerState";
 
 const NavDropdown = () => {
 
     const [dropdown, setDropdown] = useState<boolean>(false);
 
-    const organizer = useSelector((state: any) => state.organizer.currentOrganizer);
+    const organizer = useSelector((state: IOrganizerState) => state.organizer.currentOrganizer);
     const dispatch = useDispatch();
 
     const logout = () => {
@@ -75,7 +76,7 @@ const NavDropdown = () => {
                     <span className="sr-only">Open user menu</span>
 
                     <span className="w-8 h-8 p-1  font-extrabold text-xl rounded-full">
-                        {organizer.name[0]}
+                        {organizer?.name[0]}
                     </span>
                 </button>
             </div>
