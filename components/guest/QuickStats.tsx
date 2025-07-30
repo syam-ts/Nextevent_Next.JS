@@ -1,15 +1,17 @@
 "use client";
 import React from "react";
-import { useHomeStats } from "../../hooks/organizer/useHomeStats";
+import { useGetHomeStats } from "../../hooks/guest/useGetHomeStats";
 
 const QuickStats = () => {
-    const { data, isLoading, error }: any = useHomeStats();
+    
+    const { data, isLoading }: any = useGetHomeStats();
+    if(!data) return;
 
     // if (error) return <p className="text-red-500">Failed to load stats.</p>;
 
-    const totalEvents = data?.toatalEvents ?? 0;
-    const totalBookings = data?.totalBookings ?? 0;
-    const totalGuests = data?.totalGuests ?? 0;
+    const totalEvents = data?.stats?.totalEvents ?? 0;
+    const totalBookings = data?.stats?.totalBookings ?? 0;
+    const totalOrganizers = data?.stats?.totalOrganizers ?? 0;
 
     return (
         <div className="bg-white">
@@ -35,7 +37,7 @@ const QuickStats = () => {
                                         className="order-2 mt-2 text-lg font-medium leading-6 text-gray-500"
                                         id="item-1"
                                     >
-                                        Total Events 
+                                        Total Events
                                     </dt>
                                     <dd
                                         className="order-1 text-5xl font-extrabold leading-none text-orange-600"
@@ -64,7 +66,7 @@ const QuickStats = () => {
                                         className="order-1 text-5xl font-extrabold leading-none text-orange-600"
                                         id="sponsorsCount"
                                     >
-                                        {isLoading ? <p>...</p> : totalGuests}
+                                        {isLoading ? <p>...</p> : totalOrganizers}
                                     </dd>
                                 </div>
                             </dl>

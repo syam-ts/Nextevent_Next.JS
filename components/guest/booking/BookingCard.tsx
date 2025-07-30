@@ -86,7 +86,7 @@ const BookingCard: React.FC<BookingCardProps> = ({ bookings }) => {
 
                             <Link
                                 href={`/guest/booking/view/${booking._id}`}
-                                className="w-full text-center cursor-pointer py-2.5 px-24 bg-gradient-to-r from-orange-600 to-orange-700 text-white text-xs font-semibold rounded-lg hover:from-orange-700 hover:to-orange-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all duration-200"
+                                className="w-full text-center flex justify-center cursor-pointer py-2.5 px-24 bg-gradient-to-r from-orange-600 to-orange-700 text-white text-xs font-semibold rounded-lg hover:from-orange-700 hover:to-orange-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all duration-200"
                             >
                                 View Ticket
                             </Link>
