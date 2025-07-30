@@ -5,7 +5,12 @@ interface GetAllEventsResponse {
     events: IEvent[];
 }
 
-export const GetAllEvents = async (): Promise<GetAllEventsResponse> => {
-    const { data } = await axiosInstanseGuest.get("/event/all-events");
+export const GetAllEvents = async (
+    filter: string,
+    currentPage: number
+): Promise<GetAllEventsResponse> => {
+    const { data } = await axiosInstanseGuest.get(
+        `/event/all?currentPage=${currentPage}&filter=${filter}`
+    );
     return data;
 };
