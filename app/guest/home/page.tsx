@@ -1,5 +1,6 @@
 import React from "react";
 import QuickStats from "../../../components/guest/QuickStats";
+import LatestEventsComponent from "../../../components/guest/event/LatestEventsComponent";
 
 const page = () => {
     return (
@@ -47,56 +48,7 @@ const page = () => {
                     </h1>
                 </div>
 
-                <article className="flex w-2/3 justify-center mx-auto flex-col sm:flex-row bg-white  shadow-md ring-1 ring-orange-100 overflow-hidden">
-                    <img
-                        src="/organizer/event-1.jpg"
-                        alt="Event"
-                        className="w-full sm:w-[20rem] h-60 object-cover"
-                    />
-
-                    <div className="p-6 flex flex-col justify-between flex-1">
-                        <div>
-                            <h3 className="text-2xl font-bold text-orange-700 mb-2">
-                                Startup Summit 2025
-                            </h3>
-
-                            <p className="text-gray-600 mb-4">
-                                Join innovators from around the world at this vibrant event
-                                filled with networking, workshops, and inspiring keynotes.
-                            </p>
-
-                            <div className="flex flex-wrap gap-4 text-sm text-gray-700">
-                                <span>
-                                    <strong className="text-orange-500">Location:</strong>{" "}
-                                    Bangalore
-                                </span>
-                                <span>
-                                    <strong className="text-orange-500">Date:</strong> July 30,
-                                    2025
-                                </span>
-                                <span>
-                                    <strong className="text-orange-500">Time:</strong> 10:00 AM -
-                                    2:00 PM
-                                </span>
-                                <span>
-                                    <strong className="text-orange-500">Seats:</strong> 200
-                                </span>
-                                <span>
-                                    <strong className="text-orange-500">Type:</strong> Paid
-                                </span>
-                            </div>
-                        </div>
-
-                        <div className="mt-6">
-                            <a
-                                href="#"
-                                className="inline-block bg-orange-600 text-white font-semibold px-5 py-2 rounded hover:bg-orange-700 transition"
-                            >
-                                View Details
-                            </a>
-                        </div>
-                    </div>
-                </article>
+                 <LatestEventsComponent />
             </section>
         </div>
     );
