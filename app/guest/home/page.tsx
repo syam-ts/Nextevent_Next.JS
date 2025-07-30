@@ -1,8 +1,10 @@
 import React from "react";
+import Link from "next/link";
 import QuickStats from "../../../components/guest/QuickStats";
 import LatestEventsComponent from "../../../components/guest/event/LatestEventsComponent";
 
 const page = () => {
+
     return (
         <div>
             <section className="bg-white lg:grid lg:h-screen lg:place-content-center">
@@ -21,12 +23,12 @@ const page = () => {
                         </p>
 
                         <div className="mt-4 flex gap-4 sm:mt-6">
-                            <a
+                            <Link
+                                href="/guest/all-events"
                                 className="inline-block rounded border border-orange-600 bg-orange-600 px-5 py-3 font-medium text-white shadow-sm transition-colors hover:bg-orange-700"
-                                href="#"
                             >
                                 Get Started
-                            </a>
+                            </Link>
 
                             <a
                                 className="inline-block rounded border border-gray-200 px-5 py-3 font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 hover:text-gray-900"
@@ -48,7 +50,7 @@ const page = () => {
                     </h1>
                 </div>
 
-                 <LatestEventsComponent />
+                <LatestEventsComponent />
             </section>
         </div>
     );
