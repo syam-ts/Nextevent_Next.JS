@@ -38,10 +38,7 @@ const page = () => {
                 </div>
             </section>
 
-
-                     <QuickStats />
-
-
+            <QuickStats />
 
             <section className="py-10 bg-white justify-center mx-auto ">
                 <div className="text-center mb-6">
