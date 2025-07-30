@@ -11,7 +11,7 @@ export const profileEditValidation = (submitForm: any) => {
             name: guest.name,
             profilePicture: guest.profilePicture,
             mobile: guest.mobile,
-            age: guest.age,
+            location: guest.location,
         },
 
         validate: (values) => {

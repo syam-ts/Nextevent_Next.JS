@@ -5,7 +5,7 @@ interface ProifleEditPayload {
     name: string;
     profilePicture: string;
     mobile: number;
-    age: number;
+    location: string;
 };
 
 interface ProfileEditResponse {
@@ -15,7 +15,7 @@ interface ProfileEditResponse {
         email: string;
         password: string;
         mobile: number;
-        age: number;
+        location: string;
         numberOfEventsAttended: number;
         wallet: any;
         // events: IEvent,

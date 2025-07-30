@@ -5,9 +5,8 @@ export interface IGuest {
     email: string;
     password: string;
     mobile: number;
-    age: number;
+    location: string;
     numberOfEventsAttended: number;
-    wallet: any;
-    // events: IEvent,
+    wallet: any; 
     createdAt: string;
 }

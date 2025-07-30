@@ -7,7 +7,7 @@ export const signupValidation = (submitForm: any) => {
             email: "",
             password: "",
             mobile: 0,
-            age: 0,
+            location: "",
         },
 
         validate: (values) => {
@@ -42,10 +42,10 @@ export const signupValidation = (submitForm: any) => {
                 errors.mobile = "Number should be valid";
             }
 
-            if (!values.age) {
-                errors.age = "Age required";
-            } else if (values.age < 20 || values.age > 50) {
-                errors.age = "Age should be between 20 and 50";
+             if (!values.location) {
+                errors.location = "Location required";
+            } else if (values.location.length > 20 || values.location.length < 5) {
+                errors.location = "Location need to be valid";
             }
 
             return errors;
@@ -58,7 +58,7 @@ export const signupValidation = (submitForm: any) => {
                 values.email,
                 values.password,
                 values.mobile,
-                values.age
+                values.location
             );
         },
     });

@@ -48,12 +48,12 @@ const NavDropdown = () => {
                                     Wallet
                                 </Link>
                             </li>
-                            <li>
+                            <li className="text-center flex justify-center">
                                 <button
                                     onClick={logout}
-                                    className="block px-4 py-2 hover:bg-gray-100 -600 "
+                                    className="block px-4 cursor-pointer py-2 text-center hover:bg-gray-100 -600 "
                                 >
-                                    Logout
+                                     logout
                                 </button>
                             </li>
                         </ul>

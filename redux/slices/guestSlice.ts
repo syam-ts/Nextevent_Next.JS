@@ -1,10 +1,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IGuestState } from "../../types/slice-states/guestState";
-import { IGuest } from "../../types/guest";
 
+interface IGuest {
+     _id: string
+    name: string
+    email: string
+    password: string
+    mobile: number
+    location: string
+    numberOfEventsAttended: number,
+    wallet: any 
+    createdAt: string 
+}
 
+interface GuestState {
+    currentGuest: IGuest | null;
+    isGuest: boolean;
+}
 
-const initialState: IGuestState = {
+const initialState: GuestState = {
     currentGuest: null,
     isGuest: false,
 };

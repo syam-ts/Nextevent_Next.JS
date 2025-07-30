@@ -22,11 +22,11 @@ const ProfileEdit = () => {
         name: string,
         profilePicture: string,
         mobile: number,
-        age: number
+        location: string
     ): void => {
         setLoadingSpinner(true);
         mutate(
-            { name, profilePicture, mobile, age },
+            { name, profilePicture, mobile, location },
             {
                 onSuccess: (data) => {
                     //  console.log("Success", data);
@@ -186,24 +186,24 @@ const ProfileEdit = () => {
                                         htmlFor="number"
                                         className="block text-sm font-semibold text-gray-700"
                                     >
-                                        Age
+                                        Location
                                     </label>
                                     <div className="relative">
                                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                             <Hash className="h-5 w-5 text-gray-400" />
                                         </div>
                                         <input
-                                            type="number"
-                                            id="age"
-                                            name="age"
-                                            value={values.age}
+                                            type="string"
+                                            id="location"
+                                            name="location"
+                                            value={values.location}
                                             onChange={handleChange}
                                             className="block w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500 bg-white"
-                                            placeholder="Enter your Age"
+                                            placeholder="Enter your location"
                                         />
                                     </div>
-                                    {touched.age && typeof errors.age === "number" && (
-                                        <div className="text-red-500 text-sm">{errors.age}</div>
+                                    {touched.location && typeof errors.location === "string" && (
+                                        <div className="text-red-500 text-sm">{errors.location}</div>
                                     )}
                                 </div>
 

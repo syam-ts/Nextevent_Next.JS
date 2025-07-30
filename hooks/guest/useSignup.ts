@@ -6,7 +6,7 @@ type SignupPayload = {
     email: string;
     password: string;
     mobile: number;
-    age: number;
+    location: string;
 };
 
 export const useSignup = () => {
