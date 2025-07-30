@@ -3,13 +3,14 @@ import React from "react";
 import { useHomeStats } from "../../hooks/organizer/useHomeStats";
 
 const QuickStats = () => {
-    const { data, isLoading, error }: any = useHomeStats();
+
+    const { data, isLoading }: any = useHomeStats();
 
     // if (error) return <p className="text-red-500">Failed to load stats.</p>;
 
-    const totalEvents = data?.toatalEvents ?? 0;
-    const totalBookings = data?.totalBookings ?? 0;
-    const totalGuests = data?.totalGuests ?? 0;
+    const totalEventsCreated = data?.result?.totalEventsCreated ?? 0;
+    const totalTicket = data?.result?.totalTicket ?? 0;
+    const totalGuests = data?.result?.totalGuests ?? 0;
 
     return (
         <div className="bg-white">
@@ -42,18 +43,18 @@ const QuickStats = () => {
                                         aria-describedby="item-1"
                                         id="starsCount"
                                     >
-                                        {isLoading ? <p>...</p> : totalEvents}
+                                        {isLoading ? <p>...</p> : totalEventsCreated}
                                     </dd>
                                 </div>
                                 <div className="flex flex-col p-6 text-center ">
                                     <dt className="order-2 mt-2 text-lg font-medium leading-6 text-gray-500">
-                                        Total Booking
+                                        Total Ticket Price
                                     </dt>
                                     <dd
                                         className="order-1 text-5xl font-extrabold leading-none text-indigo-600"
                                         id="downloadsCount"
                                     >
-                                        {isLoading ? <p>...</p> : totalBookings}
+                                        {isLoading ? <p>...</p> : totalTicket}
                                     </dd>
                                 </div>
                                 <div className="flex flex-col p-6 text-center ">
