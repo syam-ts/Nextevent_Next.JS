@@ -1,4 +1,4 @@
-import { axiosInstanse } from "../../../lib/axios/axiosInstance";
+ import { axiosInstanseGuest } from "../../../lib/axios/guest/axiosInstance";
 import { IBooking } from "../../../types/booking";
 
 interface ViewBookingPayload {
@@ -12,7 +12,7 @@ interface ViewBookingResponse {
 export const ViewBooking = async (
     payload: ViewBookingPayload
 ): Promise<ViewBookingResponse> => {
-    const { data } = await axiosInstanse.get(
+    const { data } = await axiosInstanseGuest.get(
         `/booking/view/${payload.bookingId}`
     );
     return data;

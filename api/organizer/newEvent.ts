@@ -1,7 +1,5 @@
-import { axiosInstanse } from "../../lib/axios/axiosInstance";
-
+import { axiosInstanseOrganizer } from "../../lib/axios/organizer/axiosInstance";
  
-
 type NewEventPayload = {
     eventName: string;
     eventImage: string;
@@ -21,7 +19,7 @@ type NewEventResponse = {
 export const newEvent = async (
     payload: NewEventPayload
 ): Promise<NewEventResponse> => {
-    const { data } = await axiosInstanse.post("/event/new", payload, {
+    const { data } = await axiosInstanseOrganizer.post("/event/new", payload, {
         withCredentials: true,
     });
     return data;

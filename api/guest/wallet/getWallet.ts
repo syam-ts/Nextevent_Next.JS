@@ -1,4 +1,4 @@
-import { axiosInstanse } from "../../../lib/axios/axiosInstance";
+ import { axiosInstanseGuest } from "../../../lib/axios/guest/axiosInstance";
 import { IWallet } from "../../../types/wallet";
 
 interface GetWalletResponse {
@@ -6,6 +6,6 @@ interface GetWalletResponse {
 }
 
 export const GetWallet = async (): Promise<GetWalletResponse> => {
-    const { data } = await axiosInstanse.get("/guest/wallet");
+    const { data } = await axiosInstanseGuest.get("/guest/wallet");
     return data;
 };

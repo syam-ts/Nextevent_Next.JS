@@ -1,5 +1,6 @@
-import { axiosInstanse } from "../../lib/axios/axiosInstance"; 
+import { axiosInstanseGuest } from "../../lib/axios/guest/axiosInstance";
 
+  
 interface ProifleEditPayload {
     name: string;
     profilePicture: string;
@@ -25,7 +26,7 @@ interface ProfileEditResponse {
 export const ProfileEditGuest = async (
     payload: ProifleEditPayload
 ): Promise<ProfileEditResponse> => {
-    const { data } = await axiosInstanse.put("/guest/update", payload, {
+    const { data } = await axiosInstanseGuest.put("/guest/update", payload, {
         withCredentials: true,
     });
     return data;

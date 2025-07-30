@@ -1,4 +1,4 @@
-import { axiosInstanse } from "../../lib/axios/axiosInstance";
+import { axiosInstanseGuest } from "../../lib/axios/guest/axiosInstance";
 import { IEvent } from "../../types/event";
 
 interface GetAllEventsResponse {
@@ -6,6 +6,6 @@ interface GetAllEventsResponse {
 }
 
 export const GetAllEvents = async (): Promise<GetAllEventsResponse> => {
-    const { data } = await axiosInstanse.get("/event/all-events");
+    const { data } = await axiosInstanseGuest.get("/event/all-events");
     return data;
 };

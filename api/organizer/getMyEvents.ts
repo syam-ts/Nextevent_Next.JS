@@ -1,4 +1,5 @@
-import { axiosInstanse } from "../../lib/axios/axiosInstance";
+ 
+import { axiosInstanseOrganizer } from "../../lib/axios/organizer/axiosInstance";
 import { IEvent } from "../../types/event";
  
 type GetMyEventsResponse = {
@@ -6,6 +7,6 @@ type GetMyEventsResponse = {
 };
 
 export const GetMyEvents = async (): Promise<GetMyEventsResponse> => {
-    const { data } = await axiosInstanse.get("/event/my-events");
+    const { data } = await axiosInstanseOrganizer.get("/event/my-events");
     return data;
 };

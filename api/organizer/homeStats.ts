@@ -1,5 +1,4 @@
-import axios from "axios"; 
-import { config } from "../../utils/config";
+import { axiosInstanseOrganizer } from "../../lib/axios/organizer/axiosInstance";
 
 type HomeStatsResponse = {
     totalEvents: number;
@@ -8,6 +7,6 @@ type HomeStatsResponse = {
 };
 
 export const HomeStats = async (): Promise<HomeStatsResponse> => {
-    const { data } = await axios.get(`${config.backend_url}/organizer/homeStats`);
+    const { data } = await axiosInstanseOrganizer.get(`$/organizer/homeStats`);
     return data;
 };

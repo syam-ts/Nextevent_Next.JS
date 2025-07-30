@@ -1,5 +1,6 @@
-import { axiosInstanse } from "../../../lib/axios/axiosInstance";
+import { axiosInstanseGuest } from "../../../lib/axios/guest/axiosInstance";
 
+  
 interface CancelBookingPayload {
     bookingId: string;
 }
@@ -11,7 +12,7 @@ interface CancelBookingReponse {
 export const CancelBooking = async (
     payload: CancelBookingPayload
 ): Promise<CancelBookingReponse> => {
-    const { data } = await axiosInstanse.delete(
+    const { data } = await axiosInstanseGuest.delete(
         `/booking/cancel/${payload.bookingId}`
     );
 

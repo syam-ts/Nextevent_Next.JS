@@ -1,6 +1,6 @@
-import { axiosInstanse } from "../../lib/axios/axiosInstance";
+import { axiosInstanseOrganizer } from "../../lib/axios/organizer/axiosInstance";
 
-  
+   
 type ProifleEditPayload = {
     name: string;
     mobile: number;
@@ -24,7 +24,7 @@ type ProfileEditResponse = {
 export const ProfileEditOrganizer = async (
     payload: ProifleEditPayload
 ): Promise<ProfileEditResponse> => {
-    const { data } = await axiosInstanse.put("/organizer/update", payload, {
+    const { data } = await axiosInstanseOrganizer.put("/organizer/update", payload, {
         withCredentials: true,
     });
     return data;

@@ -1,23 +1,22 @@
-import axios from "axios"; 
-import { config } from "../../utils/config";
- 
+import axios from "axios";
+import { config } from "../../../utils/config";
 
 const backend_url: string = config.backend_url;
 
-export const axiosInstanse = axios.create({
+export const axiosInstanseOrganizer = axios.create({
     baseURL: backend_url,
     withCredentials: true,
 });
 
 const refreshInstance = axios.create({
-  baseURL: backend_url,
-  withCredentials: true,
+    baseURL: backend_url,
+    withCredentials: true,
 });
 
-axiosInstanse.interceptors.request.use(
-    (config) => { 
+axiosInstanseOrganizer.interceptors.request.use(
+    (config) => {
         const token = localStorage.getItem("accessToken");
-  
+
         if (token && config.headers) {
             config.headers.Authorization = `Bearer ${token}`;
         }
@@ -27,7 +26,7 @@ axiosInstanse.interceptors.request.use(
     (error) => Promise.reject(error)
 );
 
-axiosInstanse.interceptors.response.use(
+axiosInstanseOrganizer.interceptors.response.use(
     (response) => response,
     async (error) => {
         const original_request = error.config;
@@ -36,8 +35,8 @@ axiosInstanse.interceptors.response.use(
             original_request._retry = true;
 
             try {
-                const res = await refreshInstance.get("/api/v1/user/refresh-token", {
-                    withCredentials: true
+                const res = await refreshInstance.get("/organizer/refresh-token", {
+                    withCredentials: true,
                 });
 
                 const newAccessToken = res.data.accessToken;
@@ -45,8 +44,8 @@ axiosInstanse.interceptors.response.use(
                 localStorage.setItem("accessToken", newAccessToken);
 
                 original_request.headers.Authorization = `Bearer ${newAccessToken}`;
-                return axiosInstanse(original_request);
-            } catch (err) { 
+                return axiosInstanseOrganizer(original_request);
+            } catch (err) {
                 return Promise.reject(error);
             }
         }
