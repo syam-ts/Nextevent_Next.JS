@@ -1,9 +1,9 @@
-"use client";
-
+"use client"; 
 import { usePathname } from "next/navigation"; 
 import Navbar from "../../components/guest/Navbar";
 import Footer from "../../components/common/Footer";
 import { Toaster } from "react-hot-toast";
+import ProtectedRoute from "../../(auth)/guest/ProtectedRoute";
 
 export default function AuthLayout({
   children,
@@ -19,7 +19,7 @@ export default function AuthLayout({
   return (
     <div>
       {!notProvideThePageFor && <Navbar />}
-      {children}
+      <ProtectedRoute children={children} /> 
       <Toaster />
       {!notProvideThePageFor && <Footer />}
     </div>

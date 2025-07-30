@@ -72,7 +72,7 @@ const NavDropdown = () => {
                     <span className="sr-only">Open user menu</span>
 
                     <img
-                        src={guest.profilePicture}
+                        src={guest?.profilePicture}
                         className="w-8 h-8 p-1  font-extrabold text-xl rounded-full"
                     />
                 </button>

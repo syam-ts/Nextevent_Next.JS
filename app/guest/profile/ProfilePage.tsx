@@ -3,10 +3,11 @@ import React from "react";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { Mail, Phone, Building2, User } from "lucide-react";
+import { IGuestState } from "../../../types/slice-states/guestState";
 
 const ProfilePage = () => {
     
-    const guest = useSelector((state: any) => state.guest.currentGuest);
+    const guest = useSelector((state: IGuestState) => state.guest.currentGuest);
 
     return (
         <div className="min-h-screen w-full flex items-center bg-white justify-center p-4 lg:p-8">
@@ -21,7 +22,7 @@ const ProfilePage = () => {
                         <div className="relative mx-auto mb-6">
                             <div className="w-32 h-32 mx-auto bg-gradient-to-r from-orange-600 to-orange-700 rounded-full flex items-center justify-center shadow-2xl border-4 border-white">
                                 <img
-                                    src={guest.profilePicture}
+                                    src={guest?.profilePicture}
                                     className="w-full h-full rounded-full text-white"
                                 />
                             </div>
@@ -47,7 +48,7 @@ const ProfilePage = () => {
                                         Full Name
                                     </p>
                                     <p className="text-xl font-bold text-gray-900">
-                                        {guest.name}
+                                        {guest?.name}
                                     </p>
                                 </div>
                             </div>
@@ -64,7 +65,7 @@ const ProfilePage = () => {
                                             Email Address
                                         </p>
                                         <p className="text-base font-medium text-gray-900 truncate">
-                                            {guest.email}
+                                            {guest?.email}
                                         </p>
                                     </div>
                                 </div>
@@ -80,7 +81,7 @@ const ProfilePage = () => {
                                             Phone Number
                                         </p>
                                         <p className="text-base font-medium text-gray-900">
-                                            {guest.mobile}
+                                            {guest?.mobile}
                                         </p>
                                     </div>
                                 </div>
@@ -96,7 +97,7 @@ const ProfilePage = () => {
                                     <p className="text-sm font-semibold text-orange-700 mb-1">
                                         Age
                                     </p>
-                                    <p className="text-xl font-bold text-gray-900">{guest.age}</p>
+                                    <p className="text-xl font-bold text-gray-900">{guest?.age}</p>
                                 </div>
                             </div>
                         </div>
