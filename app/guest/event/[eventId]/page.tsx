@@ -1,7 +1,7 @@
 "use client";
 import React, { use, useEffect, useState } from "react";
 import { Calendar, Clock, MapPin, Users, Ticket } from "lucide-react";
-import { useViewEvent } from "../../../../hooks/event/useViewEvent";
+import { useViewEvent } from "../../../../hooks/Event(shared)/useViewEvent";
 import Link from "next/link";
 
 const page = ({ params }: { params: Promise<{ eventId: string }> }) => {

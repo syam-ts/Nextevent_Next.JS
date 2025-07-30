@@ -1,6 +1,7 @@
-import { axiosInstanse } from "../../lib/axios/axiosInstance";
-import { IBooking } from "../../types/booking";
+import { axiosInstanse } from "../../../lib/axios/axiosInstance";
+import { IBooking } from "../../../types/booking";
 
+  
 interface BookingResponse {
     bookings: IBooking[];
 }

@@ -1,10 +1,9 @@
 import { axiosInstanse } from "../../lib/axios/axiosInstance";
 import { IEvent } from "../../types/event";
- 
 
-type ViewEventResponse = {
+interface ViewEventResponse {
     event: IEvent;
-};
+}
 
 export const ViewEvent = async (
     eventId: string

@@ -1,9 +1,7 @@
-import axios from "axios";
-import { IGuest } from "../../types/guest";
-import { config } from "../../utils/config";
-import { axiosInstanse } from "../../lib/axios/axiosInstance";
+import { axiosInstanse } from "../../../lib/axios/axiosInstance";
+ 
 
-type NewBookingPayload = {
+interface NewBookingPayload {
     eventId: string;
     eventName: string;
     isPaid: boolean;
@@ -14,7 +12,7 @@ type NewBookingPayload = {
     total: number;
 };
 
-type NewBookingResponse = {
+interface NewBookingResponse {
     result: {
         id: string
     }

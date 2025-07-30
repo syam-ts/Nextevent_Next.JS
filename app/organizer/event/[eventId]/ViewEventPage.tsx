@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Calendar, Clock, MapPin, Users, Ticket } from "lucide-react";
 import { Spinner } from "../../../../components/lib/organizer/Spinner";
-import { useViewEvent } from "../../../../hooks/event/useViewEvent";
+import { useViewEvent } from "../../../../hooks/Event(shared)/useViewEvent";
 
 interface ViewEventPageProps {
     eventId: string;

@@ -1,13 +1,13 @@
 import { axiosInstanse } from "../../lib/axios/axiosInstance"; 
 
-type ProifleEditPayload = {
+interface ProifleEditPayload {
     name: string;
     profilePicture: string;
     mobile: number;
     age: number;
 };
 
-type ProfileEditResponse = {
+interface ProfileEditResponse {
     guest: {
         _id: string;
         name: string;
