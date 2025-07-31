@@ -71,7 +71,7 @@ const BookingCard: React.FC<BookingCardProps> = ({ bookings }) => {
                                 </span>
                             </div>
 
-                            {booking.isPaid && (
+                            {booking.isPaid ? (
                                 <div className="bg-orange-50 rounded-lg p-3">
                                     <div className="flex items-center justify-between">
                                         <span className="text-gray-700 text-xs font-medium">
@@ -79,6 +79,17 @@ const BookingCard: React.FC<BookingCardProps> = ({ bookings }) => {
                                         </span>
                                         <span className="text-lg font-bold text-orange-600">
                                             ₹{booking.total.toLocaleString()}
+                                        </span>
+                                    </div>
+                                </div>
+                            ): (
+                                   <div className="bg-orange-50 rounded-lg p-3">
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-gray-700 text-xs font-medium">
+                                            Total
+                                        </span>
+                                        <span className="text-lg font-bold text-green-600">
+                                            Free
                                         </span>
                                     </div>
                                 </div>

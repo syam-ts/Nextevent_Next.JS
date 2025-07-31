@@ -19,6 +19,7 @@ interface BookingPageProps {
 }
 
 const BookingPage: React.FC<BookingPageProps> = ({ booking }) => {
+
     const [isOpen, setIsOpen] = React.useState(false);
     const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
     const { mutate } = useCancelBooking();
@@ -27,6 +28,7 @@ const BookingPage: React.FC<BookingPageProps> = ({ booking }) => {
     const handleDownloadTicket = (): void => {
         alert("Downloading ticket...");
     };
+
 
     const cancelBooking = (): void => {
         setLoadingSpinner(true);
@@ -48,6 +50,7 @@ const BookingPage: React.FC<BookingPageProps> = ({ booking }) => {
         );
     };
 
+    
     return (
         <div className="p-8">
             {loadingSpinner && <Spinner />}
@@ -150,7 +153,11 @@ const BookingPage: React.FC<BookingPageProps> = ({ booking }) => {
                             <div className="flex justify-between items-center">
                                 <span className="text-gray-600">Price per Seat</span>
                                 <span className="text-gray-900 font-semibold">
-                                    ₹{booking?.total} {booking?.numberOfSeats}
+                                    ₹
+                                    {Math.floor(
+                                        (booking?.total as number) /
+                                        (booking?.numberOfSeats as number)
+                                    )}
                                 </span>
                             </div>
 

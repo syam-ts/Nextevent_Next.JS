@@ -1,8 +1,8 @@
 "use client";
 import { useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { config } from "../../../utils/config";
-import { axiosInstanse } from "../../../lib/axios/axiosInstance";
+import { config } from "../../../utils/config"; 
+import { axiosInstanseGuest } from "../../../lib/axios/guest/axiosInstance";
 
 const SuccessPage = () => {
 
@@ -15,7 +15,7 @@ const SuccessPage = () => {
         const createBooking = async () => {
             if (!sessionId || !eventId) return;
 
-            await axiosInstanse.post(
+            await axiosInstanseGuest.post(
                 `${config.backend_url}/booking/confirm`,
                 {
                     sessionId,

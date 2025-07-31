@@ -39,10 +39,7 @@ export const newBookingValidation = (submitForm: any, eventName: string) => {
             } else if (values.numberOfSeats < 1 || values.numberOfSeats > 10) {
                 errors.numberOfSeats = "numberOfSeats should be between 1 and 10";
             }
-
-            if (!values.total) {
-                errors.total = "Total Missing";
-            }
+ 
 
             return errors;
         },
