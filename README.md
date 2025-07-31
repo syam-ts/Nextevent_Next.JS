@@ -61,11 +61,11 @@
 <h2>🔑 Features</h2>
 
 <ul>
-  <li>🧑‍💼 Organizers can sign up, log in, create, edit, and delete events</li>
-  <li>👤 Guests can register, browse, book, and cancel events</li>
+  <li>🧑‍💼 Organizers can sign up, log in, edit profile and create, view events</li>
+  <li>👤 Guests can register,edit profile,  browse, book, and cancel events</li>
   <li>💳 Stripe integration for paid events</li>
   <li>🎁 Free events supported</li>
-  <li>📅 Filtered event views (upcoming, nearby, latest)</li>
+  <li>📅 Filtered event views (nearby, free, paid)</li>
   <li>🔁 On cancellation, 50% refund goes to guest, 50% to admin</li>
   <li>🛡️ Role-based protected routing</li>
   <li>📱 Responsive UI with smooth transitions</li>
@@ -87,7 +87,7 @@
 
 <h3>📥 1. Clone the Repository</h3>
 
-<pre><code>git clone https://github.com/your-username/nextevent.git
+<pre><code>git clone https://github.com/syam-ts/nextevent.git
 cd nextevent
 </code></pre>
 
@@ -106,10 +106,10 @@ npm install
 <p>Add the following:</p>
 
 <pre><code>
-MONGODB_URI=your_mongo_uri
-STRIPE_SECRET_KEY=your_stripe_secret
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_publishable_key
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
+NEXT_PUBLIC_BACKEND_URL=http://localhost:3001
+NEXT_PUBLIC_CLOUDINARY_URL=your_cloudinary_rul
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_publishable_key
 </code></pre>
 
 <h3>▶️ 4. Run the Development Server</h3>
