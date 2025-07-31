@@ -42,15 +42,7 @@ const NavDropdown = () => {
                                 >
                                     Home
                                 </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/organizer/wallet"
-                                    className="block px-4 py-2 hover:bg-gray-100 -600 "
-                                >
-                                    Wallet
-                                </Link>
-                            </li>
+                            </li> 
                             <li>
                                 <button
                                     onClick={logout}
