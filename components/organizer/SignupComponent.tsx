@@ -31,7 +31,7 @@ const SignupComponent = () => {
                 organizationName,
             },
             {
-                onSuccess: (data: any) => {
+                onSuccess: (data) => {
                     console.log("Success", data);
                     setLoadingSpinner(false);
                     router.push("/organizer/login");

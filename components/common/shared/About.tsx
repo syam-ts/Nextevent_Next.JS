@@ -28,9 +28,9 @@ const About = () => {
                                         Empowering Each Other to Succeed
                                     </h2>
                                     <p className="text-gray-500 text-base font-normal leading-relaxed lg:text-start text-center">
-                                        Every Event we've undertaken has been a collaborative
+                                        Every Event we have undertaken has been a collaborative
                                         effort, where every person involved has left their mark.
-                                        Together, we've not only constructed buildings but also
+                                        Together, we have not only constructed buildings but also
                                         built enduring connections that define our success story.
                                     </p>
                                 </div>

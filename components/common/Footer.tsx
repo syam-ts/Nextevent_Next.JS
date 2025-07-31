@@ -11,8 +11,8 @@ const Footer = () => {
                 <form className="mt-6">
                     <div className="relative max-w-lg">
                         <label className="sr-only" htmlFor="email">
-                            {" "}
-                            Email{" "}
+                            
+                            Email
                         </label>
 
                         <input
@@ -156,8 +156,8 @@ const Footer = () => {
                                     className="text-gray-700 transition hover:text-gray-700/75"
                                     href="#"
                                 >
-                                    {" "}
-                                    Marketing{" "}
+                                    
+                                    Marketing
                                 </a>
                             </li>
 
@@ -199,8 +199,8 @@ const Footer = () => {
                                     className="text-gray-700 transition hover:text-gray-700/75"
                                     href="#"
                                 >
-                                    {" "}
-                                    About{" "}
+                                    
+                                    About
                                 </a>
                             </li>
 
@@ -209,8 +209,8 @@ const Footer = () => {
                                     className="text-gray-700 transition hover:text-gray-700/75"
                                     href="#"
                                 >
-                                    {" "}
-                                    Careers{" "}
+                                    
+                                    Careers
                                 </a>
                             </li>
 
@@ -219,8 +219,8 @@ const Footer = () => {
                                     className="text-gray-700 transition hover:text-gray-700/75"
                                     href="#"
                                 >
-                                    {" "}
-                                    History{" "}
+                                    
+                                    History
                                 </a>
                             </li>
 
@@ -229,8 +229,8 @@ const Footer = () => {
                                     className="text-gray-700 transition hover:text-gray-700/75"
                                     href="#"
                                 >
-                                    {" "}
-                                    Our Team{" "}
+                                    
+                                    Our Team
                                 </a>
                             </li>
                         </ul>
@@ -245,8 +245,8 @@ const Footer = () => {
                                     className="text-gray-700 transition hover:text-gray-700/75"
                                     href="#"
                                 >
-                                    {" "}
-                                    FAQs{" "}
+                                    
+                                    FAQs
                                 </a>
                             </li>
 
@@ -255,8 +255,8 @@ const Footer = () => {
                                     className="text-gray-700 transition hover:text-gray-700/75"
                                     href="#"
                                 >
-                                    {" "}
-                                    Contact{" "}
+                                    
+                                    Contact
                                 </a>
                             </li>
 
@@ -265,8 +265,8 @@ const Footer = () => {
                                     className="text-gray-700 transition hover:text-gray-700/75"
                                     href="#"
                                 >
-                                    {" "}
-                                    Live Chat{" "}
+                                    
+                                    Live Chat
                                 </a>
                             </li>
                         </ul>

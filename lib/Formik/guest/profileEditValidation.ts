@@ -1,16 +1,17 @@
 "use client";
 import { useFormik } from "formik";
 import { useSelector } from "react-redux";
+import { IGuestState } from "../../../types/slice-states/guestState";
 
-export const profileEditValidation = (submitForm: any) => {
-    const guest = useSelector((state: any) => state.guest.currentGuest);
+export const profileEditValidation = (submitForm: Function) => {
+    const guest = useSelector((state: IGuestState) => state.guest.currentGuest);
 
     return useFormik({
         initialValues: {
-            name: guest.name,
-            profilePicture: guest.profilePicture,
-            mobile: guest.mobile,
-            location: guest.location,
+            name: guest?.name,
+            profilePicture: guest?.profilePicture,
+            mobile: guest?.mobile,
+            location: guest?.location,
         },
 
         validate: (values) => {

@@ -113,7 +113,7 @@ const EventCard = ({ data }: { data: IEventCardProp }) => {
                                         <div>
                                             <p className="text-sm text-gray-500 font-medium">Time</p>
                                             <p className="text-gray-900 font-semibold">
-                                                {formatTime(event.startTime)} -{" "}
+                                                {formatTime(event.startTime)} -
                                                 {formatTime(event.endTime)}
                                             </p>
                                         </div>

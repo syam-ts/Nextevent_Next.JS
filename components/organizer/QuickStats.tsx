@@ -4,7 +4,7 @@ import { useHomeStats } from "../../hooks/organizer/useHomeStats";
 
 const QuickStats = () => {
 
-    const { data, isLoading }: any = useHomeStats();
+    const { data, isLoading } = useHomeStats();
 
     // if (error) return <p className="text-red-500">Failed to load stats.</p>;
 

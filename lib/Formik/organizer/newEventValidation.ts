@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 
-export const newEventValidation = (submitForm: any) => {
+export const newEventValidation = (submitForm: Function) => {
     return useFormik({
         initialValues: {
             eventName: "",
