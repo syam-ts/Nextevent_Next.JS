@@ -1,5 +1,5 @@
 "use client";
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { MapPin, Home, Navigation, Users, Calendar } from "lucide-react";
 import toast from "react-hot-toast";
@@ -9,6 +9,7 @@ import { useViewEvent } from "../../../hooks/Event(shared)/useViewEvent";
 import { config } from "../../../utils/config";
 import { newBookingValidation } from "../../../lib/Formik/guest/newBookingValidation";
 import { Spinner } from "../../lib/guest/Spinner";
+import { useFreeBooking } from "../../../hooks/guest/booking/useFreeBooking";
 
 interface NewBookingCompnentProps {
     eventId: string;
@@ -17,14 +18,15 @@ interface NewBookingCompnentProps {
 const NewBookingComponent: React.FC<NewBookingCompnentProps> = ({
     eventId,
 }) => {
+    const { mutate: makePayment } = useNewBooking();
+    const { mutate: freeBooking } = useFreeBooking();
 
-    const { mutate } = useNewBooking();
     const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
     const { data } = useViewEvent(eventId);
     const [total, setTotal] = useState<number>(data?.event.ticketPrice as number);
     const searchParams = useSearchParams();
-    const isEventFree: any = searchParams.get("isPaid");
-
+    const isEventPaid: any = searchParams.get("isPaid");
+    const router = useRouter();
 
     const submitForm = (
         eventName: string,
@@ -35,57 +37,84 @@ const NewBookingComponent: React.FC<NewBookingCompnentProps> = ({
         total: number
     ): void => {
         setLoadingSpinner(true);
-        mutate(
-            {
-                eventId,
-                eventName,
-                isPaid: isEventFree,
-                street,
-                city,
-                zipcode,
-                numberOfSeats,
-                total,
-            },
-            {
-                onSuccess: async (data) => {
-                    console.log("Success", data);
-                    console.log("STRIPE KEY: ", config.strpe_public_key);
-
-                    const stripePromise = loadStripe(config.strpe_public_key as string);
-
-                    const stripe = await stripePromise;
-                    if (!stripe) {
-                        throw new Error("Stripe failed to load.");
-                    }
-
-                    const sessionId = data?.result?.id;
-                    if (!sessionId) {
-                        console.error("Session ID not found");
-                        return;
-                    }
-
-                    const result = await stripe.redirectToCheckout({ sessionId });
-
-                    if (result.error) {
-                        console.error("Stripe Error:", result.error.message);
-                        alert(result.error.message);
-                        setLoadingSpinner(false); // only set false if there's an error
-                    }
+        data?.event.isPaid
+            ? makePayment(
+                {
+                    eventId,
+                    eventName,
+                    isPaid: isEventPaid,
+                    street,
+                    city,
+                    zipcode,
+                    numberOfSeats,
+                    total,
                 },
-                onError(error: unknown) {
-                    const err = error as { response: { data: { message: string } } };
-                    setLoadingSpinner(false);
-                    console.log("ERROR: ", err.response.data.message);
-                    toast.error(err.response.data.message);
+                {
+                    onSuccess: async (data) => {
+                        console.log("Success", data);
+                        console.log("STRIPE KEY: ", config.strpe_public_key);
+
+                        const stripePromise = loadStripe(
+                            config.strpe_public_key as string
+                        );
+
+                        const stripe = await stripePromise;
+                        if (!stripe) {
+                            throw new Error("Stripe failed to load.");
+                        }
+
+                        const sessionId = data?.result?.id;
+                        if (!sessionId) {
+                            console.error("Session ID not found");
+                            return;
+                        }
+
+                        const result = await stripe.redirectToCheckout({ sessionId });
+
+                        if (result.error) {
+                            console.error("Stripe Error:", result.error.message);
+                            alert(result.error.message);
+                            setLoadingSpinner(false); // only set false if there's an error
+                        }
+                    },
+                    onError(error: unknown) {
+                        const err = error as { response: { data: { message: string } } };
+                        setLoadingSpinner(false);
+                        console.log("ERROR: ", err.response.data.message);
+                        toast.error(err.response.data.message);
+                    },
+                }
+            )
+            : freeBooking(
+                {
+                    eventId,
+                    eventName,
+                    isPaid: isEventPaid,
+                    street,
+                    city,
+                    zipcode,
+                    numberOfSeats,
+                    total,
                 },
-            }
-        );
+                {
+                    onSuccess: async (data) => {
+                        console.log("Success", data);
+
+                        setLoadingSpinner(false);
+                        router.push("/guest/my-bookings");
+                    },
+                    onError(error: unknown) {
+                        const err = error as { response: { data: { message: string } } };
+                        setLoadingSpinner(false);
+                        console.log("ERROR: ", err.response.data.message);
+                        toast.error(err.response.data.message);
+                    },
+                }
+            );
     };
-
 
     const { values, touched, errors, handleChange, handleSubmit, setFieldValue } =
         newBookingValidation(submitForm, data?.event.eventName as string);
-
 
     useEffect(() => {
         if (data?.event.isPaid) {
@@ -95,7 +124,6 @@ const NewBookingComponent: React.FC<NewBookingCompnentProps> = ({
         }
     }, [data?.event.isPaid, data?.event.ticketPrice, values.numberOfSeats]);
 
-    
     return (
         <div className="min-h-screen bg-white w-full flex items-center justify-center p-4 lg:p-8">
             {loadingSpinner && <Spinner />}
@@ -291,12 +319,21 @@ const NewBookingComponent: React.FC<NewBookingCompnentProps> = ({
                                         Cancel
                                     </button>
 
-                                    <button
-                                        type="submit"
-                                        className="flex-1 flex items-center justify-center py-3.5 px-6 border border-transparent rounded-xl shadow-lg text-base font-semibold text-white bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all duration-200 transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
-                                    >
-                                        Register Free
-                                    </button>
+                                    {data?.event.isPaid ? (
+                                        <button
+                                            type="submit"
+                                            className="flex-1 flex items-center justify-center py-3.5 px-6 border border-transparent rounded-xl shadow-lg text-base font-semibold text-white bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all duration-200 transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+                                        >
+                                            Pay
+                                        </button>
+                                    ) : (
+                                        <button
+                                            type="submit"
+                                            className="flex-1 flex items-center justify-center py-3.5 px-6 border border-transparent rounded-xl shadow-lg text-base font-semibold text-white bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all duration-200 transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+                                        >
+                                            Register Free
+                                        </button>
+                                    )}
                                 </div>
                             </form>
                         </div>
