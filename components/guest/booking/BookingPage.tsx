@@ -12,12 +12,14 @@ import { useCancelBooking } from "../../../hooks/guest/booking/useCancelBooking"
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { Spinner } from "../../lib/guest/Spinner";
+import { CancelConfirmModal } from "../modal/CancelConfirmModal";
 
 interface BookingPageProps {
     booking: IBooking | undefined;
 }
 
 const BookingPage: React.FC<BookingPageProps> = ({ booking }) => {
+    const [isOpen, setIsOpen] = React.useState(false);
     const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
     const { mutate } = useCancelBooking();
     const router = useRouter();
@@ -26,7 +28,7 @@ const BookingPage: React.FC<BookingPageProps> = ({ booking }) => {
         alert("Downloading ticket...");
     };
 
-    const cancelBooking = () => {
+    const cancelBooking = (): void => {
         setLoadingSpinner(true);
         mutate(
             {
@@ -192,8 +194,15 @@ const BookingPage: React.FC<BookingPageProps> = ({ booking }) => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-8 pt-6 border-t border-gray-200">
+                <CancelConfirmModal
+                    isOpen={isOpen}
+                    setIsOpen={setIsOpen}
+                    cancelBookingFn={cancelBooking}
+                />
                 <button
-                onClick={cancelBooking} className="flex-1 py-3 px-6 border border-gray-300 rounded-xl text-base font-semibold text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all duration-200">
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="flex-1 py-3 px-6 border cursor-pointer border-gray-300 rounded-xl text-base font-semibold text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all duration-200"
+                >
                     Cancel Booking
                 </button>
 

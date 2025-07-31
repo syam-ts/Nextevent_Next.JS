@@ -12,7 +12,7 @@ const BookingCard: React.FC<BookingCardProps> = ({ bookings }) => {
     return (
         <div className="flex gap-5">
             {bookings?.map((booking: IBooking) => (
-                <div className="w-full max-w-sm mx-auto shadow-lg">
+                <div key={booking._id} className="w-full max-w-sm mx-auto shadow-lg">
                     <div
                         className="bg-white/95 backdrop-blur-xl rounded-xl shadow-lg border border-white/20 overflow-hidden"
                         style={{
