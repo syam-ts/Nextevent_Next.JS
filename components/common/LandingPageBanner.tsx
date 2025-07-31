@@ -3,8 +3,10 @@ import React from "react";
 const LandingPageBanner = () => {
     
     return (
-        <div className="flex justify-center">
-            <div className="relative my-12 flex w-full flex-col items-center sm:mt-24">
+        <div className="flex justify-center mt-44"
+        >
+            <div className="relative my-12 flex w-full flex-col items-center sm:mt-24"
+            >
                 <h1 className="mt-8 max-w-sm bg-gradient-to-br from-gray-500 via-indigo-500 to-gray-500 bg-clip-text text-center text-4xl font-extrabold text-transparent sm:max-w-4xl sm:text-6xl">
                     Entertained Tomorrow with Event Today
                 </h1>
@@ -25,7 +27,7 @@ const LandingPageBanner = () => {
                             stroke="currentColor"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 64 64"
-                            stroke-width="3"
+                            strokeWidth="3"
                             fill="none"
                         >
                             <path d="M14,39.87,24.59,50.51s33-14,31.23-42.29C55.82,8.22,29.64,4.28,14,39.87Z"></path>
