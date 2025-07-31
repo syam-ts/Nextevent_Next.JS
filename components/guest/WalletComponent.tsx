@@ -66,9 +66,7 @@ const WalletComponent = () => {
 
                 <div
                     className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 p-8 mb-8"
-                    style={{
-                        animation: "slideUp 0.6s ease-out",
-                    }}
+                    
                 >
                     <div className="flex items-center justify-between mb-6">
                         <div className="flex items-center">

@@ -60,9 +60,7 @@ const ViewBookingComponent: React.FC<ViewBookingComponentProps> = ({
 
                 <div
                     className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 overflow-hidden"
-                    style={{
-                        animation: "slideUp 0.6s ease-out",
-                    }}
+                   
                 >
                     <div className="bg-gradient-to-r  px-8 py-6">
                         <h1 className="text-2xl text-orange-500 font-bold mb-2">

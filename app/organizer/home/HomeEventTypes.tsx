@@ -19,7 +19,7 @@ const ModernEventTypes = () => {
         },
         {
             title: "Manage Events",
-            url: "/organizer/all-events",
+            url: "/organizer/my-events",
             description:
                 "Take control of your events with powerful management tools and insights",
             buttonText: "Manage Events",

@@ -74,9 +74,6 @@ const ProfileEdit = () => {
             <div className="w-full max-w-5xl mx-auto">
                 <div
                     className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 overflow-hidden"
-                    style={{
-                        animation: "slideUp 0.6s ease-out",
-                    }}
                 >
                     <div className="flex flex-col lg:flex-row">
                         <div className="flex-1 p-8 lg:p-12">
