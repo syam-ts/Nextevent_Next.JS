@@ -1,7 +1,7 @@
 import React, { use } from "react";
 import ViewEventPage from "./ViewEventPage";
 
-const page = ({ params }: { params: Promise<{ eventId: string }> }) => {
+const Page = ({ params }: { params: Promise<{ eventId: string }> }) => {
     
     const { eventId } = use<{ eventId: string }>(params);
 
@@ -12,4 +12,4 @@ const page = ({ params }: { params: Promise<{ eventId: string }> }) => {
     );
 };
 
-export default page;
+export default Page;

@@ -1,7 +1,7 @@
 import React, { use } from 'react'
 import EventPage from './EventPage'
 
-const page = ({ params }: { params: Promise<{ eventId: string }> }) => {
+const Page = ({ params }: { params: Promise<{ eventId: string }> }) => {
   const { eventId } = use(params);
   return (
     <div>
@@ -10,4 +10,4 @@ const page = ({ params }: { params: Promise<{ eventId: string }> }) => {
   )
 }
 
-export default page
+export default Page

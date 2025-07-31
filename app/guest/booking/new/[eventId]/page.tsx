@@ -1,7 +1,7 @@
 import React, { use } from "react";
 import NewBookingComponent from "../../../../../components/guest/booking/NewBookingComponent";
 
-const page = ({ params }: { params: Promise<{ eventId: string }> }) => {
+const Page = ({ params }: { params: Promise<{ eventId: string }> }) => {
   const { eventId } = use<{ eventId: string }>(params);
 
   return (
@@ -11,4 +11,4 @@ const page = ({ params }: { params: Promise<{ eventId: string }> }) => {
   );
 };
 
-export default page;
+export default Page;
