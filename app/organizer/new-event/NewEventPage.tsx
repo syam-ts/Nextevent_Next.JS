@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Spinner } from "../../../components/lib/organizer/Spinner";
 import { useNewEvent } from "../../../hooks/organizer/useNewEvent";
-import { newEventValidation } from "../../../lib/Formik/organizer/newEventValidation";
+import { useNewEventValidation } from "../../../lib/Formik/organizer/newEventValidation";
 import { ImageUpload } from "../../../helper/methods/imageUpload";
 import {
     Calendar,
@@ -69,7 +69,7 @@ const NewEventPage = () => {
 
 
     const { values, touched, errors, handleChange, handleSubmit, setFieldValue } =
-        newEventValidation(submitForm);
+        useNewEventValidation(submitForm);
 
 
     const uploadedImage = async (e: React.ChangeEvent<HTMLInputElement>) => {

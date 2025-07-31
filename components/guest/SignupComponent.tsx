@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Mail, Lock, User } from "lucide-react"; 
 import toast from "react-hot-toast";
 import { useSignup } from "../../hooks/guest/useSignup";
-import { signupValidation } from "../../lib/Formik/guest/signupValidation";
+import { useSignupValidation } from "../../lib/Formik/guest/signupValidation";
 import { Spinner } from "../lib/guest/Spinner";
 
 const SignupComponent = () => {
@@ -48,7 +48,7 @@ const SignupComponent = () => {
 
 
     const { values, touched, errors, handleChange, handleSubmit } =
-        signupValidation(submitForm);
+        useSignupValidation(submitForm);
 
         
     return (

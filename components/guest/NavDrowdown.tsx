@@ -3,11 +3,12 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signOutGuest } from "../../redux/slices/guestSlice";
+import { IGuestState } from "../../types/slice-states/guestState";
 
 const NavDropdown = () => {
     const [dropdown, setDropdown] = useState<boolean>(false);
     const dispatch = useDispatch();
-    const guest = useSelector((state: any) => state.guest.currentGuest);
+    const guest = useSelector((state: IGuestState) => state.guest.currentGuest);
 
     const logout = () => {
         localStorage.removeItem("accessToken");

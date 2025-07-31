@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Mail, Lock, User } from "lucide-react";   
 import toast from "react-hot-toast";
 import { useSignup } from "../../hooks/organizer/useSignup";
-import { signupValidation } from "../../lib/Formik/organizer/signupValidation";
+import { useSignupValidation } from "../../lib/Formik/organizer/signupValidation";
 import { Spinner } from "../lib/organizer/Spinner";
 
 const SignupComponent = () => {
@@ -46,7 +46,7 @@ const SignupComponent = () => {
     };
 
     const { values, touched, errors, handleChange, handleSubmit } =
-        signupValidation(submitForm);
+        useSignupValidation(submitForm);
 
     return (
         <div className="min-h-screen w-full flex items-center justify-center p-4 lg:p-8 bg-white"> 

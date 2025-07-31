@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import { useLogin } from "../../hooks/guest/useLogin";
 import { signInGuest } from "../../redux/slices/guestSlice";
 import { Spinner } from "../lib/guest/Spinner";
-import { loginValidation } from "../../lib/Formik/organizer/loginValidation";
+import { useLoginValidation } from "../../lib/Formik/organizer/loginValidation";
 
 const LoginComponent = () => {
 
@@ -45,7 +45,7 @@ const LoginComponent = () => {
 
 
   const { values, touched, errors, handleChange, handleSubmit } =
-    loginValidation(submitForm);
+    useLoginValidation(submitForm);
 
 
   return (
@@ -161,7 +161,7 @@ const LoginComponent = () => {
 
           <div className="text-center">
             <p className="text-sm text-gray-600">
-              Don't have an account? 
+              Don &apos; t have an account? 
               <Link
                 href="/guest/signup"
                 className="font-semibold text-orange-600 hover:text-orange-700 transition-colors"

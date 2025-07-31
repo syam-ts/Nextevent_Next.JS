@@ -7,7 +7,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useNewBooking } from "../../../hooks/guest/booking/useNewBooking";
 import { useViewEvent } from "../../../hooks/Event(shared)/useViewEvent";
 import { config } from "../../../utils/config";
-import { newBookingValidation } from "../../../lib/Formik/guest/newBookingValidation";
+import { useNewBookingValidation } from "../../../lib/Formik/guest/newBookingValidation";
 import { Spinner } from "../../lib/guest/Spinner";
 import { useFreeBooking } from "../../../hooks/guest/booking/useFreeBooking";
 
@@ -114,7 +114,7 @@ const NewBookingComponent: React.FC<NewBookingCompnentProps> = ({
     };
 
     const { values, touched, errors, handleChange, handleSubmit, setFieldValue } =
-        newBookingValidation(submitForm, data?.event.eventName as string);
+        useNewBookingValidation(submitForm, data?.event.eventName as string);
 
     useEffect(() => {
         if (data?.event.isPaid) {
@@ -377,7 +377,7 @@ const NewBookingComponent: React.FC<NewBookingCompnentProps> = ({
 
                                 <div className="space-y-3">
                                     <h4 className="font-semibold text-lg mb-4">
-                                        What's Included
+                                        What &apos; s Included
                                     </h4>
                                     <div className="space-y-2">
                                         <div className="flex items-center text-orange-100">

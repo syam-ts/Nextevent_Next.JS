@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import { useSelector } from "react-redux";
 import { IGuestState } from "../../../types/slice-states/guestState";
 
-export const profileEditValidation = (submitForm: Function) => {
+export const useProfileEditValidation = (submitForm: Function) => {
     const guest = useSelector((state: IGuestState) => state.guest.currentGuest);
 
     return useFormik({

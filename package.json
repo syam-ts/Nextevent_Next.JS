@@ -2,12 +2,13 @@
   "name": "nextevent",
   "version": "0.1.0",
   "private": true,
-    "dev": "next dev --turbopack",
+  "dev": "next dev --turbopack",
   "scripts": {
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "echo \"No tests defined\" && exit 0"
+    "test": "echo \"No tests defined\" && exit 0",
+    "dev": "next dev --turbopack"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",

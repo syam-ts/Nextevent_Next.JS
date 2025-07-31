@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 
-export const newBookingValidation = (submitForm: Function, eventName: string) => {
+export const useNewBookingValidation = (submitForm: Function, eventName: string) => {
     return useFormik({
         initialValues: {
             street: "",

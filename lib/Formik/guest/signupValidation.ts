@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 
-export const signupValidation = (submitForm: Function) => {
+export const useSignupValidation = (submitForm: Function) => {
     return useFormik({
         initialValues: {
             name: "",

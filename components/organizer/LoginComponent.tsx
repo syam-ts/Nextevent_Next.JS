@@ -7,7 +7,7 @@ import { Eye, EyeOff, Mail, Lock, User } from "lucide-react";
 import toast from "react-hot-toast";
 import { useLogin } from "../../hooks/organizer/useLogin";
 import { signInOrganizer } from "../../redux/slices/oranizerSlice";
-import { loginValidation } from "../../lib/Formik/organizer/loginValidation";
+import { useLoginValidation } from "../../lib/Formik/organizer/loginValidation";
 import { Spinner } from "../lib/organizer/Spinner";
 
 const LoginComponent = () => {
@@ -44,7 +44,7 @@ const LoginComponent = () => {
 
 
     const { values, touched, errors, handleChange, handleSubmit } =
-        loginValidation(submitForm);
+        useLoginValidation(submitForm);
 
         
     return (
@@ -159,7 +159,7 @@ const LoginComponent = () => {
 
                     <div className="text-center">
                         <p className="text-sm text-gray-600">
-                            Don't have an account?
+                            Don &apos; t have an account?
                             <Link
                                 href="/organizer/signup"
                                 className="font-semibold text-indigo-600 hover:text-indigo-700 transition-colors"

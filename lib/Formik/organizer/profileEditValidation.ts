@@ -2,7 +2,7 @@
 import { useFormik } from "formik";
 import { useSelector } from "react-redux";
 
-export const profileEditValidation = (submitForm: Function) => {
+export const useProfileEditValidation = (submitForm: Function) => {
     const organizer = useSelector(
         (state: any) => state.organizer.currentOrganizer
     );

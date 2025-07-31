@@ -7,8 +7,8 @@ import { User, Phone, Hash, Camera, Save } from "lucide-react";
 import { signInGuest } from "../../../../redux/slices/guestSlice";
 import { ImageUpload } from "../../../../helper/methods/imageUpload";
 import { Spinner } from "../../../../components/lib/guest/Spinner";
-import { useProfileEdit } from "../../../../hooks/guest/useProfileEdit";
-import { profileEditValidation } from "../../../../lib/Formik/guest/profileEditValidation";
+import { useProfileEdit } from "../../../../hooks/guest/useProfileEdit"; 
+import { useProfileEditValidation } from "../../../../lib/Formik/guest/profileEditValidation";
 
 const ProfileEdit = () => {
 
@@ -47,7 +47,7 @@ const ProfileEdit = () => {
     
 
     const { values, touched, errors, handleChange, setFieldValue, handleSubmit } =
-        profileEditValidation(submitForm);
+        useProfileEditValidation(submitForm);
 
 
     const uploadedImage = async (e: React.ChangeEvent<HTMLInputElement>) => {

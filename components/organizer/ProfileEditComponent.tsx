@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useProfileEdit } from "../../hooks/organizer/useProfileEdit";
 import { signInOrganizer } from "../../redux/slices/oranizerSlice";
 import { Spinner } from "../lib/organizer/Spinner";
-import { profileEditValidation } from "../../lib/Formik/organizer/profileEditValidation";
+import { useProfileEditValidation } from "../../lib/Formik/organizer/profileEditValidation";
 
 const ProfileEditComponent = () => {
     
@@ -42,7 +42,7 @@ const ProfileEditComponent = () => {
     };
 
     const { values, touched, errors, handleChange, handleSubmit } =
-        profileEditValidation(submitForm);
+        useProfileEditValidation(submitForm);
 
     return (
         <div className="h-screen w-full flex bg-white items-center justify-center p-4 lg:p-8">

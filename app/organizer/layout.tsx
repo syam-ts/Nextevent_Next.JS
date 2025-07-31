@@ -10,7 +10,6 @@ export default function AuthLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   const pathname = usePathname();
   const noNavFooter = ["/organizer/login", "/organizer/signup"];
 
@@ -19,7 +18,7 @@ export default function AuthLayout({
   return (
     <div>
       {!notProvideThePageFor && <Navbar />}
-      <ProtectedRoute children={children} />
+      <ProtectedRoute>children={children}</ProtectedRoute>
       <Toaster />
       {!notProvideThePageFor && <Footer />}
     </div>
