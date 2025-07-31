@@ -22,18 +22,20 @@ const WalletComponent = () => {
     );
 
     const formatDate = (date: Date) => {
-        return date.toLocaleDateString("en-US", {
-            month: "short",
-            day: "numeric",
-            year: "numeric",
-        });
+        // return date.toLocaleDateString("en-US", {
+        //     month: "short",
+        //     day: "numeric",
+        //     year: "numeric",
+        // });
+        return date
     };
 
     const formatTime = (date: Date) => {
-        return date.toLocaleTimeString("en-US", {
-            hour: "2-digit",
-            minute: "2-digit",
-        });
+        // return date.toLocaleTimeString("en-US", {
+        //     hour: "2-digit",
+        //     minute: "2-digit",
+        // });
+        return date
     };
 
     const filteredTransactions = data?.wallet?.transactions?.filter(
@@ -82,7 +84,7 @@ const WalletComponent = () => {
                         </div>
                         <button
                             onClick={() => setShowBalance(!showBalance)}
-                            className="p-2 text-gray-500 hover:text-gray-700 transition-colors"
+                            className="p-2 text-gray-500 cursor-pointer hover:text-gray-700 transition-colors"
                         >
                             {showBalance ? (
                                 <EyeOff className="w-5 h-5" />
@@ -136,11 +138,11 @@ const WalletComponent = () => {
                                     onChange={(e) =>
                                         setFilterType(e.target.value as "all" | "credit" | "debit")
                                     }
-                                    className="pl-12 pr-8 py-3 border border-orange-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-200 text-gray-900 bg-white/90"
+                                    className="pl-12 cursor-pointer pr-8 py-3 border border-orange-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-200 text-gray-900 bg-white/90"
                                 >
-                                    <option value="all">All Transactions</option>
-                                    <option value="credit">Credits Only</option>
-                                    <option value="debit">Debits Only</option>
+                                    <option value="all" className="cursor-pointer">All Transactions</option>
+                                    <option value="credit" className="cursor-pointer">Credits Only</option>
+                                    <option value="debit" className="cursor-pointer">Debits Only</option>
                                 </select>
                             </div>
                         </div>
@@ -220,11 +222,8 @@ const WalletComponent = () => {
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <div className="text-sm text-gray-900">
-                                                {formatDate(transaction.createdAt)}
-                                            </div>
-                                            <div className="text-xs text-gray-500">
-                                                {formatTime(transaction.createdAt)}
-                                            </div>
+                                                {transaction.createdAt.toString()}  
+                                            </div> 
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <div className="text-xs font-mono text-gray-500 bg-gray-100 px-2 py-1 rounded">

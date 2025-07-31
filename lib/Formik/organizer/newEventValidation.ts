@@ -1,4 +1,4 @@
-import { useFormik } from "formik"; 
+import { useFormik } from "formik";
 
 export const newEventValidation = (submitForm: any) => {
     return useFormik({
@@ -48,10 +48,13 @@ export const newEventValidation = (submitForm: any) => {
                 errors.endTime = "End time required";
             }
 
-            if (!values.ticketPrice) {
-                errors.ticketPrice = "Ticket Price required";
-            } else if (values.ticketPrice > 2000 || values.ticketPrice < 100) {
-                errors.ticketPrice = "Ticket Price should be 100₹ to 2000₹";
+            if (!values.isPaid) {
+                if (!values.ticketPrice) {
+                    console.log("hitt agin", values.isPaid);
+                    errors.ticketPrice = "Ticket Price required";
+                } else if (values.ticketPrice > 2000 || values.ticketPrice < 100) {
+                    errors.ticketPrice = "Ticket Price should be 100₹ to 2000₹";
+                }
             }
 
             if (!values.totalSeats) {

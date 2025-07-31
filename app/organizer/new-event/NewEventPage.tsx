@@ -17,9 +17,9 @@ import {
 } from "lucide-react";
 
 const NewEventPage = () => {
-
     const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
     const [imageloading, setImageloading] = useState<boolean>(false);
+    const [isFree, setIsFree] = useState<boolean>(true);
     const { mutate } = useNewEvent();
     const router = useRouter();
 
@@ -284,28 +284,33 @@ const NewEventPage = () => {
 
                                     <div className="space-y-2">
                                         <label
-                                            htmlFor="totalSeats"
+                                            htmlFor="isPaid"
                                             className="block text-sm font-semibold text-gray-700"
                                         >
-                                            Ticket Price
+                                            Event Type
                                         </label>
                                         <div className="relative">
                                             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                                <Users className="h-5 w-5 text-gray-400" />
+                                                <DollarSign className="h-5 w-5 text-gray-400" />
                                             </div>
-                                            <input
-                                                type="number"
-                                                id="ticketPrice"
-                                                name="ticketPrice"
-                                                value={values.ticketPrice}
-                                                onChange={handleChange}
-                                                className="block w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500 bg-white"
-                                                placeholder="200"
-                                            />
+                                            <select
+                                                id="isPaid"
+                                                name="isPaid"
+                                                onChange={(e) => {
+                                                    handleChange(e.target.value);
+                                                    const isPaidValue = e.target.value === "true";
+                                                    setIsFree(!isPaidValue);
+                                                    setFieldValue("isPaid", e.target.value);
+                                                }}
+                                                className="block w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-gray-900 bg-white"
+                                            >
+                                                <option value="false">Free</option>
+                                                <option value="true">Paid</option>
+                                            </select>
                                         </div>
-                                        {touched.ticketPrice && errors.ticketPrice && (
+                                        {touched.isPaid && errors.isPaid && (
                                             <div className="text-red-500 text-sm">
-                                                {errors.ticketPrice}
+                                                {errors.isPaid}
                                             </div>
                                         )}
                                     </div>
@@ -341,33 +346,35 @@ const NewEventPage = () => {
                                             )}
                                         </div>
 
-                                        <div className="space-y-2">
-                                            <label
-                                                htmlFor="isPaid"
-                                                className="block text-sm font-semibold text-gray-700"
-                                            >
-                                                Event Type
-                                            </label>
-                                            <div className="relative">
-                                                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                                    <DollarSign className="h-5 w-5 text-gray-400" />
-                                                </div>
-                                                <select
-                                                    id="isPaid"
-                                                    name="isPaid"
-                                                    onChange={handleChange}
-                                                    className="block w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-gray-900 bg-white"
+                                        {!isFree && (
+                                            <div className="space-y-2">
+                                                <label
+                                                    htmlFor="totalSeats"
+                                                    className="block text-sm font-semibold text-gray-700"
                                                 >
-                                                    <option value="false">Free</option>
-                                                    <option value="true">Paid</option>
-                                                </select>
-                                            </div>
-                                            {touched.isPaid && errors.isPaid && (
-                                                <div className="text-red-500 text-sm">
-                                                    {errors.isPaid}
+                                                    Ticket Price
+                                                </label>
+                                                <div className="relative">
+                                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                                        <Users className="h-5 w-5 text-gray-400" />
+                                                    </div>
+                                                    <input
+                                                        type="number"
+                                                        id="ticketPrice"
+                                                        name="ticketPrice"
+                                                        value={values.ticketPrice}
+                                                        onChange={handleChange}
+                                                        className="block w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500 bg-white"
+                                                        placeholder="200"
+                                                    />
                                                 </div>
-                                            )}
-                                        </div>
+                                                {touched.ticketPrice && errors.ticketPrice && (
+                                                    <div className="text-red-500 text-sm">
+                                                        {errors.ticketPrice}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        )}
                                     </div>
 
                                     <div className="space-y-2">

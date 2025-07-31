@@ -1,5 +1,5 @@
 "use client";
-import React from "react"; 
+import React from "react";
 import { useGetMyBookings } from "../../../hooks/guest/booking/useGetMyBookings";
 import BookingCard from "../../../components/guest/booking/BookingCard";
 
@@ -13,9 +13,15 @@ const MyBookings: React.FC = () => {
                     Bookings
                 </h1>
 
-                <div>
-                    <BookingCard bookings={data?.bookings} />
-                </div>
+                {data?.bookings.length === 0 ? (
+                    <div className="text-orange-500 text-center py-44">
+                        No Bookings Found
+                    </div>
+                ) : (
+                    <div>
+                        <BookingCard bookings={data?.bookings} />
+                    </div>
+                )}
             </div>
         </div>
     );
