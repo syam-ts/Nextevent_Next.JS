@@ -1,6 +1,7 @@
 "use client";
 import { useFormik } from "formik";
 import { useSelector } from "react-redux";
+import { IOrganizerState } from "../../../types/slice-states/organizerState";
 
 type SubmitFormFn = (
     name: string,
@@ -10,14 +11,14 @@ type SubmitFormFn = (
 
 export const useProfileEditValidation = (submitForm: SubmitFormFn) => {
     const organizer = useSelector(
-        (state: any) => state.organizer.currentOrganizer
+        (state: IOrganizerState) => state.organizer.currentOrganizer
     );
 
     return useFormik({
         initialValues: {
-            name: organizer.name || "",
-            mobile: organizer.mobile,
-            organizationName: organizer.organizationName,
+            name: organizer?.name ?? "",
+            mobile: organizer?.mobile ?? 0,
+            organizationName: organizer?.organizationName ?? "",
         },
 
         validate: (values) => {
