@@ -17,8 +17,7 @@ interface ProfileEditResponse {
         mobile: number;
         location: string;
         numberOfEventsAttended: number;
-        wallet: any;
-        // events: IEvent,
+        wallet: any; 
         createdAt: string;
     };
 };

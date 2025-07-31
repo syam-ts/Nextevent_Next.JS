@@ -54,9 +54,7 @@ const SignupComponent = () => {
             <div className="w-full max-w-2xl mx-auto shadow-lg border-t">
                 <div
                     className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-white/20 transform transition-all duration-300 hover:scale-[1.02]"
-                    style={{
-                        animation: "slideUp 0.6s ease-out",
-                    }}
+                   
                 >
                     <div className="text-center mb-8">
                         <div className="mx-auto w-16 h-16 bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-full flex items-center justify-center mb-6 shadow-lg">

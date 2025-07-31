@@ -17,12 +17,14 @@ import {
 } from "lucide-react";
 
 const NewEventPage = () => {
+
     const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
     const [imageloading, setImageloading] = useState<boolean>(false);
     const [isFree, setIsFree] = useState<boolean>(true);
     const { mutate } = useNewEvent();
     const router = useRouter();
 
+    
     const submitForm = (
         eventName: string,
         eventImage: string,
@@ -65,8 +67,10 @@ const NewEventPage = () => {
         );
     };
 
+
     const { values, touched, errors, handleChange, handleSubmit, setFieldValue } =
         newEventValidation(submitForm);
+
 
     const uploadedImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
         setImageloading(true);
@@ -90,9 +94,7 @@ const NewEventPage = () => {
             <div className="w-full max-w-8xl mx-auto ">
                 <div
                     className="bg-white/95 backdrop-blur-xl shadow-2xl border border-white/20 overflow-hidden"
-                    style={{
-                        animation: "slideUp 0.6s ease-out",
-                    }}
+                  
                 >
                     <div className="flex flex-col lg:flex-row">
                         <div className="flex-1 p-8 lg:p-12">

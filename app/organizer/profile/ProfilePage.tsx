@@ -16,9 +16,6 @@ const ProfilePage = () => {
             <div className="w-full max-w-2xl mx-auto">
                 <div
                     className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-white/20 transform transition-all duration-300 hover:scale-[1.02]"
-                    style={{
-                        animation: "slideUp 0.6s ease-out",
-                    }}
                 >
                     <div className="text-center mb-8">
                         <div className="relative mx-auto mb-6">
