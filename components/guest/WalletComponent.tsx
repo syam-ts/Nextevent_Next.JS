@@ -21,22 +21,7 @@ const WalletComponent = () => {
         "all"
     );
 
-    const formatDate = (date: Date) => {
-        // return date.toLocaleDateString("en-US", {
-        //     month: "short",
-        //     day: "numeric",
-        //     year: "numeric",
-        // });
-        return date
-    };
-
-    const formatTime = (date: Date) => {
-        // return date.toLocaleTimeString("en-US", {
-        //     hour: "2-digit",
-        //     minute: "2-digit",
-        // });
-        return date
-    };
+    
 
     const filteredTransactions = data?.wallet?.transactions?.filter(
         (transaction) => {

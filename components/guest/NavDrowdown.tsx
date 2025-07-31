@@ -74,6 +74,7 @@ const NavDropdown = () => {
                     <img
                         src={guest?.profilePicture}
                         className="w-8 h-8 p-1  font-extrabold text-xl rounded-full"
+                        alt='profile-pic'
                     />
                 </button>
             </div>

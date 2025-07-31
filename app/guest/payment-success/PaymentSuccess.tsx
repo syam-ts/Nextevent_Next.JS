@@ -30,7 +30,7 @@ const SuccessPage = () => {
         };
 
         createBooking();
-    }, [sessionId]);
+    }, [sessionId, eventId, router]);
 
     return <div>Payment successful! Creating your booking...</div>;
 };

@@ -4,7 +4,7 @@ import { useGetHomeStats } from "../../hooks/guest/useGetHomeStats";
 
 const QuickStats = () => {
     
-    const { data, isLoading }: any = useGetHomeStats();
+    const { data, isLoading } = useGetHomeStats();
     if(!data) return;
 
     // if (error) return <p className="text-red-500">Failed to load stats.</p>;

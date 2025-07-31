@@ -48,7 +48,7 @@ axiosInstanseGuest.interceptors.response.use(
                 return axiosInstanseGuest(original_request);
             } catch (err) {
                 logoutHelperFunction("guest", store.dispatch);
-                return Promise.reject(error);
+                return Promise.reject(err);
             }
         }
         return Promise.reject(error);

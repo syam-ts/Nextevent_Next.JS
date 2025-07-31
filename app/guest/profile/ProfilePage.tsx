@@ -21,6 +21,7 @@ const ProfilePage = () => {
                                 <img
                                     src={guest?.profilePicture}
                                     className="w-full h-full rounded-full text-white"
+                                    alt='profile-pic'
                                 />
                             </div>
                             <div className="absolute bottom-2 right-2 w-6 h-6 bg-green-500 border-4 border-white rounded-full shadow-lg"></div>

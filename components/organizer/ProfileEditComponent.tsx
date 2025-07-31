@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { User, Phone, Hash, Camera, Loader2, Save } from "lucide-react";
+import { User, Phone, Hash, Save } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useProfileEdit } from "../../hooks/organizer/useProfileEdit";
@@ -32,7 +32,7 @@ const ProfileEditComponent = () => {
 
                     router.push("/organizer/profile");
                 },
-                onError(error: any) {
+                onError(error: unknown) {
                     const err = error as { response: { data: { message: string } } };
                     setLoadingSpinner(false);
                     alert(err.response.data.message);

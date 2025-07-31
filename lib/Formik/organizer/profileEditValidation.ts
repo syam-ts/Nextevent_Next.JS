@@ -3,7 +3,6 @@ import { useFormik } from "formik";
 import { useSelector } from "react-redux";
 
 export const profileEditValidation = (submitForm: any) => {
-
     const organizer = useSelector(
         (state: any) => state.organizer.currentOrganizer
     );
@@ -16,7 +15,11 @@ export const profileEditValidation = (submitForm: any) => {
         },
 
         validate: (values) => {
-            const errors: any = {};
+            const errors = {
+                name: "",
+                mobile: 0 || "",
+                organizationName: "",
+            };
 
             if (!values.name) {
                 errors.name = "Name required";

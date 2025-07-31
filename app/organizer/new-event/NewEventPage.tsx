@@ -53,7 +53,7 @@ const NewEventPage = () => {
             },
             {
                 onSuccess: (data) => {
-                    //  console.log("Success", data);
+                     console.log("Success", data);
                     setLoadingSpinner(false);
                     router.push("/organizer/my-events");
                 },
@@ -74,11 +74,11 @@ const NewEventPage = () => {
 
     const uploadedImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
         setImageloading(true);
-        const file: any = e.target.files?.[0];
+        const file = e.target.files?.[0];
         if (!file) return;
 
         try {
-            const url = await ImageUpload(file);
+            const url = await ImageUpload(file.toString());
             setImageloading(false);
             setFieldValue("eventImage", url);
         } catch (err) {

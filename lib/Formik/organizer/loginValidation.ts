@@ -1,15 +1,17 @@
-import { useFormik } from "formik"; 
+import { useFormik } from "formik";
 
 export const loginValidation = (submitForm: any) => {
-
-   return useFormik({
+    return useFormik({
         initialValues: {
             email: "",
             password: "",
         },
 
         validate: (values) => {
-            const errors: any = {};
+            const errors = {
+                email: "",
+                password: "",
+            };
 
             if (!values.email) {
                 errors.email = "Email is required";
@@ -33,4 +35,4 @@ export const loginValidation = (submitForm: any) => {
             submitForm(values.email, values.password);
         },
     });
-}
+};

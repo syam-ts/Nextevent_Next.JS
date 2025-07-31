@@ -20,15 +20,10 @@ const EventCard = ({
     isLoading,
 }: {
     data: IEventCardProp;
-    isError: any;
-    isLoading: any;
+    isError: unknown;
+    isLoading: unknown;
 }) => {
-
-    
-      const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
-    const handleViewDetails = (eventId: string) => {
-        alert(`Navigating to event details: ${eventId}`);
-    };
+ 
  
 
     const formatDate = (date: string) => {

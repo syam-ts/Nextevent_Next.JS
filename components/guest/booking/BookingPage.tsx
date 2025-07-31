@@ -19,7 +19,6 @@ interface BookingPageProps {
 }
 
 const BookingPage: React.FC<BookingPageProps> = ({ booking }) => {
-
     const [isOpen, setIsOpen] = React.useState(false);
     const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
     const { mutate } = useCancelBooking();
@@ -29,7 +28,6 @@ const BookingPage: React.FC<BookingPageProps> = ({ booking }) => {
         alert("Downloading ticket...");
     };
 
-
     const cancelBooking = (): void => {
         setLoadingSpinner(true);
         mutate(
@@ -38,6 +36,7 @@ const BookingPage: React.FC<BookingPageProps> = ({ booking }) => {
             },
             {
                 onSuccess: async (data) => {
+                    console.log("Success: ", data);
                     setLoadingSpinner(false);
                     router.push("/guest/my-bookings");
                 },
@@ -50,7 +49,6 @@ const BookingPage: React.FC<BookingPageProps> = ({ booking }) => {
         );
     };
 
-    
     return (
         <div className="p-8">
             {loadingSpinner && <Spinner />}

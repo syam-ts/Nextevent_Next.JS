@@ -2,11 +2,11 @@
 import React from "react";
 import { useGetMyEvents } from "../../../hooks/organizer/useGetMyEvents";
 import EventCard from "../../../components/organizer/event/EventCard";
-import { Spinner } from "../../../components/lib/organizer/Spinner";
-
+import { Spinner } from "../../../components/lib/organizer/Spinner"; 
 const MyEventsPage = () => {
+     
 
-    const { data, isLoading }: { data: any; isLoading: any } = useGetMyEvents();
+    const { data, isLoading } = useGetMyEvents();
 
     if (isLoading) return <Spinner />;
     if (!data) return;

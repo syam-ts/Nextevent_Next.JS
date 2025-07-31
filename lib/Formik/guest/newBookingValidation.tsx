@@ -1,8 +1,8 @@
-import { useFormik } from "formik"; 
+import { useFormik } from "formik";
 
 export const newBookingValidation = (submitForm: any, eventName: string) => {
     return useFormik({
-        initialValues: { 
+        initialValues: {
             street: "",
             city: "",
             zipcode: 0,
@@ -10,8 +10,14 @@ export const newBookingValidation = (submitForm: any, eventName: string) => {
             total: 0,
         },
 
-        validate: (values) => { 
-            const errors: any = {};
+        validate: (values) => {
+            const errors = {
+                street: "",
+                city: "",
+                zipcode: 0 || "",
+                numberOfSeats: 0 || "",
+                total: 0 || "",
+            };
 
             if (!values.street) {
                 errors.street = "Street Address required";
@@ -39,7 +45,6 @@ export const newBookingValidation = (submitForm: any, eventName: string) => {
             } else if (values.numberOfSeats < 1 || values.numberOfSeats > 10) {
                 errors.numberOfSeats = "numberOfSeats should be between 1 and 10";
             }
- 
 
             return errors;
         },

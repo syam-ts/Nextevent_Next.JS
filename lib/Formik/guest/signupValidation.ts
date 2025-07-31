@@ -11,7 +11,13 @@ export const signupValidation = (submitForm: any) => {
         },
 
         validate: (values) => {
-            const errors: any = {};
+            const errors = {
+                name: "",
+                email: "",
+                password: "",
+                mobile: 0 || "",
+                location: "",
+            };
 
             if (!values.name) {
                 errors.name = "Name required";
@@ -42,7 +48,7 @@ export const signupValidation = (submitForm: any) => {
                 errors.mobile = "Number should be valid";
             }
 
-             if (!values.location) {
+            if (!values.location) {
                 errors.location = "Location required";
             } else if (values.location.length > 20 || values.location.length < 5) {
                 errors.location = "Location need to be valid";

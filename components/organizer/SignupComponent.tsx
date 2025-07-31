@@ -36,7 +36,7 @@ const SignupComponent = () => {
                     setLoadingSpinner(false);
                     router.push("/organizer/login");
                 },
-                onError(error: any) {
+                onError(error: unknown) {
                     const err = error as { response: { data: { message: string } } };
                     setLoadingSpinner(false);
                     toast.error(err.response.data.message);

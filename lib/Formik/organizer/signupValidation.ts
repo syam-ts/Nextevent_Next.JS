@@ -6,12 +6,18 @@ export const signupValidation = (submitForm: any) => {
             name: "",
             email: "",
             password: "",
-            mobile: 0,
+            mobile: 0  || "",
             organizationName: "",
         },
 
         validate: (values) => {
-            const errors: any = {};
+            const errors = {
+                name: "",
+                email: "",
+                password: "",
+                mobile: 0 || "",
+                organizationName: "",
+            };
 
             if (!values.name) {
                 errors.name = "Name required";
@@ -34,7 +40,7 @@ export const signupValidation = (submitForm: any) => {
             }
 
             if (!values.mobile) {
-                errors.mobile = "Mobile number required";
+                values.mobile = "Mobile number required";
             } else if (
                 values.mobile.toString().length < 9 ||
                 values.mobile.toString().length > 10

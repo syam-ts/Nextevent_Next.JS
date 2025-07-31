@@ -47,7 +47,7 @@ axiosInstanseOrganizer.interceptors.response.use(
                 return axiosInstanseOrganizer(original_request);
             } catch (err) {
                 logoutHelperFunction("organizer", store.dispatch);
-                return Promise.reject(error);
+                return Promise.reject(err);
             }
         }
         console.log("LAST");

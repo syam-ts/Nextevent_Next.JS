@@ -36,7 +36,7 @@ const ProfileEdit = () => {
 
                     router.push("/guest/profile");
                 },
-                onError(error: any) {
+                onError(error: unknown) {
                     const err = error as { response: { data: { message: string } } };
                     setLoadingSpinner(false);
                     alert(err.response.data.message);
@@ -52,11 +52,11 @@ const ProfileEdit = () => {
 
     const uploadedImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
         setImageloading(true);
-        const file: any = e.target.files?.[0];
+        const file = e.target.files?.[0];
         if (!file) return;
 
         try {
-            const url = await ImageUpload(file);
+            const url = await ImageUpload(file.toString());
             setImageloading(false);
             setFieldValue("profilePicture", url);
         } catch (err) {

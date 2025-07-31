@@ -8,9 +8,10 @@ const AllEventsPage = () => {
 
     const [filter, setFilter] = useState<string>("nearby");
     const [currentPage, setCurrentPage] = useState<number>(1);  
-    const { data, isError, isLoading ,isPending} = useGetAllEvents(filter, currentPage);
+    const { data, isError, isLoading } = useGetAllEvents(filter, currentPage);
  
     if (!data) return;
+    console.log(setCurrentPage)
 
     return (
         <div className="bg-white">

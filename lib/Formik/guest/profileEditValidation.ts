@@ -1,10 +1,9 @@
-"use client"
+"use client";
 import { useFormik } from "formik";
 import { useSelector } from "react-redux";
 
 export const profileEditValidation = (submitForm: any) => {
-
-      const guest = useSelector((state: any) => state.guest.currentGuest);
+    const guest = useSelector((state: any) => state.guest.currentGuest);
 
     return useFormik({
         initialValues: {
@@ -15,7 +14,12 @@ export const profileEditValidation = (submitForm: any) => {
         },
 
         validate: (values) => {
-            const errors: any = {};
+            const errors = {
+                name: "",
+                profilePicture: "",
+                mobile: 0 || "",
+                location: "",
+            };
 
             if (!values.name) {
                 errors.name = "Name required";
@@ -32,10 +36,10 @@ export const profileEditValidation = (submitForm: any) => {
                 errors.mobile = "Number should be valid";
             }
 
-            if (!values.age) {
-                errors.age = "Age required";
-            } else if (values.age < 20 || values.age > 50) {
-                errors.age = "Age should be between 20 and 50";
+            if (!values.location) {
+                errors.location = "Location required";
+            } else if (values.location.length > 20 || values.location.length < 5) {
+                errors.location = "Location need to be valid";
             }
 
             return errors;
@@ -43,7 +47,12 @@ export const profileEditValidation = (submitForm: any) => {
 
         onSubmit: (values) => {
             console.log(values);
-            submitForm(values.name,values.profilePicture, values.mobile, values.age);
+            submitForm(
+                values.name,
+                values.profilePicture,
+                values.mobile,
+                values.location
+            );
         },
     });
 };

@@ -16,7 +16,18 @@ export const newEventValidation = (submitForm: any) => {
         },
 
         validate: (values) => {
-            const errors: any = {};
+            const errors = {
+                     eventName: "",
+            eventImage: "",
+            location: "",
+            date: "",
+            startTime: "",
+            endTime: "",
+            ticketPrice: 0 || "",
+            totalSeats: 0 || "",
+            isPaid: false || "",
+            details: "",
+            };
 
             if (!values.eventName) {
                 errors.eventName = "Event Name required";
