@@ -1,23 +1,25 @@
 import { useFormik } from "formik";
- 
-export const useSignupValidation = (submitForm: Function) => {
+
+type SubmitFormFn = (
+    name: string,
+    email: string,
+    password: string,
+    mobile: number,
+    organizationName: string
+) => void;
+
+export const useSignupValidation = (submitForm: SubmitFormFn) => {
     return useFormik({
         initialValues: {
             name: "",
             email: "",
             password: "",
-            mobile: 0 || "",
+            mobile: 0,
             organizationName: "",
         },
 
         validate: (values) => {
-            const errors = {
-                name: "",
-                email: "",
-                password: "",
-                mobile: 0 || "",
-                organizationName: "",
-            };
+            const errors: Partial<Record<keyof typeof values, string>> = {};
 
             if (!values.name) {
                 errors.name = "Name required";
@@ -40,7 +42,7 @@ export const useSignupValidation = (submitForm: Function) => {
             }
 
             if (!values.mobile) {
-                values.mobile = "Mobile number required";
+                errors.mobile = "Mobile number required";
             } else if (
                 values.mobile.toString().length < 9 ||
                 values.mobile.toString().length > 10

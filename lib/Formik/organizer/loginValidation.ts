@@ -1,6 +1,8 @@
 import { useFormik } from "formik";
 
-export const useLoginValidation = (submitForm: Function) => {
+type SubmitFormFn = (email: string, password: string) => void;
+
+export const useLoginValidation = (submitForm: SubmitFormFn) => {
     return useFormik({
         initialValues: {
             email: "",
@@ -8,10 +10,7 @@ export const useLoginValidation = (submitForm: Function) => {
         },
 
         validate: (values) => {
-            const errors = {
-                email: "",
-                password: "",
-            };
+            const errors: Partial<Record<keyof typeof values, string>> = {};
 
             if (!values.email) {
                 errors.email = "Email is required";

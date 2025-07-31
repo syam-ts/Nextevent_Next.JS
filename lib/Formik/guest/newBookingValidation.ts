@@ -1,6 +1,18 @@
 import { useFormik } from "formik";
 
-export const useNewBookingValidation = (submitForm: Function, eventName: string) => {
+type SubmitFormFn = (
+    eventName: string,
+    street: string,
+    city: string,
+    zipcode: number,
+    numberOfSeats: number,
+    total: number
+) => void;
+
+export const useNewBookingValidation = (
+    submitForm: SubmitFormFn,
+    eventName: string
+) => {
     return useFormik({
         initialValues: {
             street: "",
@@ -11,13 +23,7 @@ export const useNewBookingValidation = (submitForm: Function, eventName: string)
         },
 
         validate: (values) => {
-            const errors = {
-                street: "",
-                city: "",
-                zipcode: 0 || "",
-                numberOfSeats: 0 || "",
-                total: 0 || "",
-            };
+            const errors: Partial<Record<keyof typeof values, string>> = {};
 
             if (!values.street) {
                 errors.street = "Street Address required";
@@ -28,7 +34,7 @@ export const useNewBookingValidation = (submitForm: Function, eventName: string)
             if (!values.city) {
                 errors.city = "City name required";
             } else if (values.city.length > 15 || values.city.length < 5) {
-                errors.city = "City name should to be b/w 5 to 15 characters";
+                errors.city = "City name should be b/w 5 to 15 characters";
             }
 
             if (!values.zipcode) {
@@ -43,14 +49,13 @@ export const useNewBookingValidation = (submitForm: Function, eventName: string)
             if (!values.numberOfSeats) {
                 errors.numberOfSeats = "Number Of Seats required";
             } else if (values.numberOfSeats < 1 || values.numberOfSeats > 10) {
-                errors.numberOfSeats = "numberOfSeats should be between 1 and 10";
+                errors.numberOfSeats = "Number of seats should be between 1 and 10";
             }
 
             return errors;
         },
 
         onSubmit: (values) => {
-            console.log(values);
             submitForm(
                 eventName,
                 values.street,

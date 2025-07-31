@@ -1,6 +1,19 @@
 import { useFormik } from "formik";
 
-export const useNewEventValidation = (submitForm: Function) => {
+type SubmitFormFn = (
+    eventName: string,
+    eventImage: string,
+    location: string,
+    date: string,
+    startTime: string,
+    endTime: string,
+    ticketPrice: number,
+    totalSeats: number,
+    isPaid: boolean,
+    details: string
+) => void;
+
+export const useNewEventValidation = (submitForm: SubmitFormFn) => {
     return useFormik({
         initialValues: {
             eventName: "",
@@ -16,18 +29,7 @@ export const useNewEventValidation = (submitForm: Function) => {
         },
 
         validate: (values) => {
-            const errors = {
-                     eventName: "",
-            eventImage: "",
-            location: "",
-            date: "",
-            startTime: "",
-            endTime: "",
-            ticketPrice: 0 || "",
-            totalSeats: 0 || "",
-            isPaid: false || "",
-            details: "",
-            };
+            const errors: Partial<Record<keyof typeof values, string>> = {};
 
             if (!values.eventName) {
                 errors.eventName = "Event Name required";

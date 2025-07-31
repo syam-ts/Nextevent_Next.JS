@@ -3,24 +3,26 @@ import { useFormik } from "formik";
 import { useSelector } from "react-redux";
 import { IGuestState } from "../../../types/slice-states/guestState";
 
-export const useProfileEditValidation = (submitForm: Function) => {
+type SubmitFormFn = (
+    name: string,
+    profilePicture: string,
+    mobile: number,
+    location: string
+) => void;
+
+export const useProfileEditValidation = (submitForm: SubmitFormFn) => {
     const guest = useSelector((state: IGuestState) => state.guest.currentGuest);
 
     return useFormik({
         initialValues: {
-            name: guest?.name,
-            profilePicture: guest?.profilePicture,
-            mobile: guest?.mobile,
-            location: guest?.location,
+            name: guest?.name ?? "",
+            profilePicture: guest?.profilePicture ?? "",
+            mobile: guest?.mobile ?? 0,
+            location: guest?.location ?? "",
         },
 
         validate: (values) => {
-            const errors = {
-                name: "",
-                profilePicture: "",
-                mobile: 0 || "",
-                location: "",
-            };
+            const errors: Partial<Record<keyof typeof values, string>> = {};
 
             if (!values.name) {
                 errors.name = "Name required";

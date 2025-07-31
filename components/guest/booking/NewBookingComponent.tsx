@@ -25,7 +25,7 @@ const NewBookingComponent: React.FC<NewBookingCompnentProps> = ({
     const { data } = useViewEvent(eventId);
     const [total, setTotal] = useState<number>(data?.event.ticketPrice as number);
     const searchParams = useSearchParams();
-    const isEventPaid: any = searchParams.get("isPaid");
+    const isEventPaid = searchParams.get("isPaid") === 'true';
     const router = useRouter();
 
     const submitForm = (

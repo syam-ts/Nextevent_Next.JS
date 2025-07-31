@@ -2,7 +2,13 @@
 import { useFormik } from "formik";
 import { useSelector } from "react-redux";
 
-export const useProfileEditValidation = (submitForm: Function) => {
+type SubmitFormFn = (
+    name: string,
+    mobile: number,
+    organizationName: string
+) => void;
+
+export const useProfileEditValidation = (submitForm: SubmitFormFn) => {
     const organizer = useSelector(
         (state: any) => state.organizer.currentOrganizer
     );
@@ -15,12 +21,7 @@ export const useProfileEditValidation = (submitForm: Function) => {
         },
 
         validate: (values) => {
-            const errors = {
-                name: "",
-                mobile: 0 || "",
-                organizationName: "",
-            };
-
+            const errors: Partial<Record<keyof typeof values, string>> = {};
             if (!values.name) {
                 errors.name = "Name required";
             } else if (values.name.length > 20 || values.name.length < 5) {
