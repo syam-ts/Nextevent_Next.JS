@@ -3,7 +3,7 @@ import { config } from "../../../utils/config";
 import { logoutHelperFunction } from "../../../helper/methods/logoutHelper";
 import store from "../../../redux/store";
 
-const backend_url: string = config.backend_url;
+const backend_url: string = config.backend_url as string;
 
 export const axiosInstanseOrganizer = axios.create({
     baseURL: backend_url,
