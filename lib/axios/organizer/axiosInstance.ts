@@ -1,9 +1,9 @@
 import axios from "axios";
-import { config } from "../../../utils/config";
 import { logoutHelperFunction } from "../../../helper/methods/logoutHelper";
 import store from "../../../redux/store";
+import { getConfig } from "../../../utils/config";
 
-const backend_url: string = config.backend_url as string;
+const { backend_url } = getConfig();
 
 export const axiosInstanseOrganizer = axios.create({
     baseURL: backend_url,

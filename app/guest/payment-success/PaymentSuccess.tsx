@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
+import { getConfig } from "../../../utils/config";
 import { useSearchParams, useRouter } from "next/navigation";
-import { config } from "../../../utils/config"; 
 import { axiosInstanseGuest } from "../../../lib/axios/guest/axiosInstance";
 
 const SuccessPage = () => {
@@ -10,13 +10,14 @@ const SuccessPage = () => {
     const sessionId = searchParams.get("session_id");
     const eventId = searchParams.get("eventId");
     const router = useRouter();
+    const { backend_url } = getConfig();
 
     useEffect(() => {
         const createBooking = async () => {
             if (!sessionId || !eventId) return;
 
             await axiosInstanseGuest.post(
-                `${config.backend_url}/booking/confirm`,
+                `${backend_url}/booking/confirm`,
                 {
                     sessionId,
                     eventId,

@@ -6,10 +6,10 @@ import toast from "react-hot-toast";
 import { loadStripe } from "@stripe/stripe-js";
 import { useNewBooking } from "../../../hooks/guest/booking/useNewBooking";
 import { useViewEvent } from "../../../hooks/Event(shared)/useViewEvent";
-import { config } from "../../../utils/config";
 import { useNewBookingValidation } from "../../../lib/Formik/guest/newBookingValidation";
 import { Spinner } from "../../lib/guest/Spinner";
 import { useFreeBooking } from "../../../hooks/guest/booking/useFreeBooking";
+import { getConfig } from "../../../utils/config";
 
 interface NewBookingCompnentProps {
     eventId: string;
@@ -25,7 +25,7 @@ const NewBookingComponent: React.FC<NewBookingCompnentProps> = ({
     const { data } = useViewEvent(eventId);
     const [total, setTotal] = useState<number>(data?.event.ticketPrice as number);
     const searchParams = useSearchParams();
-    const isEventPaid = searchParams.get("isPaid") === 'true';
+    const isEventPaid = searchParams.get("isPaid") === "true";
     const router = useRouter();
 
     const submitForm = (
@@ -52,11 +52,9 @@ const NewBookingComponent: React.FC<NewBookingCompnentProps> = ({
                 {
                     onSuccess: async (data) => {
                         console.log("Success", data);
-                        console.log("STRIPE KEY: ", config.strpe_public_key);
+                        const { strpe_public_key } = getConfig();
 
-                        const stripePromise = loadStripe(
-                            config.strpe_public_key as string
-                        );
+                        const stripePromise = loadStripe(strpe_public_key as string);
 
                         const stripe = await stripePromise;
                         if (!stripe) {
@@ -128,10 +126,7 @@ const NewBookingComponent: React.FC<NewBookingCompnentProps> = ({
         <div className="min-h-screen bg-white w-full flex items-center justify-center p-4 lg:p-8">
             {loadingSpinner && <Spinner />}
             <div className="w-full max-w-6xl mx-auto">
-                <div
-                    className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 overflow-hidden"
-                    
-                >
+                <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 overflow-hidden">
                     <div className="flex flex-col lg:flex-row">
                         <div className="flex-1 p-8 lg:p-12">
                             <div className="text-center mb-8">

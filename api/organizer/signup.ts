@@ -1,5 +1,5 @@
-import axios from "axios"; 
-import { config } from "../../utils/config";
+import axios from "axios";
+import { getConfig } from "../../utils/config";
 
 type SignupPayload = {
     name: string;
@@ -10,14 +10,16 @@ type SignupPayload = {
 };
 
 type SignupReponse = {
-    success: boolean
-}
+    success: boolean;
+};
 
 export const SignupOrganizer = async (
     payload: SignupPayload
 ): Promise<SignupReponse> => {
+    
+    const { backend_url } = getConfig();
     const { data } = await axios.post(
-        `${config.backend_url}/organizer/signup`,
+        `${backend_url}/organizer/signup`,
         payload,
         {
             withCredentials: true,

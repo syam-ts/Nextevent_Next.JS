@@ -1,8 +1,10 @@
 import axios from "axios";
-import { config } from "../../utils/config";
+import { getConfig } from "../../utils/config";
+
+const { cloudinay_url } = getConfig();
 
 const cloudinaryInstance = axios.create({
-    baseURL: `${config.cloudinay_url}`,
+    baseURL: `${cloudinay_url}`,
     headers: {
         "Content-Type": "multipart/form-data",
     },
@@ -19,7 +21,7 @@ export const ImageUpload = async (image: string): Promise<string> => {
 
     // console.log("file", [...data.entries()]);
     const response = await cloudinaryInstance.post("", data);
-    console.log('uploaded image: ',response.data.secure_url)
+    console.log("uploaded image: ", response.data.secure_url);
 
     return response.data.secure_url;
 };

@@ -1,6 +1,6 @@
-import axios from "axios"; 
+import axios from "axios";
 import { IEvent } from "../../types/event";
-import { config } from "../../utils/config";
+import { getConfig } from "../../utils/config";
 
 interface ViewEventResponse {
     event: IEvent;
@@ -9,6 +9,7 @@ interface ViewEventResponse {
 export const ViewEvent = async (
     eventId: string
 ): Promise<ViewEventResponse> => {
-    const { data } = await axios.get(`${config.backend_url}/event/view/${eventId}`);
+    const { backend_url } = getConfig();
+    const { data } = await axios.get(`${backend_url}/event/view/${eventId}`);
     return data;
 };

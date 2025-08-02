@@ -1,5 +1,5 @@
-import axios from "axios"; 
-import { config } from "../../utils/config";
+import axios from "axios";
+import { getConfig } from "../../utils/config";
 import { IOrganizer } from "../../types/organizer";
 
 type LoginPayload = {
@@ -15,12 +15,9 @@ type LoginResponse = {
 export const LoginOrganizer = async (
     payload: LoginPayload
 ): Promise<LoginResponse> => {
-    const { data } = await axios.post(
-        `${config.backend_url}/organizer/login`,
-        payload,
-        {
-            withCredentials: true,
-        }
-    );
+    const { backend_url } = getConfig();
+    const { data } = await axios.post(`${backend_url}/organizer/login`, payload, {
+        withCredentials: true,
+    });
     return data;
 };
