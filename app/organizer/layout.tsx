@@ -18,7 +18,7 @@ export default function AuthLayout({
   return (
     <div>
       {!notProvideThePageFor && <Navbar />}
-      <ProtectedRoute>children={children}</ProtectedRoute>
+      <ProtectedRoute>{children}</ProtectedRoute>
       <Toaster />
       {!notProvideThePageFor && <Footer />}
     </div>

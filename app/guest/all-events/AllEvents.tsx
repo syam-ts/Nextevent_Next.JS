@@ -1,60 +1,74 @@
 "use client";
 import { useGetAllEvents } from "../../../hooks/guest/useGetAllEvents";
 import EventCard from "../../../components/guest/event/EventCard";
-import { useState } from "react"; 
+import { useState } from "react";
 import { Spinner } from "../../../components/lib/guest/Spinner";
+import { IndianRupee, LocateFixedIcon } from "lucide-react";
 
 const AllEventsPage = () => {
-
+    
     const [filter, setFilter] = useState<string>("nearby");
-    const [currentPage, setCurrentPage] = useState<number>(1);  
+    const [currentPage, setCurrentPage] = useState<number>(1);
     const { data, isError, isLoading } = useGetAllEvents(filter, currentPage);
- 
+
     if (!data) return;
-    console.log(setCurrentPage)
+    console.log(setCurrentPage);
 
     return (
         <div className="bg-white">
-            {
-                isLoading && <Spinner />
-            }
+            {isLoading && <Spinner />}
             <div className="text-center mb-6">
                 <h1 className="font-extrabold text-4xl text-orange-700 py-12">
                     All Events
                 </h1>
             </div>
 
+            <div className="flex gap-28">
                 {/* Filter secton    */}
-            <div className=" flex px-20 justify-end">
-                <div className="relative">
-                    <select
-                        id="dynamicSelect"
-                        className="bg-transparent text-center placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded pl-3 pr-8 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md appearance-none cursor-pointer w-[10rem]"
-                        onChange={(e) => setFilter(e.target.value)}
-                    >
-                        <option value="nearby"> nearby </option>
-                        <option value="free"> free </option>
-                        <option value="paid"> paid </option>
-                    </select>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.2"
-                        stroke="currentColor"
-                        className="h-5 w-5 ml-1 absolute top-2.5 right-2.5 text-slate-700 pointer-events-none"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"
-                        />
-                    </svg>
-                </div>
-            </div>
+                <div className="fixed z-1 bg-white ml-20 pt-20 flex h-[calc(100vh-20rem)] flex-col rounded-xl bg-clip-border p-10 text-gray-700 shadow-xl shadow-blue-gray-900/5">
+                    <nav className="flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-normal text-blue-gray-700">
+                        <div
+                            onClick={() => setFilter("nearby")}
+                            role="button"
+                            className="flex cursor-pointer border-b items-center w-full p-3 leading-tight transition-all outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+                        >
+                            <div className="grid mr-4 place-items-center">
+                                <LocateFixedIcon />
+                            </div>
+                            Nearby
+                        </div>
 
-            <div className="bg-white">
-                <EventCard data={data} isError={isError} isLoading={isLoading} />
+                        <div
+                            onClick={() => setFilter("free")}
+                            role="button"
+                            className="flex border-b cursor-pointer items-center w-full p-3 leading-tight transition-all outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+                        >
+                            <div className="grid mr-4 place-items-center">
+                                <img
+                                    src="https://cdn-icons-png.flaticon.com/128/3706/3706340.png"
+                                    className="w-5 h-5"
+                                    alt="free-icon"
+                                />
+                            </div>
+                            Free
+                        </div>
+
+                        <div
+                            onClick={() => setFilter("paid")}
+                            role="button"
+                            className="flex border-b items-center w-full p-3 cursor-pointer leading-tight transition-all outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+                        >
+                            <div className="grid mr-4 place-items-center">
+                                <IndianRupee />
+                            </div>
+                            Paid
+                        </div>
+                    </nav>
+                </div>
+
+                <div className="relative ml-[35rem]">
+                    <EventCard data={data} isError={isError} isLoading={isLoading} />
+                </div>
             </div>
         </div>
     );
