@@ -1,16 +1,7 @@
 import { axiosInstanseOrganizer } from "../../lib/axios/organizer/axiosInstance";
- 
-type NewEventPayload = {
-    eventName: string;
-    eventImage: string;
-    location: string;
-    date: string;
-    startTime: string;
-    endTime: string;
-    totalSeats: number;
-    isPaid: boolean;
-    details: string;
-};
+import { IEvent } from "../../types/event";
+
+type NewEventPayload = Omit<IEvent, "_id" | "organizerDetails" | "ticketPrice">;
 
 type NewEventResponse = {
     success: boolean;

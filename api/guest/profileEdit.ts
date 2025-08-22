@@ -1,14 +1,12 @@
 import { axiosInstanseGuest } from "../../lib/axios/guest/axiosInstance";
+import { IGuest } from "../../types/guest";
 
-  
-interface ProifleEditPayload {
-    name: string;
-    profilePicture: string;
-    mobile: number;
-    location: string;
-};
+type ProifleEditPayload = Pick<
+    IGuest,
+    "name" | "profilePicture" | "mobile" | "location"
+>;
 
-interface ProfileEditResponse {
+type ProfileEditResponse = {
     guest: {
         _id: string;
         name: string;
@@ -17,7 +15,7 @@ interface ProfileEditResponse {
         mobile: number;
         location: string;
         numberOfEventsAttended: number;
-        wallet: any; 
+        wallet: any;
         createdAt: string;
     };
 };

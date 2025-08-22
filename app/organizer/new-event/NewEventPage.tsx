@@ -22,7 +22,7 @@ const NewEventPage = () => {
     const [imageloading, setImageloading] = useState<boolean>(false);
     const [isFree, setIsFree] = useState<boolean>(true);
     const { mutate } = useNewEvent();
-    const router = useRouter();
+    const router = useRouter(); 
 
     
     const submitForm = (
@@ -55,7 +55,7 @@ const NewEventPage = () => {
                 onSuccess: (data) => {
                      console.log("Success", data);
                     setLoadingSpinner(false);
-                    router.push("/organizer/my-events");
+                  //  router.push("/organizer/my-events");
                 },
                 onError(error: unknown) {
                     const err = error as { response: { data: { message: string } } };
@@ -74,11 +74,12 @@ const NewEventPage = () => {
 
     const uploadedImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
         setImageloading(true);
+       
         const file = e.target.files?.[0];
         if (!file) return;
 
-        try {
-            const url = await ImageUpload(file.toString());
+        try { 
+            const url = await ImageUpload(file);
             setImageloading(false);
             setFieldValue("eventImage", url);
         } catch (err) {

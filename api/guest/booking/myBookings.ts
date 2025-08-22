@@ -1,7 +1,7 @@
 import { axiosInstanseGuest } from "../../../lib/axios/guest/axiosInstance";
 import { IBooking } from "../../../types/booking";
 
-interface BookingResponse {
+type BookingResponse = {
     bookings: IBooking[];
 }
 

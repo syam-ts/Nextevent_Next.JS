@@ -1,6 +1,6 @@
 import { axiosInstanseGuest } from "../../../lib/axios/guest/axiosInstance";
 
-interface FreeBookingPayload {
+type FreeBookingPayload = {
     eventId: string;
     eventName: string;
     isPaid: boolean;
@@ -10,8 +10,9 @@ interface FreeBookingPayload {
     numberOfSeats: number;
     total: number;
 }
+ 
 
-interface FreeBookingResponse {
+type FreeBookingResponse = {
     success: boolean;
 }
 

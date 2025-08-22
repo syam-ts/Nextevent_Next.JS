@@ -1,6 +1,6 @@
 import { axiosInstanseGuest } from "../../lib/axios/guest/axiosInstance";
 
-interface GetHomeStatsResponse {
+type GetHomeStatsResponse = {
     stats: {
         totalEvents: number;
         totalBookings: number;

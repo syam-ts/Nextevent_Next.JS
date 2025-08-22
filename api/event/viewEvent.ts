@@ -2,7 +2,7 @@ import axios from "axios";
 import { IEvent } from "../../types/event";
 import { getConfig } from "../../utils/config";
 
-interface ViewEventResponse {
+type ViewEventResponse = {
     event: IEvent;
 }
 

@@ -9,11 +9,10 @@ const cloudinaryInstance = axios.create({
         "Content-Type": "multipart/form-data",
     },
 });
+ 
 
-export const ImageUpload = async (image: string): Promise<string> => {
-    const file = image;
-    if (!file) throw new Error("no file found");
-
+export const ImageUpload = async (file: any): Promise<string> => {  
+    if (!file) throw new Error("no file found"); 
     const data = new FormData();
     data.append("file", file);
     data.append("upload_preset", "next-event"),

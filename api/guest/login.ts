@@ -2,15 +2,15 @@ import axios from "axios";
 import { IGuest } from "../../types/guest";
 import { getConfig } from "../../utils/config";
 
-interface LoginPayload {
+type LoginPayload = {
     email: string;
     password: string;
-}
+};
 
-interface LoginResponse {
+type LoginResponse = {
     accessToken: string;
     guest: IGuest;
-}
+};
 
 export const LoginGuest = async (
     payload: LoginPayload

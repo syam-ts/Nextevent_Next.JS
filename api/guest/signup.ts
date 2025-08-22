@@ -1,15 +1,13 @@
 import axios from "axios";
 import { getConfig } from "../../utils/config";
+import { IGuest } from "../../types/guest";
 
-interface SignupPayload {
-  name: string;
-  email: string;
-  password: string;
-  mobile: number;
-  location: string;
-}
+type SignupPayload = Pick<
+  IGuest,
+  "name" | "email" | "password" | "mobile" | "location"
+>;
 
-interface SignupResponse {
+type SignupResponse = {
   success: boolean;
 }
 

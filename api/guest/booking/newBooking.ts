@@ -1,21 +1,20 @@
 import { axiosInstanseGuest } from "../../../lib/axios/guest/axiosInstance";
- 
 
-interface NewBookingPayload {
+type NewBookingPayload = {
     eventId: string;
     eventName: string;
     isPaid: boolean;
     street: string;
     city: string;
-     zipcode: number;
+    zipcode: number;
     numberOfSeats: number;
     total: number;
 };
 
-interface NewBookingResponse {
+type NewBookingResponse = {
     result: {
-        id: string
-    }
+        id: string;
+    };
 };
 
 export const NewBooking = async (

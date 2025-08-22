@@ -2,11 +2,11 @@
 import { axiosInstanseGuest } from "../../../lib/axios/guest/axiosInstance";
 import { IBooking } from "../../../types/booking";
 
-interface ViewBookingPayload {
+type ViewBookingPayload = {
     bookingId: string;
 }
 
-interface ViewBookingResponse {
+type ViewBookingResponse = {
     booking: IBooking;
 }
 

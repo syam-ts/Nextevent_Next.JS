@@ -1,13 +1,12 @@
 import { axiosInstanseGuest } from "../../../lib/axios/guest/axiosInstance";
 
-  
-interface CancelBookingPayload {
+type CancelBookingPayload = {
     bookingId: string;
-}
+};
 
-interface CancelBookingReponse {
+type CancelBookingReponse = {
     success: boolean;
-}
+};
 
 export const CancelBooking = async (
     payload: CancelBookingPayload

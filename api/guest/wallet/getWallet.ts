@@ -1,7 +1,7 @@
  import { axiosInstanseGuest } from "../../../lib/axios/guest/axiosInstance";
 import { IWallet } from "../../../types/wallet";
 
-interface GetWalletResponse {
+type GetWalletResponse = {
     wallet: IWallet;
 }
 

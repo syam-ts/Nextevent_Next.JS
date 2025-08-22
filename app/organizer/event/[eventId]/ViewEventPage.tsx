@@ -3,11 +3,13 @@ import React, { useEffect, useState } from "react";
 import { Calendar, Clock, MapPin, Users, Ticket } from "lucide-react";
 import { Spinner } from "../../../../components/lib/organizer/Spinner";
 import { useViewEvent } from "../../../../hooks/Event(shared)/useViewEvent";
+import dayjs from "dayjs";
 
 interface ViewEventPageProps {
     eventId: string;
 }
-
+ 
+ 
 const ViewEventPage: React.FC<ViewEventPageProps> = ({ eventId }) => {
 
     const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
@@ -47,7 +49,7 @@ const ViewEventPage: React.FC<ViewEventPageProps> = ({ eventId }) => {
                                         Event Date
                                     </p>
                                     <p className="text-xl font-bold text-indigo-900">
-                                        {data?.event.date.toString()}
+                                        {dayjs(data?.event.date).format('dddd, MM YYYY')}
                                     </p>
                                 </div>
                             </div>
@@ -111,7 +113,7 @@ const ViewEventPage: React.FC<ViewEventPageProps> = ({ eventId }) => {
                                         Ticket Price
                                     </p>
                                     <p className="text-xl font-bold text-indigo-900">
-                                        {data?.event.ticketPrice}
+                                        {data?.event.ticketPrice || 'Free'}
                                     </p>
                                 </div>
                             </div>
@@ -144,9 +146,13 @@ const ViewEventPage: React.FC<ViewEventPageProps> = ({ eventId }) => {
                         />
 
                         <div className="absolute top-6 right-6 bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border border-indigo-100 z-20">
-                            <span className="text-indigo-700 font-bold text-sm">
+                           {
+                            data?.event.isPaid ?  <span className="text-orange-700 font-bold text-sm">
                                 Premium Event
+                            </span> :  <span className="text-green-700 font-bold text-sm">
+                                Free Event
                             </span>
+                           }
                         </div>
                     </div>
 
