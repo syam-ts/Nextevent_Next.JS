@@ -1,11 +1,10 @@
 import { axiosInstanseOrganizer } from "../../lib/axios/organizer/axiosInstance";
 import { IOrganizer } from "../../types/organizer";
 
-type ProifleEditPayload = {
-    name: string;
-    mobile: number;
-    organizationName: string;
-};
+type ProifleEditPayload = Pick<
+    IOrganizer,
+    "name" | "mobile" | "organizationName"
+>;
 
 type Organizer = {
     organizer: IOrganizer;
