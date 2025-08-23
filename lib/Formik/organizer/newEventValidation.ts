@@ -10,6 +10,7 @@ type SubmitFormFn = (
     ticketPrice: number,
     totalSeats: number,
     isPaid: boolean,
+    isExpired: boolean,
     details: string
 ) => void;
 
@@ -25,6 +26,7 @@ export const useNewEventValidation = (submitForm: SubmitFormFn) => {
             ticketPrice: 0,
             totalSeats: 0,
             isPaid: false,
+            isExpired: false,
             details: "",
         },
 
@@ -101,6 +103,7 @@ export const useNewEventValidation = (submitForm: SubmitFormFn) => {
                 values.ticketPrice,
                 values.totalSeats,
                 values.isPaid,
+                values.isExpired,
                 values.details
             );
         },

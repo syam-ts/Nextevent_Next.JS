@@ -35,6 +35,7 @@ const NewEventPage = () => {
         ticketPrice: number,
         totalSeats: number,
         isPaid: boolean,
+        isExpired: boolean,
         details: string
     ): void => {
         setLoadingSpinner(true);
@@ -49,6 +50,7 @@ const NewEventPage = () => {
                 ticketPrice,
                 totalSeats,
                 isPaid,
+                isExpired,
                 details,
             },
             {
