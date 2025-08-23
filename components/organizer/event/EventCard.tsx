@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { IEvent } from "../../../types/event";
 import { Calendar, MapPin, Clock, Users, DollarSign, Eye } from "lucide-react";
+import dayjs from "dayjs";
 
 interface IEventCardProp {
     events: IEvent[];
@@ -9,15 +10,7 @@ interface IEventCardProp {
 
 const EventCard = ({ data }: { data: IEventCardProp }) => {
 
-    const formatDate = (date: string) => {
-        return new Date(date).toLocaleDateString("en-US", {
-            weekday: "short",
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-        });
-    };
-
+  
     const formatTime = (time: string) => {
         return time || "TBD";
     };
@@ -101,7 +94,7 @@ const EventCard = ({ data }: { data: IEventCardProp }) => {
                                         <div>
                                             <p className="text-sm text-gray-500 font-medium">Date</p>
                                             <p className="text-gray-900 font-semibold">
-                                                {formatDate(event.date)}
+                                                {dayjs(event.date).format('D MMMM YYYY')}
                                             </p>
                                         </div>
                                     </div>
@@ -126,7 +119,7 @@ const EventCard = ({ data }: { data: IEventCardProp }) => {
                                         <div>
                                             <p className="text-sm text-gray-500 font-medium">Seats</p>
                                             <p className="text-gray-900 font-semibold">
-                                                {event.totalSeats} available
+                                                {event.totalSeats}  
                                             </p>
                                         </div>
                                     </div>

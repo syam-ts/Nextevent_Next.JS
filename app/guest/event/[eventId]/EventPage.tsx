@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Calendar, Clock, MapPin, Users, Ticket } from "lucide-react";
 import { useViewEvent } from "../../../../hooks/Event(shared)/useViewEvent";
 import { Spinner } from "../../../../components/lib/guest/Spinner";
+import dayjs from "dayjs";
 
 interface EventPageProps {
     eventId: string;
@@ -44,7 +45,7 @@ const EventPage: React.FC<EventPageProps> = ({ eventId }) => {
                                         Event Date
                                     </p>
                                     <p className="text-xl font-bold text-orange-900">
-                                        {data?.event.date.toString()}
+                                        {dayjs(data?.event.date).format('D MMMM YYYY')}
                                     </p>
                                 </div>
                             </div>
@@ -99,14 +100,18 @@ const EventPage: React.FC<EventPageProps> = ({ eventId }) => {
                         </div>
                     </div>
 
-                    <div className="pt-4">
-                        <Link
+                    <div className="pt-4"> 
+                       {
+                        !data?.event.isExpired && (
+                             <Link
                             href={`/guest/booking/new/${data?.event._id}?isPaid=${data?.event.isPaid}`}
                             className="w-full md:w-auto px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white font-bold text-lg rounded-2xl shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-orange-300 flex items-center justify-center gap-3"
-                        >
+                        >  
                             <Ticket className="w-6 h-6" />
                             Register Now
                         </Link>
+                        ) 
+                       }
                     </div>
                 </div>
                 <div className="hero-image md:px-5 lg:px-0 w-full lg:w-1/2 relative isolate z-10">

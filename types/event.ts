@@ -12,5 +12,6 @@ export interface IEvent {
     ticketPrice: number;
     totalSeats: number;
     isPaid: boolean;
+    isExpired: boolean;
     details: string;
 }
