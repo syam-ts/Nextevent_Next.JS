@@ -1,15 +1,9 @@
 import React from "react";
-import {
-    Calendar,
-    MapPin,
-    Clock,
-    Users,
-    DollarSign,
-    Eye, 
-} from "lucide-react";
 import Link from "next/link";
 import { IEvent } from "../../../types/event";
- 
+import { Calendar, MapPin, Clock, Users, DollarSign, Eye } from "lucide-react";
+import dayjs from "dayjs";
+
 interface IEventCardProp {
     events: IEvent[];
 }
@@ -22,18 +16,7 @@ const EventCard = ({
     data: IEventCardProp;
     isError: unknown;
     isLoading: unknown;
-}) => {
- 
- 
-
-    const formatDate = (date: string) => {
-        return new Date(date).toLocaleDateString("en-US", {
-            weekday: "short",
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-        });
-    };
+}) => { 
 
     const formatTime = (time: string) => {
         return time || "TBD";
@@ -145,7 +128,7 @@ const EventCard = ({
                                         <div>
                                             <p className="text-sm text-gray-500 font-medium">Date</p>
                                             <p className="text-gray-900 font-semibold">
-                                                {formatDate(event.date)}
+                                                {dayjs(event.date).format('D MMMM YYYY')}
                                             </p>
                                         </div>
                                     </div>
@@ -170,7 +153,7 @@ const EventCard = ({
                                         <div>
                                             <p className="text-sm text-gray-500 font-medium">Seats</p>
                                             <p className="text-gray-900 font-semibold">
-                                                {event.totalSeats} available
+                                                {event.totalSeats} 
                                             </p>
                                         </div>
                                     </div>
@@ -183,7 +166,7 @@ const EventCard = ({
                                 </div>
 
                                 <Link
-                                     href={`/guest/event/${event._id}`}
+                                    href={`/guest/event/${event._id}`}
                                     className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-orange-600 to-orange-700 text-white font-semibold rounded-xl hover:from-orange-700 hover:to-orange-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all duration-200 transform hover:scale-105 shadow-lg"
                                 >
                                     <Eye className="w-4 h-4 mr-2" />

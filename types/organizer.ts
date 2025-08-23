@@ -8,4 +8,5 @@ export interface IOrganizer {
     organizationName: string;
     createdEvents: [];
     createdAt: string;
+    totalEventsCreated?: number;
 }
