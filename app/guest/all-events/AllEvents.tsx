@@ -1,9 +1,9 @@
 "use client";
-import { useGetAllEvents } from "../../../hooks/guest/useGetAllEvents";
-import EventCard from "../../../components/guest/event/EventCard";
 import { useState } from "react";
-import { Spinner } from "../../../components/lib/guest/Spinner";
 import { IndianRupee, LocateFixedIcon } from "lucide-react";
+import { Spinner } from "../../../components/lib/guest/Spinner";
+import EventCard from "../../../components/guest/event/EventCard";
+import { useGetAllEvents } from "../../../hooks/guest/useGetAllEvents";
 
 const AllEventsPage = () => {
     
@@ -24,44 +24,43 @@ const AllEventsPage = () => {
             </div>
 
             <div className="flex gap-28">
-                {/* Filter secton    */}
-                <div className="fixed z-1 bg-white ml-20 pt-20 flex h-[calc(100vh-20rem)] flex-col rounded-xl bg-clip-border p-10 text-gray-700 shadow-xl shadow-blue-gray-900/5">
-                    <nav className="flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-normal text-blue-gray-700">
+                {/* Filter Section */}
+                <div className="fixed z-10 bg-white ml-20 mt-44 pt-16 flex h-[calc(70vh-20rem)] flex-col rounded-2xl bg-clip-border px-8 text-gray-700 shadow-2xl ">
+                    <nav className="flex min-w-[240px] flex-col gap-2 font-sans text-base font-medium text-blue-gray-700">
                         <div
                             onClick={() => setFilter("nearby")}
                             role="button"
-                            className="flex cursor-pointer border-b items-center w-full p-3 leading-tight transition-all outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+                            className="flex items-center gap-4 w-full px-4 py-3 rounded-lg cursor-pointer transition-all duration-200 ease-in-out hover:bg-blue-50 hover:shadow-md hover:text-blue-900"
                         >
-                            <div className="grid mr-4 place-items-center">
-                                <LocateFixedIcon />
+                            <div className="p-2 bg-blue-100 rounded-full">
+                                <LocateFixedIcon className="w-5 h-5 text-blue-700" />
                             </div>
-                            Nearby
+                            <span>Nearby</span>
                         </div>
 
                         <div
                             onClick={() => setFilter("free")}
                             role="button"
-                            className="flex border-b cursor-pointer items-center w-full p-3 leading-tight transition-all outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+                            className="flex items-center gap-4 w-full px-4 py-3 rounded-lg cursor-pointer transition-all duration-200 ease-in-out hover:bg-green-50 hover:shadow-md hover:text-green-900"
                         >
-                            <div className="grid mr-4 place-items-center">
+                            <div className="p-2 bg-green-100 rounded-full">
                                 <img
                                     src="https://cdn-icons-png.flaticon.com/128/3706/3706340.png"
                                     className="w-5 h-5"
                                     alt="free-icon"
                                 />
                             </div>
-                            Free
+                            <span>Free</span>
                         </div>
-
                         <div
                             onClick={() => setFilter("paid")}
                             role="button"
-                            className="flex border-b items-center w-full p-3 cursor-pointer leading-tight transition-all outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900"
+                            className="flex items-center gap-4 w-full px-4 py-3 rounded-lg cursor-pointer transition-all duration-200 ease-in-out hover:bg-yellow-50 hover:shadow-md hover:text-yellow-900"
                         >
-                            <div className="grid mr-4 place-items-center">
-                                <IndianRupee />
+                            <div className="p-2 bg-yellow-100 rounded-full">
+                                <IndianRupee className="w-5 h-5 text-yellow-700" />
                             </div>
-                            Paid
+                            <span>Paid</span>
                         </div>
                     </nav>
                 </div>
