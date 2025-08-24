@@ -1,12 +1,12 @@
 "use client";
 import Link from "next/link";
+import toast from "react-hot-toast";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Mail, Lock, User } from "lucide-react";   
-import toast from "react-hot-toast";
+import { Mail, Lock, User } from "lucide-react";
+import { Spinner } from "../lib/organizer/Spinner";
 import { useSignup } from "../../hooks/organizer/useSignup";
 import { useSignupValidation } from "../../lib/Formik/organizer/signupValidation";
-import { Spinner } from "../lib/organizer/Spinner";
 
 const SignupComponent = () => {
     
@@ -49,13 +49,10 @@ const SignupComponent = () => {
         useSignupValidation(submitForm);
 
     return (
-        <div className="min-h-screen w-full flex items-center justify-center p-4 lg:p-8 bg-white"> 
+        <div className="min-h-screen w-full flex items-center justify-center p-4 lg:p-8 bg-white">
             {loadingSpinner && <Spinner />}
             <div className="w-full max-w-2xl mx-auto shadow-lg border-t">
-                <div
-                    className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-white/20 transform transition-all duration-300 hover:scale-[1.02]"
-                   
-                >
+                <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-white/20 transform transition-all duration-300 hover:scale-[1.02]">
                     <div className="text-center mb-8">
                         <div className="mx-auto w-16 h-16 bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-full flex items-center justify-center mb-6 shadow-lg">
                             <User className="w-8 h-8 text-white" />

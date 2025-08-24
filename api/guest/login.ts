@@ -2,10 +2,7 @@ import axios from "axios";
 import { IGuest } from "../../types/guest";
 import { getConfig } from "../../utils/config";
 
-type LoginPayload = {
-    email: string;
-    password: string;
-};
+type LoginPayload = Pick<IGuest, "email" | "password">;
 
 type LoginResponse = {
     accessToken: string;

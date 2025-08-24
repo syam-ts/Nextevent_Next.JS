@@ -1,15 +1,10 @@
+import { IBooking } from "../../../types/booking";
 import { axiosInstanseGuest } from "../../../lib/axios/guest/axiosInstance";
 
 type NewBookingPayload = {
     eventId: string;
     eventName: string;
-    isPaid: boolean;
-    street: string;
-    city: string;
-    zipcode: number;
-    numberOfSeats: number;
-    total: number;
-};
+} & Omit<IBooking, "_id" | "guestId" | "eventDetails" | "createdAt">;
 
 type NewBookingResponse = {
     result: {

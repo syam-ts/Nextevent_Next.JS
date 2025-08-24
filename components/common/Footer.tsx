@@ -1,6 +1,7 @@
 import React from "react";
 
 const Footer = () => {
+    
     return (
         <div className="mx-auto bg-white max-w-screen px-4 pt-60 mb-8 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-md">
@@ -11,7 +12,6 @@ const Footer = () => {
                 <form className="mt-6">
                     <div className="relative max-w-lg">
                         <label className="sr-only" htmlFor="email">
-                            
                             Email
                         </label>
 
@@ -156,7 +156,6 @@ const Footer = () => {
                                     className="text-gray-700 transition hover:text-gray-700/75"
                                     href="#"
                                 >
-                                    
                                     Marketing
                                 </a>
                             </li>
@@ -199,7 +198,6 @@ const Footer = () => {
                                     className="text-gray-700 transition hover:text-gray-700/75"
                                     href="#"
                                 >
-                                    
                                     About
                                 </a>
                             </li>
@@ -209,7 +207,6 @@ const Footer = () => {
                                     className="text-gray-700 transition hover:text-gray-700/75"
                                     href="#"
                                 >
-                                    
                                     Careers
                                 </a>
                             </li>
@@ -219,7 +216,6 @@ const Footer = () => {
                                     className="text-gray-700 transition hover:text-gray-700/75"
                                     href="#"
                                 >
-                                    
                                     History
                                 </a>
                             </li>
@@ -229,7 +225,6 @@ const Footer = () => {
                                     className="text-gray-700 transition hover:text-gray-700/75"
                                     href="#"
                                 >
-                                    
                                     Our Team
                                 </a>
                             </li>
@@ -245,7 +240,6 @@ const Footer = () => {
                                     className="text-gray-700 transition hover:text-gray-700/75"
                                     href="#"
                                 >
-                                    
                                     FAQs
                                 </a>
                             </li>
@@ -255,7 +249,6 @@ const Footer = () => {
                                     className="text-gray-700 transition hover:text-gray-700/75"
                                     href="#"
                                 >
-                                    
                                     Contact
                                 </a>
                             </li>
@@ -265,7 +258,6 @@ const Footer = () => {
                                     className="text-gray-700 transition hover:text-gray-700/75"
                                     href="#"
                                 >
-                                    
                                     Live Chat
                                 </a>
                             </li>

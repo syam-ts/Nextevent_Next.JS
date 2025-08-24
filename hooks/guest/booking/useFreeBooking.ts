@@ -1,16 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
 import { FreeBooking } from "../../../api/guest/booking/freeBooking";
+import { IBooking } from "../../../types/booking";
 
-interface FreeBookingPayload {
+type FreeBookingPayload = {
     eventId: string;
     eventName: string;
-    isPaid: boolean;
-    street: string;
-    city: string;
-    zipcode: number;
-    numberOfSeats: number;
-    total: number;
-}
+} & Omit<IBooking, "_id" | "guestId" | "eventDetails" | "createdAt">;
 
 export const useFreeBooking = () => {
     return useMutation({

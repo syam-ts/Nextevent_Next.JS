@@ -1,12 +1,8 @@
-import { useMutation } from "@tanstack/react-query"; 
+import { useMutation } from "@tanstack/react-query";
 import { ProfileEditGuest } from "../../api/guest/profileEdit";
+import { IGuest } from "../../types/guest";
 
-type ProifleEditPayload = {
-    name: string;
-    profilePicture: string;
-    location: string;
-    mobile: number;
-};
+type ProifleEditPayload = Pick<IGuest, "name" | "profilePicture" | "location" | "mobile">;
 
 export const useProfileEdit = () => {
     return useMutation({

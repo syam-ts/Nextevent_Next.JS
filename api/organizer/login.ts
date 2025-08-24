@@ -1,15 +1,14 @@
 import axios from "axios";
 import { getConfig } from "../../utils/config";
 import { IOrganizer } from "../../types/organizer";
+import { INotification } from "../../types/notification";
 
-type LoginPayload = {
-    email: string;
-    password: string;
-};
+type LoginPayload = Pick<IOrganizer, "email" | "password">;
 
 type LoginResponse = {
     accessToken: string;
     organizer: IOrganizer;
+    notifications: INotification[];
 };
 
 export const LoginOrganizer = async (

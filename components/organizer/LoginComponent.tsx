@@ -1,14 +1,15 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
-import { Eye, EyeOff, Mail, Lock, User } from "lucide-react";
 import toast from "react-hot-toast";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { Spinner } from "../lib/organizer/Spinner";
 import { useLogin } from "../../hooks/organizer/useLogin";
+import { Eye, EyeOff, Mail, Lock, User } from "lucide-react";
 import { signInOrganizer } from "../../redux/slices/oranizerSlice";
 import { useLoginValidation } from "../../lib/Formik/organizer/loginValidation";
-import { Spinner } from "../lib/organizer/Spinner";
+import { loadNotifications } from "../../redux/slices/organizerNotificationSlice";
 
 const LoginComponent = () => {
 
@@ -25,10 +26,11 @@ const LoginComponent = () => {
             { email, password },
             {
                 onSuccess: (data) => {
-                    //  console.log("Success", data);
+                    //  console.log("success", data);
                     localStorage.setItem("accessToken", data.accessToken);
-                    const { organizer } = data;
+                    const { organizer, notifications } = data; 
                     dispatch(signInOrganizer(organizer));
+                    dispatch(loadNotifications(notifications))
                     setLoadingSpinner(false);
 
                     router.push("/organizer/home");

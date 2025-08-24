@@ -1,9 +1,17 @@
+"use clint";
 import Link from "next/link";
 import React from "react";
 import NavDropdown from "./NavDropdown";
+import { useSelector } from "react-redux";
+import { IOrgNotification } from "../../types/slice-states/orgNotificationState";
+import { Bell } from "lucide-react";
 
 const Navbar = () => {
     
+    const notifications = useSelector(
+        (state: IOrgNotification) => state.orgnotification.notifications
+    );
+
     return (
         <nav className="bg-white border-gray-200 -900">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -22,13 +30,12 @@ const Navbar = () => {
                     id="navbar-user"
                 >
                     <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white -800 md:-900 -700">
-        
                         <li>
                             <Link
-                                  href="/organizer/home"
+                                href="/organizer/home"
                                 className="block py-2 px-3 text-gray-900 rounded-sm font-bold hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  md:-blue-500 -gray-700 -white md:-transparent -700"
                             >
-                               Home
+                                Home
                             </Link>
                         </li>
                         <li>
@@ -65,10 +72,23 @@ const Navbar = () => {
                         </li>
                         <li>
                             <Link
-                                   href="/organizer/contact"
+                                href="/organizer/contact"
                                 className="block py-2 px-3 text-gray-900 rounded-sm font-bold hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  md:-blue-500 -gray-700 -white md:-transparent -700"
                             >
                                 Contact
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                href="/organizer/notifications"
+                                className="block py-2 px-3 text-gray-900 rounded-sm font-bold hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  md:-blue-500 -gray-700 -white md:-transparent -700"
+                            >
+                                <div className="relative inline-block">
+                                    <Bell className="text-black" />
+                                    <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                                        {notifications.length || 0}
+                                    </span>
+                                </div>
                             </Link>
                         </li>
                     </ul>

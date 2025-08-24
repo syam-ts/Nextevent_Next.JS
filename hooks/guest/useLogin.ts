@@ -1,10 +1,8 @@
-import { useMutation } from "@tanstack/react-query"; 
+import { useMutation } from "@tanstack/react-query";
 import { LoginGuest } from "../../api/guest/login";
+import { IGuest } from "../../types/guest";
 
-type LoginPayload = {
-    email: string;
-    password: string;
-};
+type LoginPayload = Pick<IGuest, "email" | "password">;
 
 export const useLogin = () => {
     return useMutation({

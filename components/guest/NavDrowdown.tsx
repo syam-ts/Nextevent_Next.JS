@@ -6,6 +6,7 @@ import { signOutGuest } from "../../redux/slices/guestSlice";
 import { IGuestState } from "../../types/slice-states/guestState";
 
 const NavDropdown = () => {
+    
     const [dropdown, setDropdown] = useState<boolean>(false);
     const dispatch = useDispatch();
     const guest = useSelector((state: IGuestState) => state.guest.currentGuest);

@@ -1,5 +1,10 @@
+import toast from "react-hot-toast";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Spinner } from "../../lib/guest/Spinner";
 import { IBooking } from "../../../types/booking";
+import { CancelConfirmModal } from "../modal/CancelConfirmModal";
+import { useCancelBooking } from "../../../hooks/guest/booking/useCancelBooking";
 import {
     MapPin,
     Calendar,
@@ -8,17 +13,13 @@ import {
     Download,
     Edit3,
 } from "lucide-react";
-import { useCancelBooking } from "../../../hooks/guest/booking/useCancelBooking";
-import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
-import { Spinner } from "../../lib/guest/Spinner";
-import { CancelConfirmModal } from "../modal/CancelConfirmModal";
 
 interface BookingPageProps {
     booking: IBooking | undefined;
 }
 
 const BookingPage: React.FC<BookingPageProps> = ({ booking }) => {
+
     const [isOpen, setIsOpen] = React.useState(false);
     const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
     const { mutate } = useCancelBooking();

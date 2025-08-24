@@ -13,15 +13,13 @@ import {
 } from "lucide-react";
 
 const WalletComponent = () => {
-
+    
     const { data } = useGetWallet();
     const [showBalance, setShowBalance] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const [filterType, setFilterType] = useState<"all" | "credit" | "debit">(
         "all"
     );
-
-    
 
     const filteredTransactions = data?.wallet?.transactions?.filter(
         (transaction) => {
@@ -49,10 +47,7 @@ const WalletComponent = () => {
                     </p>
                 </div>
 
-                <div
-                    className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 p-8 mb-8"
-                    
-                >
+                <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 p-8 mb-8">
                     <div className="flex items-center justify-between mb-6">
                         <div className="flex items-center">
                             <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-xl flex items-center justify-center mr-4">
@@ -123,9 +118,15 @@ const WalletComponent = () => {
                                     }
                                     className="pl-12 cursor-pointer pr-8 py-3 border border-orange-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-200 text-gray-900 bg-white/90"
                                 >
-                                    <option value="all" className="cursor-pointer">All Transactions</option>
-                                    <option value="credit" className="cursor-pointer">Credits Only</option>
-                                    <option value="debit" className="cursor-pointer">Debits Only</option>
+                                    <option value="all" className="cursor-pointer">
+                                        All Transactions
+                                    </option>
+                                    <option value="credit" className="cursor-pointer">
+                                        Credits Only
+                                    </option>
+                                    <option value="debit" className="cursor-pointer">
+                                        Debits Only
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -205,8 +206,8 @@ const WalletComponent = () => {
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <div className="text-sm text-gray-900">
-                                                {transaction.createdAt.toString()}  
-                                            </div> 
+                                                {transaction.createdAt.toString()}
+                                            </div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <div className="text-xs font-mono text-gray-500 bg-gray-100 px-2 py-1 rounded">

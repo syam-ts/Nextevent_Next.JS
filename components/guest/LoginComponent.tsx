@@ -1,13 +1,13 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux"; 
-import { Eye, EyeOff, Mail, Lock, User } from "lucide-react"; 
 import toast from "react-hot-toast";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux"; 
+import { useRouter } from "next/navigation";
+import { Spinner } from "../lib/guest/Spinner";
 import { useLogin } from "../../hooks/guest/useLogin";
 import { signInGuest } from "../../redux/slices/guestSlice";
-import { Spinner } from "../lib/guest/Spinner";
+import { Eye, EyeOff, Mail, Lock, User } from "lucide-react"; 
 import { useLoginValidation } from "../../lib/Formik/organizer/loginValidation";
 
 const LoginComponent = () => {
@@ -26,7 +26,7 @@ const LoginComponent = () => {
       { email, password },
       {
         onSuccess: (data) => {
-          //  console.log("Success", data);
+          //  console.log("success", data);
           localStorage.setItem("accessToken", data.accessToken);
           const { guest } = data;
           dispatch(signInGuest(guest));

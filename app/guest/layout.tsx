@@ -1,8 +1,8 @@
 "use client";
+import { Toaster } from "react-hot-toast";
 import { usePathname } from "next/navigation";
 import Navbar from "../../components/guest/Navbar";
 import Footer from "../../components/common/Footer";
-import { Toaster } from "react-hot-toast";
 import ProtectedRoute from "../../(auth)/guest/ProtectedRoute";
 
 export default function AuthLayout({

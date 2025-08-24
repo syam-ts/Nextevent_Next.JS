@@ -8,8 +8,7 @@ import dayjs from "dayjs";
 interface ViewEventPageProps {
     eventId: string;
 }
- 
- 
+  
 const ViewEventPage: React.FC<ViewEventPageProps> = ({ eventId }) => {
 
     const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
