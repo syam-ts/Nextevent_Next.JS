@@ -1,16 +1,17 @@
 "use client";
+import dayjs from "dayjs";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { Spinner } from "../../../../components/lib/guest/Spinner";
 import { Calendar, Clock, MapPin, Users, Ticket } from "lucide-react";
 import { useViewEvent } from "../../../../hooks/Event(shared)/useViewEvent";
-import { Spinner } from "../../../../components/lib/guest/Spinner";
-import dayjs from "dayjs";
 
 interface EventPageProps {
     eventId: string;
 }
 
 const EventPage: React.FC<EventPageProps> = ({ eventId }) => {
+    
     const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
     const { data, isLoading } = useViewEvent(eventId);
 

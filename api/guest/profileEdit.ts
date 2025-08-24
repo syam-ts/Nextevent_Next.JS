@@ -7,17 +7,7 @@ type ProifleEditPayload = Pick<
 >;
 
 type ProfileEditResponse = {
-    guest: {
-        _id: string;
-        name: string;
-        email: string;
-        password: string;
-        mobile: number;
-        location: string;
-        numberOfEventsAttended: number;
-        wallet: any;
-        createdAt: string;
-    };
+    guest: IGuest
 };
 
 export const ProfileEditGuest = async (

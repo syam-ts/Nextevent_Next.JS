@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { User, Phone, Hash, Save } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
-import { useProfileEdit } from "../../hooks/organizer/useProfileEdit";
-import { signInOrganizer } from "../../redux/slices/oranizerSlice";
 import { Spinner } from "../lib/organizer/Spinner";
+import { User, Phone, Hash, Save } from "lucide-react";
+import { signInOrganizer } from "../../redux/slices/oranizerSlice";
+import { useProfileEdit } from "../../hooks/organizer/useProfileEdit";
 import { useProfileEditValidation } from "../../lib/Formik/organizer/profileEditValidation";
 
 const ProfileEditComponent = () => {
@@ -25,7 +25,7 @@ const ProfileEditComponent = () => {
             { name, mobile, organizationName },
             {
                 onSuccess: (data) => {
-                    //  console.log("Success", data);
+                    //  console.log("success", data);
                     const { organizer } = data;
                     dispatch(signInOrganizer(organizer));
                     setLoadingSpinner(false);

@@ -1,13 +1,13 @@
 "use client";
 import dayjs from "dayjs";
 import React from "react";
+import Link from "next/link";
 import { IOrganizer } from "../../../types/organizer";
 import { User, Mail, Phone, Calendar } from "lucide-react";
 import { useGetAllOrganizers } from "../../../hooks/guest/useGetAllOrganizers";
-import Link from "next/link";
 
 const AllOrganizers = () => {
-
+  
   const { data } = useGetAllOrganizers();
   if (!data) return;
 
@@ -90,7 +90,10 @@ const AllOrganizers = () => {
 
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-6 border-t border-gray-100">
                 <div className="flex gap-3">
-                  <Link href={`/guest/organizers/events/${organizer._id}`} className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-orange-600 to-orange-700 text-white font-semibold rounded-xl hover:from-orange-700 hover:to-orange-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all duration-200 transform hover:scale-105 shadow-lg">
+                  <Link
+                    href={`/guest/organizers/events/${organizer._id}`}
+                    className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-orange-600 to-orange-700 text-white font-semibold rounded-xl hover:from-orange-700 hover:to-orange-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all duration-200 transform hover:scale-105 shadow-lg"
+                  >
                     <User className="w-4 h-4 mr-2" />
                     View Events
                   </Link>

@@ -1,7 +1,8 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import guestReducer from "./slices/guestSlice";
 import storage from "redux-persist/lib/storage";
 import organizerReducer from "./slices/oranizerSlice";
-import guestReducer from "./slices/guestSlice";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import orgNotificationReducer from "./slices/organizerNotificationSlice";
 import {
     persistStore,
     persistReducer,
@@ -23,15 +24,25 @@ const guestPersistConfig = {
     storage,
 };
 
+const orgNotificationPersistConfig = {
+    key: "orgnotification",
+    storage,
+};
+
 const organizerPersistedReducer = persistReducer(
     organizerPersistConfig,
     organizerReducer
 );
 const guestPersistedReducer = persistReducer(guestPersistConfig, guestReducer);
+const orgNotificationPersistedReducer = persistReducer(
+    orgNotificationPersistConfig,
+    orgNotificationReducer
+);
 
 const rootReducer = combineReducers({
     organizer: organizerPersistedReducer,
     guest: guestPersistedReducer,
+    orgnotification: orgNotificationPersistedReducer,
 });
 
 export const store = configureStore({

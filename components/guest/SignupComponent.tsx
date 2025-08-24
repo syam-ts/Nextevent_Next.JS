@@ -1,19 +1,18 @@
 "use client";
 import Link from "next/link";
+import toast from "react-hot-toast";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Mail, Lock, User } from "lucide-react"; 
-import toast from "react-hot-toast";
+import { Spinner } from "../lib/guest/Spinner";
+import { Mail, Lock, User } from "lucide-react";
 import { useSignup } from "../../hooks/guest/useSignup";
 import { useSignupValidation } from "../../lib/Formik/guest/signupValidation";
-import { Spinner } from "../lib/guest/Spinner";
 
 const SignupComponent = () => {
 
     const { mutate } = useSignup();
     const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
     const router = useRouter();
-
 
     const submitForm = (
         name: string,
@@ -46,19 +45,14 @@ const SignupComponent = () => {
         );
     };
 
-
     const { values, touched, errors, handleChange, handleSubmit } =
         useSignupValidation(submitForm);
 
-        
     return (
-        <div className="min-h-screen w-full flex items-center justify-center p-4 lg:p-8 bg-orange-100"> 
+        <div className="min-h-screen w-full flex items-center justify-center p-4 lg:p-8 bg-orange-100">
             {loadingSpinner && <Spinner />}
             <div className="w-full max-w-2xl mx-auto shadow-lg border-t">
-                <div
-                    className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-white/20 transform transition-all duration-300 hover:scale-[1.02]"
-                    
-                >
+                <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-white/20 transform transition-all duration-300 hover:scale-[1.02]">
                     <div className="text-center mb-8">
                         <div className="mx-auto w-16 h-16 bg-gradient-to-r from-orange-600 to-orange-700 rounded-full flex items-center justify-center mb-6 shadow-lg">
                             <User className="w-8 h-8 text-white" />
@@ -206,7 +200,9 @@ const SignupComponent = () => {
                                 />
                             </div>
                             {touched.location && errors.location && (
-                                <div className="text-red-500 text-center">{errors.location}</div>
+                                <div className="text-red-500 text-center">
+                                    {errors.location}
+                                </div>
                             )}
                         </div>
 

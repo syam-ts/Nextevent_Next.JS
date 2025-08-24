@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
-import { Plus, Settings, Eye, Calendar, Users, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { Plus, Settings, Eye, Calendar, Users, Sparkles } from "lucide-react";
 
 const ModernEventTypes = () => {
+
     const eventActions = [
         {
             title: "New Event",

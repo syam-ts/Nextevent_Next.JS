@@ -10,10 +10,10 @@ const SuccessPage = () => {
     const sessionId = searchParams.get("session_id");
     const eventId = searchParams.get("eventId");
     const router = useRouter();
-    const { backend_url } = getConfig();
+    const { backend_url }: { backend_url: string } = getConfig();
 
     useEffect(() => {
-        const createBooking = async () => {
+        const createBooking = async (): Promise<void> => {
             if (!sessionId || !eventId) return;
 
             await axiosInstanseGuest.post(

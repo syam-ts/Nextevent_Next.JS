@@ -2,10 +2,10 @@
 import toast from "react-hot-toast";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Spinner } from "../../../components/lib/organizer/Spinner";
+import { ImageUpload } from "../../../helper/methods/imageUpload"; 
 import { useNewEvent } from "../../../hooks/organizer/useNewEvent";
+import { Spinner } from "../../../components/lib/organizer/Spinner";
 import { useNewEventValidation } from "../../../lib/Formik/organizer/newEventValidation";
-import { ImageUpload } from "../../../helper/methods/imageUpload";
 import {
     Calendar,
     MapPin,
@@ -15,6 +15,8 @@ import {
     FileText,
     Camera,
 } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { newNotifications } from "../../../redux/slices/organizerNotificationSlice";
 
 const NewEventPage = () => {
 
@@ -22,6 +24,7 @@ const NewEventPage = () => {
     const [imageloading, setImageloading] = useState<boolean>(false);
     const [isFree, setIsFree] = useState<boolean>(true);
     const { mutate } = useNewEvent();
+    const dispatch = useDispatch();
     const router = useRouter(); 
 
     
@@ -55,8 +58,9 @@ const NewEventPage = () => {
             },
             {
                 onSuccess: (data) => {
-                     console.log("Success", data);
+                     console.log("success", data);
                     setLoadingSpinner(false);
+                    dispatch(newNotifications(data.notification))
                   //  router.push("/organizer/my-events");
                 },
                 onError(error: unknown) {

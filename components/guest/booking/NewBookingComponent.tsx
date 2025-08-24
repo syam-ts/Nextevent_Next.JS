@@ -1,15 +1,15 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { MapPin, Home, Navigation, Users, Calendar } from "lucide-react";
 import toast from "react-hot-toast";
 import { loadStripe } from "@stripe/stripe-js";
-import { useNewBooking } from "../../../hooks/guest/booking/useNewBooking";
-import { useViewEvent } from "../../../hooks/Event(shared)/useViewEvent";
-import { useNewBookingValidation } from "../../../lib/Formik/guest/newBookingValidation";
 import { Spinner } from "../../lib/guest/Spinner";
-import { useFreeBooking } from "../../../hooks/guest/booking/useFreeBooking";
 import { getConfig } from "../../../utils/config";
+import React, { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useViewEvent } from "../../../hooks/Event(shared)/useViewEvent";
+import { MapPin, Home, Navigation, Users, Calendar } from "lucide-react";
+import { useNewBooking } from "../../../hooks/guest/booking/useNewBooking";
+import { useNewBookingValidation } from "../../../lib/Formik/guest/newBookingValidation";
+import { useFreeBooking } from "../../../hooks/guest/booking/useFreeBooking";
 
 interface NewBookingCompnentProps {
     eventId: string;

@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
+import BookingPage from "./BookingPage";
 import { ArrowLeft, Download, Share2 } from "lucide-react";
 import { useViewBooking } from "../../../hooks/guest/booking/useVIewBooking";
-import BookingPage from "./BookingPage";
 
 interface ViewBookingComponentProps {
     bookingId: string;
@@ -11,14 +11,13 @@ interface ViewBookingComponentProps {
 const ViewBookingComponent: React.FC<ViewBookingComponentProps> = ({
     bookingId,
 }) => {
-
+    
     const { data } = useViewBooking(bookingId);
 
     const handleDownloadTicket = (): void => {
         alert("Downloading ticket...");
     };
 
-    
     const handleShareBooking = (): void => {
         if (navigator.share) {
             navigator.share({
@@ -58,10 +57,7 @@ const ViewBookingComponent: React.FC<ViewBookingComponentProps> = ({
                     </div>
                 </div>
 
-                <div
-                    className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 overflow-hidden"
-                   
-                >
+                <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 overflow-hidden">
                     <div className="bg-gradient-to-r  px-8 py-6">
                         <h1 className="text-2xl text-orange-500 font-bold mb-2">
                             Booking Details

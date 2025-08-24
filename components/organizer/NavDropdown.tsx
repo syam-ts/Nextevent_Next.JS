@@ -9,10 +9,12 @@ const NavDropdown = () => {
 
     const [dropdown, setDropdown] = useState<boolean>(false);
 
-    const organizer = useSelector((state: IOrganizerState) => state.organizer.currentOrganizer);
+    const organizer = useSelector(
+        (state: IOrganizerState) => state.organizer.currentOrganizer
+    );
     const dispatch = useDispatch();
 
-    const logout = () => {
+    const logout = (): void => {
         localStorage.removeItem("accessToken");
         dispatch(signOutOrganizer());
         window.location.href = "/organizer/login";
@@ -42,7 +44,7 @@ const NavDropdown = () => {
                                 >
                                     Home
                                 </Link>
-                            </li> 
+                            </li>
                             <li>
                                 <button
                                     onClick={logout}
