@@ -1,17 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-interface IGuest {
-     _id: string
-    name: string
-    email: string
-    password: string
-    mobile: number
-    location: string
-    numberOfEventsAttended: number,
-    wallet: any 
-    createdAt: string 
-}
-
+import { IGuest } from "../../types/guest";
+  
 interface GuestState {
     currentGuest: IGuest | null;
     isGuest: boolean;
