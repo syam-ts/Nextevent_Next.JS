@@ -12,6 +12,8 @@ const Navbar = () => {
         (state: IOrgNotification) => state.orgnotification.notifications
     );
 
+    const filteredNotifications = notifications.filter(not => !not.markAsRead);
+
     return (
         <nav className="bg-white border-gray-200 -900">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -86,7 +88,7 @@ const Navbar = () => {
                                 <div className="relative inline-block">
                                     <Bell className="text-black" />
                                     <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                                        {notifications.length || 0}
+                                        {filteredNotifications.length || 0}
                                     </span>
                                 </div>
                             </Link>
