@@ -49,8 +49,7 @@ axiosInstanseOrganizer.interceptors.response.use(
                 logoutHelperFunction("organizer", store.dispatch);
                 return Promise.reject(err);
             }
-        }
-        console.log("LAST");
+        } 
         return Promise.reject(error);
     }
 );

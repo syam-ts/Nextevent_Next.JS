@@ -1,16 +1,17 @@
-import { axiosInstanseGuest } from "../../lib/axios/guest/axiosInstance";
 import { IEvent } from "../../types/event";
+import { axiosInstanseGuest } from "../../lib/axios/guest/axiosInstance";
 
 type GetAllEventsResponse = {
     events: IEvent[];
-}
+};
 
 export const GetAllEvents = async (
     filter: string,
-    currentPage: number
+    currentPage: number,
+    searchInput: string
 ): Promise<GetAllEventsResponse> => {
     const { data } = await axiosInstanseGuest.get(
-        `/event/all?currentPage=${currentPage}&filter=${filter}`
+        `/event/all?currentPage=${currentPage}&filter=${filter}&input=${searchInput}`
     );
     return data;
 };
