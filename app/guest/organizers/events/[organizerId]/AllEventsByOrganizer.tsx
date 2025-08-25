@@ -19,8 +19,7 @@ const AllEventsByOrganizer: React.FC<AllEventsByOrganizerProps> = ({
   if (!data) return;
 
   const events: IEvent[] = data?.events;
- 
-   console.log(filter);
+  
 
   return (
     <div>

@@ -12,8 +12,7 @@ type FreeBookingResponse = {
 
 export const FreeBooking = async (
     payload: FreeBookingPayload
-): Promise<FreeBookingResponse> => {
-    console.log("ENTIRE PAYLOAD: ", payload.eventId);
+): Promise<FreeBookingResponse> => { 
     const { data } = await axiosInstanseGuest.post("/booking/free", payload);
     return data;
 };

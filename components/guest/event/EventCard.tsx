@@ -4,11 +4,11 @@ import dayjs from "dayjs";
 import { IEvent } from "../../../types/event";
 import { Calendar, MapPin, Clock, Users, DollarSign, Eye } from "lucide-react";
 
-interface IEventCardProp {
+type IEventCardProp = {
     events: IEvent[];
 }
 
-const EventCard = ({
+const EventCard = React.memo(({
     data,
     isError,
     isLoading,
@@ -179,6 +179,6 @@ const EventCard = ({
             ))}
         </div>
     );
-};
+});
 
-export default EventCard;
+export default React.memo(EventCard);
