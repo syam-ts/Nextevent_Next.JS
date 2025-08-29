@@ -1,10 +1,10 @@
 import React from 'react'
-import Organizers from '../../../components/admin/Organizers'
+import LoginComponent from '../../../components/admin/LoginComponent'
 
 const page = () => {
   return (
     <div>
-      <Organizers />
+      <LoginComponent />
     </div>
   )
 }
