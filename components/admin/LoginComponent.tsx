@@ -48,7 +48,7 @@ const LoginComponent = () => {
 
 
   return (
-    <div className="h-screen w-full flex overflow-y-hidden items-center justify-center bg-gray-100">
+    <div className="h-screen w-screen flex overflow-y-hidden items-center justify-center bg-gray-100">
  
       {loadingSpinner && <Spinner />}
       <div className="w-full max-w-md mx-auto shadow-lg border-t">
