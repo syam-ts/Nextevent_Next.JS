@@ -1,10 +1,10 @@
-import React from 'react'
-import Organizers from '../../../components/admin/Organizers'
+import React from 'react' 
+import OrganizersContainer from '../../../components/admin/organizers/OrganizersContainer'
 
 const page = () => {
   return (
     <div>
-      <Organizers />
+      <OrganizersContainer />
     </div>
   )
 }
