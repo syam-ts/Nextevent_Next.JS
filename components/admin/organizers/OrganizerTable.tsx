@@ -1,5 +1,5 @@
-import dayjs from "dayjs";
 import React from "react";
+import dayjs from "dayjs";
 import { IOrganizer } from "../../../types/organizer";
 
 type OrganizerTableProps = {
@@ -50,6 +50,12 @@ export const OrganizerTable: React.FC<OrganizerTableProps> = React.memo(
               >
                 Total Events
               </th>
+              <th
+                scope="col"
+                className="px-2 py-3 text-end text-xs font-medium text-gray-500 uppercase"
+              >
+                Block/Unblock
+              </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
@@ -72,6 +78,9 @@ export const OrganizerTable: React.FC<OrganizerTableProps> = React.memo(
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-800">
                   {organizer.totalEventsCreated}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-800">
+                  blocked
                 </td>
               </tr>
             ))}

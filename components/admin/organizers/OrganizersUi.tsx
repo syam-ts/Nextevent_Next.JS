@@ -26,6 +26,7 @@ export const OrganizersUI: React.FC<OrganizersUIProps> = React.memo(
     organizers,
     totalPages,
   }) => {
+    
     return (
       <div className="w-[60rem] mt-44 mx-52">
         <div className="-m-1.5 overflow-x-auto">
@@ -33,6 +34,7 @@ export const OrganizersUI: React.FC<OrganizersUIProps> = React.memo(
             <div className="border border-gray-200 rounded-xl divide-y divide-gray-200">
               <div className="py-3 px-4">
                 <div className="flex justify-between">
+                  
                   {/* Search component */}
                   <SearchComponent />
 
