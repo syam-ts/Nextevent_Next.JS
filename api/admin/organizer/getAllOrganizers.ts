@@ -1,6 +1,6 @@
-import { IOrganizer } from "../../types/organizer";
-import { axiosInstanseAdmin } from "../../lib/axios/admin/axiosInstance";
-
+import { IOrganizer } from "../../../types/organizer";
+import { axiosInstanseAdmin } from "../../../lib/axios/admin/axiosInstance";
+  
 type GetAllOrganizersResponse = {
   organizers: IOrganizer[];
   totalPages: number;

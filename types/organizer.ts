@@ -9,4 +9,5 @@ export interface IOrganizer {
     createdEvents: [];
     createdAt: string;
     totalEventsCreated?: number;
+    isBlocked: boolean;
 }

@@ -4,11 +4,14 @@ import { IOrganizer } from "../../../types/organizer";
 
 type OrganizerTableProps = {
   organizers: IOrganizer[];
+  blockOrganizer: (organizerId: string) => void;
+  unBlockOrganizer: (organizerId: string) => void;
 };
 
 export const OrganizerTable: React.FC<OrganizerTableProps> = React.memo(
-  ({ organizers }) => {
+  ({ organizers, blockOrganizer, unBlockOrganizer }) => {
     
+
     return (
       <div className="overflow-hidden">
         <table className="min-w-full divide-y divide-gray-200">
@@ -79,9 +82,27 @@ export const OrganizerTable: React.FC<OrganizerTableProps> = React.memo(
                 <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-800">
                   {organizer.totalEventsCreated}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-800">
-                  blocked
-                </td>
+                {!organizer.isBlocked ? (
+                  <td className="whitespace-nowrap text-center text-sm text-gray-800">
+                    <button
+                      onClick={() => blockOrganizer(organizer._id)}
+                      className="rounded-md bg-green-500 py-0.5 px-3 border border-transparent text-center text-xs text-black cursor-pointer transition-all ml-2"
+                      type="button"
+                    >
+                      Block
+                    </button>
+                  </td>
+                ) : (
+                  <td className="whitespace-nowrap text-center text-sm text-gray-800">
+                    <button
+                      onClick={() => unBlockOrganizer(organizer._id)}
+                      className="rounded-md bg-red-500 py-0.5 px-2 border border-transparent text-center text-xs text-white cursor-pointer transition-all ml-2"
+                      type="button"
+                    >
+                      Unblock
+                    </button>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>

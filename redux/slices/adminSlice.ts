@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"; 
 import { IAdmin } from "../../types/admin";
 import { IOrganizer } from "../../types/organizer";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface AdminState {
   currentAdmin: IAdmin | null;
@@ -11,7 +11,7 @@ interface AdminState {
 const initialState: AdminState = {
   currentAdmin: null,
   isAdmin: false,
-  organizers: []
+  organizers: [],
 };
 
 const currentAdminSlice = createSlice({
@@ -24,11 +24,31 @@ const currentAdminSlice = createSlice({
     signOutAdmin: (state) => {
       (state.currentAdmin = null), (state.isAdmin = false);
     },
-    blockOrganizer: (state, action: PayloadAction<boolean>) => {
-        //find the organizer using id and make the isBlocked to true
-  },  
-  }
+    addOrganizers: (state, action: PayloadAction<IOrganizer[]>) => {
+      state.organizers = action.payload;
+    },
+    blockOrganizer: (state, action: PayloadAction<string>) => { 
+      const index = state.organizers.findIndex(
+        (org: IOrganizer) => org._id === action.payload
+      );
+      if (index !== -1) state.organizers[index].isBlocked = true;
+    },
+
+    unBlockOrganizer: (state, action: PayloadAction<string>) => {
+      const index = state.organizers.findIndex(
+        (org: IOrganizer) => org._id === action.payload
+      );
+
+      if (index !== -1) state.organizers[index].isBlocked = false;
+    },
+  },
 });
 
 export default currentAdminSlice.reducer;
-export const { signInAdmin, signOutAdmin, blockOrganizer } = currentAdminSlice.actions;
+export const {
+  signInAdmin,
+  signOutAdmin,
+  addOrganizers,
+  blockOrganizer,
+  unBlockOrganizer,
+} = currentAdminSlice.actions;
