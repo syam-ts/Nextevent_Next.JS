@@ -15,6 +15,8 @@ type OrganizersUIProps = {
   changePage: (page: number) => void;
   organizers: IOrganizer[];
   totalPages: number;
+  blockOrganizer: (organizerId: string) => void;
+  unBlockOrganizer: (organizerId: string) => void;
 };
 
 export const OrganizersUI: React.FC<OrganizersUIProps> = React.memo(
@@ -25,6 +27,8 @@ export const OrganizersUI: React.FC<OrganizersUIProps> = React.memo(
     changePage,
     organizers,
     totalPages,
+    blockOrganizer,
+    unBlockOrganizer
   }) => {
     
     return (
@@ -47,7 +51,10 @@ export const OrganizersUI: React.FC<OrganizersUIProps> = React.memo(
               </div>
 
               {/* table section  */}
-              <OrganizerTable organizers={organizers} />
+              <OrganizerTable organizers={organizers} 
+               blockOrganizer={blockOrganizer}
+               unBlockOrganizer={unBlockOrganizer}
+              />
             </div>
 
             {/* Pagination component  */}
