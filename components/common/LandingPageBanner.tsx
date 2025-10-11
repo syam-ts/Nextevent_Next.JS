@@ -12,7 +12,7 @@ const LandingPageBanner = () => {
                 </h1>
                 <span className="mt-8 max-w-lg text-center text-xl leading-relaxed text-gray-800">
                     Discover wide verities of events thats happends around you. and be a
-                    part of it to make it memorable to your heart ...
+                    part of it to make it memorable in your heart ...
                 </span>
                 <p className="mt-3 text-gray-600  rounded border px-3 py-1 shadow">
                     <span className="font-semibold ">over 1 million customers</span>
